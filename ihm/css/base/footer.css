@@ -32,18 +32,32 @@
 }
 
 /* Si largeur inférieure à 640, on met sur plusieurs lignes */
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 370px) and (max-width: 640px) {
 #footer {
     height: 30px;
+}
+#footer .ligne2::before {
+    content: ' - ';
+}
+#footer .ligne3::before {
+    content: '\A';
+    white-space: pre-line;
+}
+}
 
-
+/* Si largeur inférieure à 640, on met sur plusieurs lignes */
+@media screen and (max-width: 370px) {
+#footer {
+    height: 45px;
 }
 #footer .ligne2::before {
     content: '\A';
     white-space: pre-line;
-}
-
-  
+}  
+#footer .ligne3::before {
+    content: '\A';
+    white-space: pre-line;
+}  
   
 
 }
