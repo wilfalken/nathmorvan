@@ -1,0 +1,78 @@
+#contenu .element:hover {
+	background-color: #f2f4ee;
+	border-style:solid;
+	border-width: 1px;
+	border-color: #596275;
+	border-radius: 10px;
+	padding-bottom:30px;
+	padding-left:20px;
+	padding-right:20px;
+	box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Les boutons sont masqués par défaut */
+#contenu .bouton {
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	display: none;
+	height : 10px;
+	width: 110px;
+	padding-bottom:7px;
+	border-style:solid;
+	border-width: 1px;
+	border-color: #596275;
+	border-radius: 5px;
+	text-decoration: none;
+	color: black;
+	background-color: white;
+	text-align: center;
+	position: relative;
+	font-size: small;
+}
+
+/* Ils sont affichés en cas de survol */
+#contenu .element:hover .bouton {
+	display: block;
+}
+
+/* Par défaut le textarea est masqué */
+#contenu .texteModifiable {
+	display: none;
+}
+
+
+
+/* De même que les boutons de validations de modification */
+#contenu .boutons_validation {
+	display: none;
+}
+
+/* De même que la liste déroulant et les boutons de validations d'insertion */
+#contenu .insertion {
+	display: none;
+}
+
+#contenu .modification{
+    	border-style:solid;
+	border-width: 3px;
+        border-color: red;
+        background-color: #ff6b6b;
+}
+
+#contenu .element.modification:hover{
+    	border-style:solid;
+	border-width: 3px;
+        border-color: red;
+        border-radius: 0px;
+        padding-bottom:30px;
+	padding-left:20px;
+	padding-right:20px;
+        background-color: #ff6b6b;
+}
+
+#contenu .element.modification .bouton {
+	display: content;
+}
+
+

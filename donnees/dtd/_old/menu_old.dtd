@@ -1,0 +1,4 @@
+<!ELEMENT barre_menu (lien*,menu*)>
+<!ELEMENT menu (nom, lien*)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT lien (#PCDATA)>

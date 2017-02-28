@@ -1,0 +1,7 @@
+<!ELEMENT articles (article*)>
+<!ELEMENT article (nom, element*)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT element (#PCDATA)>
+      <!ATTLIST element
+      	balise CDATA #REQUIRED
+      	>

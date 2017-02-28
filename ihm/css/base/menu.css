@@ -1,0 +1,88 @@
+#menu {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	color: #2b3664;
+	margin-top : -10px;
+	margin-left : -35px;
+	font-size: small;
+}
+
+#menu a {
+	color: #2b3664;
+}
+
+/* Lignes qui permettent d'afficher les lignes en cas de survol */
+#menu .lignes {
+	display: none;
+}
+
+#menu li:hover ul.lignes {
+	display: block;
+}
+
+/* Gestion du décalage des lignes inférieures */
+#menu .titres, #menu .lignes {
+	list-style-type: none;
+}
+
+
+
+#menu .titres li {
+	/* Insertion espace entre les titres*/
+	margin-right: 3px;
+        margin-bottom: 3px;
+	float: left; /*pour IE*/
+	width: 170px;
+	height: 22px;
+	background-color: rgba(255, 255, 255, 0.5);
+       
+}
+
+#menu .lignes li {
+	position: relative;
+	float: left;
+        margin-bottom: 0px;
+	box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
+	background-color: rgba(255, 255, 255, 1);
+	top: 3px;
+	left: -43px;
+        /* On ajoute la propriété de z-index afin d'avoir les menus déroulan passant au dessus */
+        z-index: 1000;
+}
+
+/* Pour toutes les cases */
+#menu ul li {
+	position: relative;
+	background: white;
+	float: left;
+	text-decoration: none;
+	text-align: center;
+	/* Espace autour du texte */
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+#menu .titres a {
+	/*display: block;*/
+	text-decoration: none;
+}
+
+
+#menu .lignes a {
+        /* Cette ligne permet d'avoir le surlignage sur tout la largeur */
+	display: block;
+	text-decoration: none;
+	text-align: left;
+}
+
+
+#menu .titres li:hover {
+	background-color: rgba(255, 255, 255, 0.8);
+
+}
+
+
+#menu .lignes a:hover{
+	background: #e7e1f2;
+}

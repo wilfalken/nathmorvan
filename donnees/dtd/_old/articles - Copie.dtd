@@ -1,0 +1,11 @@
+<!ELEMENT barre_menu (article*,menu*)>
+<!ELEMENT menu (article*)>
+      <!ATTLIST menu
+      	nom_menu CDATA #REQUIRED
+      	>
+<!ELEMENT article (nom, element*)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT element (#PCDATA)>
+      <!ATTLIST element
+      	balise CDATA #REQUIRED
+      	>
