@@ -22,7 +22,7 @@ Function getXml() {
 		$listeElementsMenu = null;
 		// S'il n'y a qu'un élément, on le met à la racine ...
 		if (count ( $xml_menu ) == 1) {
-			$barre_menu [] = utf8_decode ( $xml_menu ['nom_menu'] );
+			$barre_menu [utf8_decode ($xml_menu ['nom_menu'])] = utf8_decode ( $xml_menu ['nom_menu'] );
 			$listeLiens [] = utf8_decode ( $xml_menu ['nom_menu'] );
 			// Sinon, on créé un menu, définit par son nom et ses liens.
 		} else {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
+<barre_menu>
+  <menu nom_menu="Accueiltt">
+    <article>
+      <nom>Accueiltt</nom>
+    </article>
+  </menu>
+  <menu nom_menu="Cantine">
+    <article>
+      <nom>Cantine</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Archives">
+    <article>
+      <nom>Archives</nom>
+      <element balise="Lien">../donnees/pdf/conseil.pdf</element>
+    </article>
+  </menu>
+</barre_menu>

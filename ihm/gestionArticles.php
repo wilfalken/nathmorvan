@@ -2,7 +2,9 @@
 
 echo '<h1>Gestion générale des articles</h1>';	
 
-
+/* On ajoute des <span> qui ne servent pas au css.
+ * Ils servent de repère pour le déplacement dans le DOM avec jQuery
+ */
 $lien_modif = '<a class=bouton_modifier_nom_article href="">Modifier le nom de l\'article</a>';
 $liste = '';
 foreach ($_SESSION['barre_menu'] as $index => $menu){
@@ -14,7 +16,7 @@ foreach ($_SESSION['barre_menu'] as $index => $menu){
 	// Sinon, il s'agit d'une liste de lien
 	else if (gettype($menu)=='array'){
 		// On créé donc un menu ...
-		$liste .= utf8_encode($index).$lien_modif.'<br>';
+		$liste .= '<span>'.utf8_encode($index).'</span>'.$lien_modif.'<br>';
 		// ... auquel on ajoute ses liens ...
 		foreach ($menu as $lien){
 			$liste .= '- '.'<span>'.utf8_encode($lien).'</span>'.$lien_modif.'<br>';
