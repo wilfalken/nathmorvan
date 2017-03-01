@@ -125,6 +125,8 @@ Function renommerArticle ($ancienNomArticle,$nouveauNomArticle){
 
     // ... pour ensuite l'enregistrer.
     saveXml ($_SESSION['articles'], $_SESSION['barre_menu']);
+    // Réaffichage de la page afin de forcer la mise à jour des objets et de l'affichage
+    header('Location: ihm/gestionArticles.php');
 }
 
 

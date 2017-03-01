@@ -21,7 +21,7 @@
   </menu>
   <menu nom_menu="Présentation de l'école">
     <article>
-      <nom>Classe passerellep</nom>
+      <nom>Classe passerelle</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
@@ -71,9 +71,9 @@
       <element balise="Lien">../donnees/pdf/conseil.pdf</element>
     </article>
   </menu>
-  <menu nom_menu="Contact">
+  <menu nom_menu="Contacté">
     <article>
-      <nom>Contact</nom>
+      <nom>Contacté</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
 <barre_menu>
-  <menu nom_menu="Accueil">
+  <menu nom_menu="Accueilyy">
     <article>
-      <nom>Accueil</nom>
+      <nom>Accueilyy</nom>
       <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
       <element balise="Sous-titre">Autem</element>
       <element balise="Image">../donnees/images/crayons.jpg</element>
@@ -21,7 +21,7 @@
   </menu>
   <menu nom_menu="Présentation de l'école">
     <article>
-      <nom>Classe passerellep</nom>
+      <nom>Classe passerelle</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
