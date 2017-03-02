@@ -61,7 +61,7 @@ Function afficher_modifier_article($article) {
                                 }
                         $bloc .='        </select><br><br>
                                 <a class=bouton name=bouton_valider_insertion href="">Valider le type</a>
-                                <a class=bouton name=bouton_supprimer href="">Annuler</a>
+                                <a class=bouton name=bouton_supprimer_insertion href="">Annuler</a>
                                 </span>';		
 			
 			$bloc .='</div>';

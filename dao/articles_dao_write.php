@@ -3,35 +3,36 @@
 session_start();
 
 
-/* Récupération des données envoyées par le script Javascript :
- * - la fonction à utiliser (ici enregistrerArticle)
- * - le nom de l'article à modifier,
- * - l'article modifié en format JSON.
- */
-if (!empty($_POST['nomArticleModifie']) && !empty($_POST['elementsArticle'])){
-$fonction = $_POST['fonction'];
-$nomArticleModifie = utf8_decode($_POST['nomArticleModifie']);
-$elementsArticle = utf8_decode($_POST['elementsArticle']);
-/* unset() détruit la ou les variables dont le nom a été passé en argument var.
- * Ce n'est pas indispensable, je pense qu'il s'agit d'une sécurité.
- */
-unset($_POST['fonction']);
-unset($_POST['nomArticleModifie']);
-unset($_POST['elementsArticle']);
-// Appel de la fonction
-$fonction();
-//$fonction($nomArticleModifie,$elementsArticle);
+// Partie concernant l'enregistrement des modification d'un élément d'un article
+if (!empty($_POST['nomArticleModifie']) && !empty($_POST['idElementModifie']) && !empty($_POST['actionElement'])){
+ 
+    $fonction = $_POST['fonction'];
+    $nomArticleModifie = utf8_decode($_POST['nomArticleModifie']);
+    $idElementModifie = utf8_decode($_POST['idElementModifie']);
+    $actionElement = utf8_decode($_POST['actionElement']);
+    $elementModifie = utf8_decode($_POST['elementModifie']);
+    /* unset() détruit la ou les variables dont le nom a été passé en argument var.
+     * Ce n'est pas indispensable, je pense qu'il s'agit d'une sécurité.
+     */
+    unset($_POST['fonction']);
+    unset($_POST['nomArticleModifie']);
+    unset($_POST['idElementModifie']);
+    unset($_POST['actionModifie']);
+    unset($_POST['elementModifie']);
+    // Appel de la fonction d'enregistrement de la modification d'un élément
+    $fonction($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie);
 }
 
 // Partie concernant l'enregistrement des noms d'articles
 if (!empty($_POST['ancienNomArticle']) && !empty($_POST['nouveauNomArticle'])){
     $fonction = $_POST['fonction'];
-    // Javascript envoie des données qui doivent être passées à la moulinette de l'UTF8 !
+    // Javascript envoie des données qui doivent être passées à la moulinette de l'UTF8
     $ancienNomArticle = utf8_decode($_POST['ancienNomArticle']);
     $nouveauNomArticle = utf8_decode ($_POST['nouveauNomArticle']);
     unset($_POST['fonction']);
     unset($_POST['ancienNomArticle']);
     unset($_POST['nouveauNomArticle']);
+    // Appel de la fonction d'enregistrement du nouveau nom d'article
     $fonction($ancienNomArticle,$nouveauNomArticle);
 }
 
@@ -132,19 +133,41 @@ Function renommerArticle ($ancienNomArticle,$nouveauNomArticle){
 
 
 
-Function enregistrerArticle(){
+Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie){
     // include pour test
     include ('../dao/save.php');
-    save( 'Date de la dernière sauvegarde : le '.date ( "d" ).'/'.date ( "m" ).'/'.date ( "Y" ).' à '.date ( "H" ).' heures '.date ( "i" ).' minutes et '.date ( "s" ).' secondes.');
+    save ($nomArticleModifie.' | '.$idElementModifie.' | '.$actionElement.' | '.$elementModifie);
+    
+    switch ($actionElement) {
+        case 'bouton_supprimer':
+            // Suppression de l'élément sauf s'il s'agit du dernier élément modifiable (donc deux en comptant le titre)
+            if (count (_SESSION['articles'][$nomArticleModifie])>2){
+                unset ($_SESSION['articles'][$nomArticleModifie][$idElementModifie]);
+            }
+            break;
+        case 'bouton_deplacerHaut':
+            // Inversion $idElementModifie et $idElementModifie-1
+            $elementTemporaire = $_SESSION['articles'][$nomArticleModifie][$idElementModifie];
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie] = $_SESSION['articles'][$nomArticleModifie][$idElementModifie-1];
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie-1] = $elementTemporaire;
+            break;
+        case 'bouton_deplacerBas':
+            // Inversion $idElementModifie et $idElementModifie+1
+            $elementTemporaire = $_SESSION['articles'][$nomArticleModifie][$idElementModifie];
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie] = $_SESSION['articles'][$nomArticleModifie][$idElementModifie+1];
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie+1] = $elementTemporaire;
+            break;
+        case 'bouton_valider_modification':
+            // Mise à jour de l'élément
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie][1] = $elementModifie;
+            break;
+        case 'bouton_valider_insertion':
+            // Ajout d'un élément au-dessus ou au-dessous
+            // TODO
+            break;
+    }
+    
 
-    
-    
-    
-    // Réception de la méthode POST avec fonction (texte), nomArticleModifie  (texte) et elementsArticle (JSON)
-
-    // TODO
-    // 1 transformer le JSON en array
-    // 2 modifier le $articles[nomArticleModifie] = array
 
     // Appel de la fonction de sauvegarde qui définie juste dessous
     saveXml ($_SESSION['articles'], $_SESSION['barre_menu']);
@@ -226,7 +249,7 @@ Function articleToXml($article, $articles, $menu_node, $root) {
 		// Ajout de l'attribut de balise
 		$element_node->setAttribute ( 'balise', utf8_encode ('Paragraphe') );
 		// Ajout du texte
-		$contenu = $root->createTextNode ( utf8_encode ( 'Article en cours de r�daction' ) );
+		$contenu = $root->createTextNode (  'Article en cours de rédaction'  );
 		$element_node->appendChild ( $contenu );
 	}
 	/* Si l'article comporte déjà des éléments,

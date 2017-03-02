@@ -1,24 +1,35 @@
 /* On met tout le code dans cette fonction qui attend que le document soit
- * int�gralement charg� avant de lancer les instructions.
+ * intégralement chargé avant de lancer les instructions.
  */
 
  jQuery(function($){
 	
-	// Passage de variable PHP
-	//var test = '<?php //echo ($articles['Accueil'][3][1]);?>';
-	//var testarray = '<?php //echo ($testarrayjs);?>';
-	//str.split("#");
-	//var testnumber = parseInt('<?php //echo ($testnumber);?>');
-	//alert (testnumber);
 
-
-
-	//var article = convertPHPtoJavascript();
 	
 	$(".bouton").on('click',function(){
-		
-                //alert($(this).parent().parent().attr('data-numero'));
-		switch (this.name) {
+                /* Définition des quatre variables nécessaires à la sauvegarde des modifications.
+                 * Celle enregistrant le contenu de l'élément modifié sera mise à jour
+                 * ou non en fonction de l'action
+                 * (par exemple, lors de la suppression, cela ne sert à rien).
+                 */
+		var nomArticleModifie = $(this).parent().parent().parent().find('h1').text();
+                var idElementModifie = $(this).parent().parent().attr('data-numero');
+                var actionElement = this.name;
+                var elementModifie = '';
+                
+                /* Selon le nom du bouton sur lequel l'utilisateur a cliqué,
+                 * on a une ou plusieurs actions
+                 * avec ou non la sauvegarde de la modification.
+                 */
+                
+                /* "return false" permet de bloquer le rafraichissement de la page,
+		 * ce qui implique un renvoi de la page avant modification (deserialization du XML).
+		 * Puisque le XML sera modifié, ce ne sera pas gênant
+		 * mais cela permet d'éviter de tout recharger et donc de gagner en fluidité au moment du développement.
+                 * "return true" force le rafraissiment.
+		 */
+                
+		switch (actionElement) {
 		
 			case 'bouton_modifier':
                                 $(this).parent().parent().addClass('modification');
@@ -30,6 +41,7 @@
 				$(this).parent().hide();
                                 // Afficher 2 boutons modification texte
                                 $(this).parent().next().show();
+                                return false;
 				break;
 				
 			case 'bouton_supprimer':
@@ -38,26 +50,30 @@
                                 if (confirmationSuppression){
 				$(this).parent().parent().remove();
                                 }
+                                sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                return true;
 				break;
 				
 			case 'bouton_ajouterDessus':
                                 // Permet d'ajouter une <div class=element> avant this
-                                var numero = 0;
+                                var numero = -1;
 				$(this).parent().parent().before(ajouterElement('Texte en cours de rédaction', numero));
                                 $(this).parent().parent().prev().addClass('modification');
                                 $(this).parent().parent().prev().find('.insertion').show();
                                 $(this).parent().parent().prev().find('.boutons_modifications').hide();
                                 $(this).parent().parent().prev().find('.texteAffiche').hide();
+                                return false;
 				break;
 				
 			case 'bouton_ajouterDessous':
                                 // Permet d'ajouter une <div class=element> après this
-                                var numero = 0;
+                                var numero = -1;
 				$(this).parent().parent().after(ajouterElement('Texte en cours de rédaction', numero));
                                 $(this).parent().parent().next().addClass('modification');
                                 $(this).parent().parent().next().find('.insertion').show();
                                 $(this).parent().parent().next().find('.boutons_modifications').hide();
                                 $(this).parent().parent().next().find('.texteAffiche').hide();
+                                return false;
 				break;
 				
 			case 'bouton_deplacerHaut':
@@ -67,7 +83,10 @@
 					var elementCourant= $(this).parent().parent().html().valueOf();
 					$(this).parent().parent().prev().before(copierElement(elementCourant));
 					$(this).parent().parent().remove();
+                                        sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                        return true;
 				};
+
 				break;
 				
 			case 'bouton_deplacerBas':
@@ -78,7 +97,10 @@
                                         var numero = 0;
 					$(this).parent().parent().next().after(copierElement(elementCourant, numero));
 					$(this).parent().parent().remove();
+                                        sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                        return true;
 				};
+
 				break;
 
 			case 'bouton_valider_modification':
@@ -86,8 +108,10 @@
                                  * (find('*') ou find('textarea') permet de trouver l'enfant - pas de méthode child())
                                  */
 				var texteModifie = $(this).parent().prev().prev().find('*').val();
-                                // ... et remplacement du texte (avec text())
-				$(this).parent().prev().prev().prev().find('*').text(texteModifie);
+                                // ... et remplacement du texte (avec text()) si ce n'est pas vide
+                                if (texteModifie !== ""){
+                                    $(this).parent().prev().prev().prev().find('*').text(texteModifie);
+                                }
 				// Afficher texte
                                 $(this).parent().prev().prev().prev().show();
                                 // Masquer textarea
@@ -97,7 +121,10 @@
 				// Masquer 2 boutons modification texte
 				$(this).parent().hide();
                                 $(this).parent().parent().removeClass('modification');
-				break;
+                                elementModifie = $(this).parent().prev().prev().prev().find('*').text();
+                                sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+				return true;
+                                break;
 
 			case 'bouton_annuler_modification':
                                 // Enregistrer le texte initial dans une variable afin de remettre le textarea à zéro
@@ -111,7 +138,8 @@
                                 $(this).parent().prev().show();
                                 // Masquer 2 boutons modification texte
 				$(this).parent().hide();
-                                $(this).parent().parent().removeClass('modification');s
+                                $(this).parent().parent().removeClass('modification');
+                                return true;
 				break;
                                 
                         case 'bouton_valider_insertion':
@@ -122,17 +150,21 @@
                             $(this).parent().parent().next().find('.texteAffiche').show();
                             $(this).parent().parent().removeClass('modification');
                             //alert("choix type balise : "+baliseChoisie);
+                            //sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                            //return false;
+                            break;
+                            
+                            
+                        case 'bouton_supprimer_insertion':
+                            // Suppression de l'élément ajouté dans le DOM
+                            $(this).parent().parent().remove();
+                            return true;
                             break;
 		
 		
 		}
-		sauvegardeModif();
-		/* La ligne suivante permet de bloquer le rafraichissement de la page,
-		 * ce qui implique un renvoi de la page avant modification (deserialization du XML).
-		 * Puisque le XML sera modifié, ce ne sera pas gênant
-		 * mais cela permet d'éviter de tout recharger et donc de gagner en fluidité au moment du développement.
-		 */
-		return false;
+		
+
 	});
 
 
@@ -177,20 +209,18 @@
 
 
 	
-	function sauvegardeModif(){
+	function sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie){
 	//articlePHP = convert(article);
 	$.ajax({
 		/* L'objectif ici est de lancer une fonction PHP avec des arguments
 		 * Lien vers le fichier PHP qui contient la fonction
-		 * mais �galement la r�cup�ration des �l�ments via la m�thode POST
+		 * mais également la récupération des éléments via la méthode POST
 		 */
 		 
 	    //url: '../admin/save.php',
             url: '../dao/articles_dao_write.php',
 	    type: 'POST',
-            data: {fonction: 'enregistrerArticle'}, // paramètre fonction qui détermine la fonction qui sera exécutée
-	    //data: {fonction: 'save', texte: texte}, // paramètre fonction qui détermine la fonction qui sera exécutée
-	    //data: {fonction: 'enregistrerArticle', nomArticleModifie:nomArticle, elementsArticle: JSON.stringify(articleJS)},
+            data: {fonction: 'enregistrerElementModifie', nomArticleModifie: nomArticleModifie, idElementModifie: idElementModifie, actionElement: actionElement, elementModifie: elementModifie},
 	    success: function(data) {
 	        //alert('Données sauvegardées !');
 	    }
@@ -205,8 +235,8 @@
 	
 	
 	
-/* Fin de la fonction $(function(){});
- * qui est l'�quivalent de jQuery(document).ready(function(){});
+/* Fin de la fonction jQuery(function($){});
+ * qui est l'équivalent de jQuery(document).ready(function(){}); ou de $(function(){});
  */
 });
 
