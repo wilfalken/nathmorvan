@@ -4,6 +4,7 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
+      <element balise="Titre article">Accueil</element>
       <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
       <element balise="Sous-titre">Autem</element>
       <element balise="Image">../donnees/images/crayons.jpg</element>
@@ -22,58 +23,70 @@
   <menu nom_menu="Présentation de l'école">
     <article>
       <nom>Classe passerelle</nom>
+      <element balise="Titre article">Classe passerelle</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Petite section</nom>
+      <element balise="Titre article">Petite section</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Moyenne section</nom>
+      <element balise="Titre article">Moyenne section</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Grande section</nom>
+      <element balise="Titre article">Grande section</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Cantine</nom>
+      <element balise="Titre article">Cantine</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Horaires et emplois du temps">
     <article>
       <nom>Horaires et emplois du temps</nom>
+      <element balise="Titre article">Horaires et emplois du temps</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
       <nom>Inscriptions</nom>
+      <element balise="Titre article">Inscriptions</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">
     <article>
       <nom>2015</nom>
+      <element balise="Titre article">2015</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
     <article>
       <nom>2016</nom>
+      <element balise="Titre article">2016</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
     <article>
       <nom>2017</nom>
+      <element balise="Titre article">2017</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
     <article>
       <nom>Archives</nom>
+      <element balise="Titre article">Archives</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
   </menu>
   <menu nom_menu="Contact">
     <article>
       <nom>Contact</nom>
+      <element balise="Titre article">Contact</element>
       <element balise="Lien">http://www.google.com</element>
     </article>
   </menu>

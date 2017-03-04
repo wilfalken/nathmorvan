@@ -23,6 +23,8 @@ if (!empty($_POST['nomArticleModifie']) && !empty($_POST['idElementModifie']) &&
     $fonction($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie);
 }
 
+
+
 // Partie concernant l'enregistrement des noms d'articles
 if (!empty($_POST['ancienNomArticle']) && !empty($_POST['nouveauNomArticle'])){
     $fonction = $_POST['fonction'];
@@ -134,15 +136,23 @@ Function renommerArticle ($ancienNomArticle,$nouveauNomArticle){
 
 
 Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie){
-    // include pour test
-    include ('../dao/save.php');
-    save ($nomArticleModifie.' | '.$idElementModifie.' | '.$actionElement.' | '.$elementModifie);
+
     
     switch ($actionElement) {
         case 'bouton_supprimer':
-            // Suppression de l'élément sauf s'il s'agit du dernier élément modifiable (donc deux en comptant le titre)
-            if (count (_SESSION['articles'][$nomArticleModifie])>2){
-                unset ($_SESSION['articles'][$nomArticleModifie][$idElementModifie]);
+            /* Suppression de l'élément sauf s'il s'agit du dernier élément modifiable
+             * (donc deux en comptant le titre qui n'est pas modifiable).
+             */
+            if (count (_SESSION['articles'][$nomArticleModifie])!=2){
+            /* En réalité, on va pas supprimer l'élément,
+             * on va l'écraser par le suivant et supprimer le dernier,
+             * ceci afin de ne pas avoir de "trou" dans l'index des éléments de l'article modifié.
+             */
+            $nombreElementDansArticle = count($_SESSION['articles'][$nomArticleModifie]);
+            for ($i = $idElementModifie; $i > $nombreElementDansArticle; $i++) {
+                $_SESSION['articles'][$nomArticleModifie][$i] = $_SESSION['articles'][$nomArticleModifie][$i+1];        
+            }
+            unset ($_SESSION['articles'][$nomArticleModifie][$nombreElementDansArticle-1]);
             }
             break;
         case 'bouton_deplacerHaut':
@@ -161,10 +171,28 @@ Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionE
             // Mise à jour de l'élément
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie][1] = $elementModifie;
             break;
-        case 'bouton_valider_insertion':
-            // Ajout d'un élément au-dessus ou au-dessous
-            // TODO
+        case 'bouton_ajouterDessus':
+            // Ajout d'un élément temporaire au-dessus qui ne sera pas dans le XML
+            $nombreElementDansArticle = count($_SESSION['articles'][$nomArticleModifie]);
+            for ($i = $nombreElementDansArticle; $i > $idElementModifie; $i--) {
+                $_SESSION['articles'][$nomArticleModifie][$i] = $_SESSION['articles'][$nomArticleModifie][$i-1];        
+            }    
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie]=['temp','temp'];
             break;
+        case 'bouton_ajouterDessous':
+            // Ajout d'un élément temporaire ou au-dessous qui ne sera pas dans le XML
+            $nombreElementDansArticle = count($_SESSION['articles'][$nomArticleModifie]);
+            for ($i = $nombreElementDansArticle; $i > $idElementModifie+1; $i--) {
+                $_SESSION['articles'][$nomArticleModifie][$i] = $_SESSION['articles'][$nomArticleModifie][$i-1];        
+            }    
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie+1]=['temp','temp'];
+            break;
+        case 'bouton_valider_insertion':
+            include '../dao/save.php';
+            save ($nomArticleModifie.$idElementModifie.$actionElement.$elementModifie);
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie][1] = $elementModifie;
+            break;
+
     }
     
 
@@ -259,9 +287,11 @@ Function articleToXml($article, $articles, $menu_node, $root) {
 		foreach ( $articleCourant as $element ) {
 			/*
 			 * On n'enregistre pas le premier élément :
-			 * il s'agit du titre de l'article
+			 * il s'agit du titre de l'article.
+                         * On n'enregistre pas non plus les éléments temporaires.
 			 */
 			if ($element [0] != 'Titre article') {
+                            if ($element [0] != 'temp'){
 				$element_node = $root->createElement ( 'element' );
 				$article_node->appendChild ( $element_node );
 				// Ajout de l'attribut de balise
@@ -269,6 +299,7 @@ Function articleToXml($article, $articles, $menu_node, $root) {
 				// Ajout du texte
 				$contenu = $root->createTextNode ( utf8_encode ( $element [1] ) );
 				$element_node->appendChild ( $contenu );
+                            }
 			}
 		}
 	}

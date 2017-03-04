@@ -4,8 +4,10 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
+      <element balise="Titre article">Accueil</element>
       <element balise="Sous-titre">Autem</element>
+      <element balise="Sous-titre">Autem</element>
+      <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
       <element balise="Image">../donnees/images/crayons.jpg</element>
       <element balise="Paragraphe">Exsistit autem hoc loco quaedam quaestio subdifficilis, num quando amici novi, digni amicitia, veteribus sint anteponendi, ut equis vetulis teneros anteponere solemus. Indigna homine dubitatio! Non enim debent esse amicitiarum sicut aliarum rerum satietates; veterrima quaeque, ut ea vina, quae vetustatem ferunt, esse debet suavissima; verumque illud est, quod dicitur, multos modios salis simul edendos esse, ut amicitiae munus expletum sit.</element>
       <element balise="Paragraphe">Eodem tempore etiam Hymetii praeclarae indolis viri negotium est actitatum, cuius hunc novimus esse textum. cum Africam pro consule regeret Carthaginiensibus victus inopia iam lassatis, ex horreis Romano populo destinatis frumentum dedit, pauloque postea cum provenisset segetum copia, integre sine ulla restituit mora.</element>
@@ -16,64 +18,78 @@
       <element balise="Sous-titre">Olim</element>
       <element balise="Paragraphe">Et olim licet otiosae sint tribus pacataeque centuriae et nulla suffragiorum certamina set Pompiliani redierit securitas temporis, per omnes tamen quotquot sunt partes terrarum, ut domina suscipitur et regina et ubique patrum reverenda cum auctoritate canities populique Romani nomen circumspectum et verecundum.</element>
       <element balise="Paragraphe">Quanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur.</element>
+      <element balise=""></element>
       <element balise="Paragraphe">Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos.</element>
+      <element balise="temp">temp</element>
     </article>
   </menu>
   <menu nom_menu="Présentation de l'école">
     <article>
       <nom>Classe passerelle</nom>
+      <element balise="Titre article">Classe passerelle</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Petite section</nom>
+      <element balise="Titre article">Petite section</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Moyenne section</nom>
+      <element balise="Titre article">Moyenne section</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Grande section</nom>
+      <element balise="Titre article">Grande section</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Cantine</nom>
+      <element balise="Titre article">Cantine</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Horaires et emplois du temps">
     <article>
       <nom>Horaires et emplois du temps</nom>
+      <element balise="Titre article">Horaires et emplois du temps</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
       <nom>Inscriptions</nom>
+      <element balise="Titre article">Inscriptions</element>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">
     <article>
       <nom>2015</nom>
+      <element balise="Titre article">2015</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
     <article>
       <nom>2016</nom>
+      <element balise="Titre article">2016</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
     <article>
       <nom>2017</nom>
+      <element balise="Titre article">2017</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
     <article>
       <nom>Archives</nom>
+      <element balise="Titre article">Archives</element>
       <element balise="Fichier">../donnees/pdf/conseil.pdf</element>
     </article>
   </menu>
   <menu nom_menu="Contact">
     <article>
       <nom>Contact</nom>
+      <element balise="Titre article">Contact</element>
       <element balise="Lien">http://www.google.com</element>
     </article>
   </menu>

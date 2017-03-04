@@ -3,38 +3,50 @@
 	border-style:solid;
 	border-width: 1px;
 	border-color: #596275;
-	border-radius: 10px;
 	padding-bottom:30px;
 	padding-left:20px;
 	padding-right:20px;
-	box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Les boutons sont masqués par défaut */
 #contenu .bouton {
 	position: relative;
 	float: left;
-	margin-right: 10px;
+	/* Par défaut, ils sont cachés */
 	display: none;
+        /* Dimension bouton */
 	height : 10px;
-	width: 110px;
-	padding-bottom:7px;
-	border-style:solid;
+	width: 100px;
+        /* Espace autour bouton */
+        margin-right: 10px;
+        margin-bottom: 10px;
+        /* Espace sous le texte dans le bouton */
+	padding-bottom: 7px;
+        /* Définition bordure */
+	border-style: solid;
 	border-width: 1px;
 	border-color: #596275;
-	border-radius: 5px;
+	border-radius: 3px;
+        /* Suppression du typage du lien */
 	text-decoration: none;
 	color: black;
+        /* Couleur de fond */
 	background-color: white;
 	text-align: center;
-	position: relative;
 	font-size: small;
 }
 
-/* Ils sont affichés en cas de survol */
+/* Ajout d'un espace entre le texarea et les boutons*/
+#contenu textarea {
+        margin-bottom: 10px;
+}
+
+/* Les boutons sont affichés en cas de survol - en fonction des affichages définis en PHP */
 #contenu .element:hover .bouton {
 	display: block;
 }
+
 
 /* Par défaut le textarea est masqué */
 #contenu .texteModifiable {
@@ -42,37 +54,31 @@
 }
 
 
-
 /* De même que les boutons de validations de modification */
 #contenu .boutons_validation {
 	display: none;
 }
 
-/* De même que la liste déroulant et les boutons de validations d'insertion */
-#contenu .insertion {
-	display: none;
-}
 
-#contenu .modification{
+#contenu .element.modification{
     	border-style:solid;
-	border-width: 3px;
-        border-color: red;
-        background-color: #ff6b6b;
-}
-
-#contenu .element.modification:hover{
-    	border-style:solid;
-	border-width: 3px;
+	border-width: 1px;
         border-color: red;
         border-radius: 0px;
+        padding-top:10px;
         padding-bottom:30px;
 	padding-left:20px;
 	padding-right:20px;
-        background-color: #ff6b6b;
+        background-color: #ffD0D0;
+        
 }
 
+
+/* Pour forcer l'affichage des boutons - qui seront masqués par type de boutons */
 #contenu .element.modification .bouton {
-	display: content;
+	display: block;
 }
+
+
 
 

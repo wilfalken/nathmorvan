@@ -4,18 +4,20 @@ Function afficher_modifier_article($article) {
 	
 	// Affichage de l'article mis en forme selon ses balises.
 	foreach ( $article as $id =>$element ) {
-		// Gestion des liens qui comporte trois balises
-		if ($element [0] == 'Lien') {
+                $classeModification = "";
+                if ($element [0] == 'temp'){
+                    $bloc = '<div class="element modification" data-numero='.$id.'>'.$balisesArticles [$element [0]].'</div>';
+                }
+                else {
+		// Gestion des liens et fichiers qui comportent trois balises
+		if (($element [0] == 'Fichier') || ($element [0] == 'Lien')) {
 			// Récupération des balises d'ouverture, centrale et de fermeture
 			$in = $balisesArticles [$element [0]] [0];
 			$mid = $balisesArticles [$element [0]] [1];
 			$out = $balisesArticles [$element [0]] [2];
-			// On ne va pas afficher le chemin complet, juste le nom et l'extension
-			$tableauLien = explode('/', $element [1]);
-			$nomLien = $tableauLien[count($tableauLien)-1];
 			// Affichage de chaque élément
-			$bloc = $in.$element [1].$mid.$nomLien.$out;
-		} 		
+			$bloc = $in.$element[1].$mid.$element[1].$out.'<br>';
+		}
 		// ... pour tous les autres, deux balises suffisent
 		else {
 			// Récupération des balises d'ouverture et de fermeture
@@ -31,13 +33,15 @@ Function afficher_modifier_article($article) {
 		 * il est modifiable par la gestion du nombre d'article.
 		 */
 		if ($element [0] != 'Titre article'){
-			$bloc = '<div class=element data-numero='.$id.'><span class=texteAffiche>'.utf8_encode($bloc).'</span>';
+			$bloc = '<div class="element" data-numero='.$id.'><span class=texteAffiche>'.utf8_encode($bloc).'</span>';
 			// Gestion d'un espace supplémentaire pour les liens
 			if ($element [0] == 'Lien'){
 			$bloc .='<br><br>';
 			}
+                        
 			$bloc .='<span class=texteModifiable><textarea COLS="100">'.utf8_encode($element [1]).'</textarea></span>';
-
+                        // S'il ne s'agit pas d'un élément temporaire, on ajoute les boutons de modification
+                        
 			/* Ajout des boutons de modification
 			 * Ceux-ci sont des liens mais il ne pointent vers rien :
 			 * leur action est traitée dans script.js (js.php) en fonction de leur classe.
@@ -54,17 +58,9 @@ Function afficher_modifier_article($article) {
 					<a class=bouton name=bouton_valider_modification href="">Enregistrer</a>
 					<a class=bouton name=bouton_annuler_modification href="">Annuler</a>
 					</span>';
-			$bloc .='<span class=insertion>
-                                <br><select name=type>';
-                                foreach ($balisesArticles as $nomBalise => $balises){
-                                    $bloc .= '<option>'.$nomBalise.'</option>';
-                                }
-                        $bloc .='        </select><br><br>
-                                <a class=bouton name=bouton_valider_insertion href="">Valider le type</a>
-                                <a class=bouton name=bouton_supprimer_insertion href="">Annuler</a>
-                                </span>';		
-			
+                        
 			$bloc .='</div>';
+                    }  
 		}
 		echo $bloc;
 	}

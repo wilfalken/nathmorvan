@@ -41,7 +41,7 @@ $_SESSION['dolto']='admin';
 <!--  Div de contenu, le contenu du div est modifié en fonction des liens cliqu�s -->
 <div id="contenu">
 <?php
-
+print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
 /* $_GET permet de récupérer l'url affichée en clair dans la barre
  * Par défaut, cette zone est vide, on va donc afficher l'accueil.php.
  * On ne peut tester si $_GET est vide avec =='' ou ==null,

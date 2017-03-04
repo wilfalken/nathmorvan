@@ -16,6 +16,7 @@
                 var idElementModifie = $(this).parent().parent().attr('data-numero');
                 var actionElement = this.name;
                 var elementModifie = '';
+
                 
                 /* Selon le nom du bouton sur lequel l'utilisateur a cliqué,
                  * on a une ou plusieurs actions
@@ -41,6 +42,9 @@
 				$(this).parent().hide();
                                 // Afficher 2 boutons modification texte
                                 $(this).parent().next().show();
+                                /* On n'enregistre pas les modifications ici, il s'agit juste d'une bascule de l'affichage
+                                 * qui n'a pas à être rafraichit (=perte modification affichage DOM)
+                                 */
                                 return false;
 				break;
 				
@@ -50,30 +54,28 @@
                                 if (confirmationSuppression){
 				$(this).parent().parent().remove();
                                 }
-                                sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                // Enregistrement de la suppression
+                                enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                // Rafraichissement du DOM
                                 return true;
 				break;
 				
 			case 'bouton_ajouterDessus':
                                 // Permet d'ajouter une <div class=element> avant this
-                                var numero = -1;
-				$(this).parent().parent().before(ajouterElement('Texte en cours de rédaction', numero));
-                                $(this).parent().parent().prev().addClass('modification');
-                                $(this).parent().parent().prev().find('.insertion').show();
-                                $(this).parent().parent().prev().find('.boutons_modifications').hide();
-                                $(this).parent().parent().prev().find('.texteAffiche').hide();
-                                return false;
+                                //$(this).parent().parent().before(ajouterElementTemporaire());
+                                // Enregistrement de l'id qui servira de point de repère pour l'insertion
+                                enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                // Pas de rafraichissement du DOM
+                                return true;
 				break;
 				
 			case 'bouton_ajouterDessous':
                                 // Permet d'ajouter une <div class=element> après this
-                                var numero = -1;
-				$(this).parent().parent().after(ajouterElement('Texte en cours de rédaction', numero));
-                                $(this).parent().parent().next().addClass('modification');
-                                $(this).parent().parent().next().find('.insertion').show();
-                                $(this).parent().parent().next().find('.boutons_modifications').hide();
-                                $(this).parent().parent().next().find('.texteAffiche').hide();
-                                return false;
+                                //$(this).parent().parent().after(ajouterElementTemporaire());
+                                // Enregistrement de l'id qui servira de point de repère pour l'insertion
+                                enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                // Pas de rafraichissement du DOM
+                                return true;
 				break;
 				
 			case 'bouton_deplacerHaut':
@@ -83,7 +85,9 @@
 					var elementCourant= $(this).parent().parent().html().valueOf();
 					$(this).parent().parent().prev().before(copierElement(elementCourant));
 					$(this).parent().parent().remove();
-                                        sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                        // Enregistrement du déplacement
+                                        enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                        // rafraichissement du DOM
                                         return true;
 				};
 
@@ -94,10 +98,11 @@
 				if($(this).parent().parent().next().html()!==null){
 					// On stocke les valeurs comprises entre <div class=element> et </div>.
 					var elementCourant= $(this).parent().parent().html().valueOf();
-                                        var numero = 0;
-					$(this).parent().parent().next().after(copierElement(elementCourant, numero));
+					$(this).parent().parent().next().after(copierElement(elementCourant));
 					$(this).parent().parent().remove();
-                                        sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                        // Enregistrement du déplacement
+                                        enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                        // rafraichissement du DOM
                                         return true;
 				};
 
@@ -122,11 +127,12 @@
 				$(this).parent().hide();
                                 $(this).parent().parent().removeClass('modification');
                                 elementModifie = $(this).parent().prev().prev().prev().find('*').text();
-                                sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
 				return true;
                                 break;
 
 			case 'bouton_annuler_modification':
+                                
                                 // Enregistrer le texte initial dans une variable afin de remettre le textarea à zéro
                                 var texteInitial = $(this).parent().prev().prev().prev().find('*').text();
                                 $(this).parent().prev().prev().find('*').val(texteInitial);
@@ -140,27 +146,33 @@
 				$(this).parent().hide();
                                 $(this).parent().parent().removeClass('modification');
                                 return true;
+                                
 				break;
                                 
                         case 'bouton_valider_insertion':
                             // Récupération du choix de l'utilisateur
-                            var baliseChoisie = ($(this).prev().find(":selected").text());
-                            $(this).parent().parent().next().find('.insertion').hide();
-                            $(this).parent().parent().next().find('.boutons_modifications').show();
-                            $(this).parent().parent().next().find('.texteAffiche').show();
-                            $(this).parent().parent().removeClass('modification');
-                            //alert("choix type balise : "+baliseChoisie);
-                            //sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie);
-                            //return false;
-                            break;
+                            var baliseChoisie = $(this).parent().find(":selected").text();
+                            //var baliseChoisie = $(this).prev().text();
+                            $(this).parent().parent().after(creerElement(baliseChoisie));
+                            elementModifie = $(this).parent().parent().next().find('*').text();
+                            $(this).parent().remove();
                             
-                            
-                        case 'bouton_supprimer_insertion':
-                            // Suppression de l'élément ajouté dans le DOM
-                            $(this).parent().parent().remove();
+                            // On enregistre le type d'élément avec une valeur par défaut
+                            enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
                             return true;
                             break;
-		
+                            
+                         /*   
+                        case 'bouton_supprimer_insertion':
+                            var confirmationSuppression = confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');
+                            if (confirmationSuppression){
+                                // Suppression de l'élément ajouté dans le DOM
+                                $(this).parent().parent().remove();
+                                enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie);
+                                return true;
+                            }
+                            break;
+		*/
 		
 		}
 		
@@ -172,14 +184,48 @@
 
 
 	// Fonction utilisée pour déplacer les éléments
-	function copierElement(texte, numero){
-		return '<div class=element data-numero='+numero+'>'+texte+'</div>';
+	function copierElement(texte){
+            /* On ne met pas d'identifiant de numéro
+             * puisque, comme on force le rafraichissement,
+             * affichageModificationArticles.php en fournira un
+             * et mettra à jour tous les autres.
+             */
+		return '<div class=element>'+texte+'</div>';
 	}
 
-	// Intégrer toutes les boutons et la textarea depuis une fonction ou une variable
-	function ajouterElement(texte, numero){
-		return '<div class=element data-numero='+numero+'>'
-		+'<span class=texteAffiche><p>'+texte+'</p></span>'
+
+
+
+	function creerElement(baliseChoisie){
+            var texte;
+            var contenu;
+            switch (baliseChoisie){
+                case 'Sous-titre':
+                    texte = 'Titre en cours de modification';
+                    contenu = '<h2>'+texte+'</h2>';
+                    break;
+                case 'Paragraphe':
+                    texte = 'Paragraphe en cours de modification';
+                    contenu = '<p>'+texte+'</p>';
+                    break;
+                case 'Image':
+                    texte = '../donnees/images/_image_defaut.jpg';
+                    contenu = '<img src="'+texte+'">';
+                    break;
+                case 'Lien':
+                    texte = 'Lien en cours de modification';
+                    contenu = '<a href="index.php?article_a_afficher=Accueil">'+texte+'</a>';
+                    break;
+                case 'Fichier':
+                    texte = '../donnees/fichiers/_fichier_defaut.pdf';
+                    contenu = '<a href="'+texte+'">_fichier_defaut.pdf</a>';
+                    break;
+            }
+ 
+ 
+		return '<div class=element><span class=texteAffiche>'+contenu+'</span></div>'
+        // Pas besoin des boutons si on rafraichit juste après avoir stocké un élément 'en cours'
+        /*
                 +'<span class=texteModifiable><textarea COLS="100">'+texte+'</textarea></span>'
 		+'<span class=boutons_modifications>'
 		+'	<a class=bouton name=bouton_modifier href="">Modifier</a>'
@@ -193,23 +239,13 @@
 		+'	<a class=bouton name=bouton_valider_modification href="">Enregistrer</a>'
 		+'	<a class=bouton name=bouton_annuler_modification href="">Annuler</a>'
 		+'	</span>'
-                +'<span class=insertion>'
-                +'<br><select name=type>'
-                +'      <option>Titre article</option>'
-                +'      <option>Sous-titre</option>'
-                +'      <option>Paragraphe</option>'
-                +'      <option>Image</option>'
-                +'      <option>Lien</option>'
-                +'</select><br><br>'
-                +'      <a class=bouton name=bouton_valider_insertion href="">Valider le type</a>'
-                +'      <a class=bouton name=bouton_supprimer href="">Annuler</a>'
-                +'</span>'
-		+'</div>';
+                                */
+                ;
 	}
 
 
 	
-	function sauvegardeModif(nomArticleModifie, idElementModifie, actionElement, elementModifie){
+	function enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie){
 	//articlePHP = convert(article);
 	$.ajax({
 		/* L'objectif ici est de lancer une fonction PHP avec des arguments

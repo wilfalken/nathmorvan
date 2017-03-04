@@ -29,6 +29,9 @@
 #footer .ligne2::before {
     content: ' - ';
 }
+#footer .ligne3::before {
+    content: ' - ';
+}
 }
 
 /* Si largeur inférieure à 640, on met sur plusieurs lignes */
