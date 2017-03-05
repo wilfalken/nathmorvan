@@ -11,6 +11,7 @@ if (!empty($_POST['nomArticleModifie']) && !empty($_POST['idElementModifie']) &&
     $idElementModifie = utf8_decode($_POST['idElementModifie']);
     $actionElement = utf8_decode($_POST['actionElement']);
     $elementModifie = utf8_decode($_POST['elementModifie']);
+    $baliseModifiee = utf8_decode($_POST['baliseModifiee']);
     /* unset() détruit la ou les variables dont le nom a été passé en argument var.
      * Ce n'est pas indispensable, je pense qu'il s'agit d'une sécurité.
      */
@@ -19,8 +20,9 @@ if (!empty($_POST['nomArticleModifie']) && !empty($_POST['idElementModifie']) &&
     unset($_POST['idElementModifie']);
     unset($_POST['actionModifie']);
     unset($_POST['elementModifie']);
+    unset($_POST['baliseModifiee']);
     // Appel de la fonction d'enregistrement de la modification d'un élément
-    $fonction($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie);
+    $fonction($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie,$baliseModifiee);
 }
 
 
@@ -135,7 +137,7 @@ Function renommerArticle ($ancienNomArticle,$nouveauNomArticle){
 
 
 
-Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie){
+Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie,$baliseModifiee){
 
     
     switch ($actionElement) {
@@ -143,34 +145,53 @@ Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionE
             /* Suppression de l'élément sauf s'il s'agit du dernier élément modifiable
              * (donc deux en comptant le titre qui n'est pas modifiable).
              */
-            if (count (_SESSION['articles'][$nomArticleModifie])!=2){
-            /* En réalité, on va pas supprimer l'élément,
-             * on va l'écraser par le suivant et supprimer le dernier,
-             * ceci afin de ne pas avoir de "trou" dans l'index des éléments de l'article modifié.
-             */
-            $nombreElementDansArticle = count($_SESSION['articles'][$nomArticleModifie]);
-            for ($i = $idElementModifie; $i > $nombreElementDansArticle; $i++) {
-                $_SESSION['articles'][$nomArticleModifie][$i] = $_SESSION['articles'][$nomArticleModifie][$i+1];        
-            }
-            unset ($_SESSION['articles'][$nomArticleModifie][$nombreElementDansArticle-1]);
+            if (count ($_SESSION['articles'][$nomArticleModifie])!=2){
+                /* En réalité, on va pas supprimer l'élément,
+                 * on va l'écraser par le suivant et supprimer le dernier,
+                 * ceci afin de ne pas avoir de "trou" dans l'index des éléments de l'article modifié.
+                 */
+                $articleModifieTemp = array();
+                foreach ($_SESSION['articles'][$nomArticleModifie] as $id => $element) {
+                    if ($id != $idElementModifie){
+                        $articleModifieTemp [] = $element;
+                    }
+                }
+                $_SESSION['articles'][$nomArticleModifie] = $articleModifieTemp;
+                unset ($articleModifieTemp);
+                /*
+                $nombreElementDansArticle = count($_SESSION['articles'][$nomArticleModifie]);
+                for ($i = $idElementModifie; $i > $nombreElementDansArticle; $i++) {
+                    $_SESSION['articles'][$nomArticleModifie][$i] = $_SESSION['articles'][$nomArticleModifie][$i+1];        
+                }
+                unset ($_SESSION['articles'][$nomArticleModifie][$nombreElementDansArticle-1]);
+                 * 
+                 */
             }
             break;
+            
+            
         case 'bouton_deplacerHaut':
             // Inversion $idElementModifie et $idElementModifie-1
             $elementTemporaire = $_SESSION['articles'][$nomArticleModifie][$idElementModifie];
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie] = $_SESSION['articles'][$nomArticleModifie][$idElementModifie-1];
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie-1] = $elementTemporaire;
             break;
+        
+        
         case 'bouton_deplacerBas':
             // Inversion $idElementModifie et $idElementModifie+1
             $elementTemporaire = $_SESSION['articles'][$nomArticleModifie][$idElementModifie];
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie] = $_SESSION['articles'][$nomArticleModifie][$idElementModifie+1];
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie+1] = $elementTemporaire;
             break;
+        
+        
         case 'bouton_valider_modification':
             // Mise à jour de l'élément
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie][1] = $elementModifie;
             break;
+        
+        
         case 'bouton_ajouterDessus':
             // Ajout d'un élément temporaire au-dessus qui ne sera pas dans le XML
             $nombreElementDansArticle = count($_SESSION['articles'][$nomArticleModifie]);
@@ -179,6 +200,8 @@ Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionE
             }    
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie]=['temp','temp'];
             break;
+            
+            
         case 'bouton_ajouterDessous':
             // Ajout d'un élément temporaire ou au-dessous qui ne sera pas dans le XML
             $nombreElementDansArticle = count($_SESSION['articles'][$nomArticleModifie]);
@@ -187,9 +210,14 @@ Function enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionE
             }    
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie+1]=['temp','temp'];
             break;
+            
+            
         case 'bouton_valider_insertion':
-            include '../dao/save.php';
-            save ($nomArticleModifie.$idElementModifie.$actionElement.$elementModifie);
+            /* Mise à jour de l'élément (balise et contenu)
+             * en fonction des choix de l'utilisateur
+             * réalisés dans le DOM.
+             */
+            $_SESSION['articles'][$nomArticleModifie][$idElementModifie][0] = $baliseModifiee;
             $_SESSION['articles'][$nomArticleModifie][$idElementModifie][1] = $elementModifie;
             break;
 

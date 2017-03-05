@@ -38,10 +38,10 @@ $_SESSION['dolto']='admin';
 
 
 
-<!--  Div de contenu, le contenu du div est modifié en fonction des liens cliqu�s -->
+<!--  Div de contenu, le contenu du div est modifié en fonction des liens cliqués -->
 <div id="contenu">
 <?php
-print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
+//print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
 /* $_GET permet de récupérer l'url affichée en clair dans la barre
  * Par défaut, cette zone est vide, on va donc afficher l'accueil.php.
  * On ne peut tester si $_GET est vide avec =='' ou ==null,
@@ -100,6 +100,7 @@ de la page où se trouve l'image
 <script src="../js/jquery-3.1.1.js"></script>
 <script src="../js/gestionArticles.js"></script>
 <script src="../js/modificationArticles.js"></script>
+
 
 
 </body>

@@ -52,6 +52,7 @@
 @media screen and (max-width: 370px) {
 #footer {
     height: 45px;
+    position: absolute;
 }
 #footer .ligne2::before {
     content: '\A';

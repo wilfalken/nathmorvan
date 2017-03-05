@@ -1,10 +1,9 @@
 #menu {
 	position: fixed;
-	left: 0px;
-	top: 0px;
+        /* Coordonnées négatives : étrange ... */
+	left: -40px;
+	top: -10px;
 	color: #2b3664;
-	margin-top : -10px;
-	margin-left : -35px;
 	font-size: small;
 }
 
@@ -30,15 +29,18 @@
 
 #menu .titres li {
 	/* Insertion espace entre les titres*/
-	margin-right: 3px;
-        margin-bottom: 3px;
-	float: left; /*pour IE*/
+	margin-right: 0px;
+	float: left;
 	width: 170px;
 	height: 22px;
 	background-color: rgba(255, 255, 255, 0.5);
+        /*border-radius: 5px;*/
+        padding-left: 5px;
+        padding-right: 5px;
        
 }
 
+/* Lignes des menus déroulants */
 #menu .lignes li {
 	position: relative;
 	float: left;
@@ -47,8 +49,27 @@
 	background-color: rgba(255, 255, 255, 1);
 	top: 3px;
 	left: -43px;
+        border-radius: 0px;
+        width: 150px;
+        height: 25px;
         /* On ajoute la propriété de z-index afin d'avoir les menus déroulan passant au dessus */
         z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Première ligne des menus déroulants */
+#menu .lignes  :first-child {
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Dernière ligne des menus déroulants */
+#menu .lignes :last-child {
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 0px;
 }
 
 /* Pour toutes les cases */
@@ -58,9 +79,7 @@
 	float: left;
 	text-decoration: none;
 	text-align: center;
-	/* Espace autour du texte */
-	padding-left: 3px;
-	padding-right: 3px;
+
 }
 
 #menu .titres a {
@@ -68,6 +87,10 @@
 	text-decoration: none;
 }
 
+#menu .lignes a::before {
+    content : '  ';
+    white-space: pre-wrap;
+}
 
 #menu .lignes a {
         /* Cette ligne permet d'avoir le surlignage sur tout la largeur */

@@ -37,7 +37,7 @@ $_SESSION['dolto']='visiteur';
 <body>
 
 
-<!--  Div de contenu, le contenu du div est modifié en fonction des liens cliqu�s -->
+<!--  Div de contenu, le contenu du div est modifié en fonction des liens cliqués -->
 <div id="contenu">
 <?php
 
