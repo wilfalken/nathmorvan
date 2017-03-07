@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
 <title>Ecole maternelle Dolto</title>
 <?php header('Content-type: text/html; charset=utf-8');?>
 <?php
@@ -11,7 +12,7 @@ include '../ihm/css/css_base.php';
 // Liens vers les css admin complétant ou écrasant les autres
 include '../ihm/css/css_admin.php';
 //Gestion de l'icône
-include '../ihm/icon/icon.php';
+//include '../ihm/icon/icon.php';
 // Include de la mise en forme des articles en balises html
 include '../ihm/affichageModificationArticles.php';
 // Include de toutes les pages
@@ -56,6 +57,10 @@ if (empty($_GET['article_a_afficher'])){
 else if ($_GET['article_a_afficher']=='gestionArticles'){
 	include ('../ihm/gestionArticles.php');
 }
+// .. soit la page à afficher est la gestion d'article ...
+else if ($_GET['article_a_afficher']=='gestionSlideShow'){
+	include ('../ihm/gestionSlideShow.php');
+}
 // ... soit en cas d'erreur ou de variable , on affiche l'accueil
 else if (!(in_array($_GET['article_a_afficher'], $_SESSION['listeLiens']))){
 	afficher_modifier_article($_SESSION['articles']['Accueil']);
@@ -99,8 +104,9 @@ de la page où se trouve l'image
 <!-- liens jQuery et script spécifiques au site -->
 <script src="../js/jquery-3.1.1.js"></script>
 <script src="../js/gestionArticles.js"></script>
+<script src="../js/gestionSlideShow.js"></script>
 <script src="../js/modificationArticles.js"></script>
-
+<script src="../js/slideShow.js"></script>
 
 
 </body>

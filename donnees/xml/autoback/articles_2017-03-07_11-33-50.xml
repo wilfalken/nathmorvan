@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
 <barre_menu>
-  <menu nom_menu="Accueil">
+  <menu nom_menu="Accueilhguyg">
     <article>
-      <nom>Accueil</nom>
-      <element balise="Image">_image_defaut.jpg</element>
+      <nom>Accueilhguyg</nom>
       <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
       <element balise="Paragraphe">ihjorthiohreiohtoiiortion</element>
       <element balise="Sous-titre">Carrousel</element>

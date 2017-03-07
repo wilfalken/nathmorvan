@@ -24,9 +24,10 @@ foreach ($barre_menu as $index => $menu){
 	}
 }
 
-// Ajout d'un élément en cas de mode administrateur
+// Ajout d'éléments en cas de mode administrateur
 if ($_SESSION['dolto']=='admin'){
-   $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionArticles">Gestion articles</a><br></li>';
+   $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionArticles">Gestion articles</a></li>';
+   $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionSlideShow">Gestion carrousel</a></li>';
 }
 
 // Fermeture de la balise de liste

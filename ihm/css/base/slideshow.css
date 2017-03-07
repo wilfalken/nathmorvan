@@ -1,0 +1,22 @@
+.slideshow {
+   width: 500px;
+   height: 300px;
+   overflow: hidden;
+   display: block;
+   margin: 0px auto;
+}
+
+.slideshow ul {
+   list-style: none;
+}
+
+.slideshow li {
+   float: left;
+   display: block;
+   margin: auto;
+}
+
+.slideshow img {
+   width: 500px;
+}
+

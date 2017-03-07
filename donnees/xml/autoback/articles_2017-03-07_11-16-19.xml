@@ -4,10 +4,8 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Image">_image_defaut.jpg</element>
-      <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
-      <element balise="Paragraphe">ihjorthiohreiohtoiiortion</element>
       <element balise="Sous-titre">Carrousel</element>
+      <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
       <element balise="Carrousel"></element>
       <element balise="Sous-titre">Autem</element>
       <element balise="Image">crayons.jpg</element>
@@ -55,30 +53,6 @@
     <article>
       <nom>Inscriptions</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
-  </menu>
-  <menu nom_menu="Conseils d'école">
-    <article>
-      <nom>2015</nom>
-      <element balise="Fichier">conseil.pdf</element>
-    </article>
-    <article>
-      <nom>2016</nom>
-      <element balise="Fichier">conseil.pdf</element>
-    </article>
-    <article>
-      <nom>2017</nom>
-      <element balise="Fichier">conseil.pdf</element>
-    </article>
-    <article>
-      <nom>Archives</nom>
-      <element balise="Fichier">conseil.pdf</element>
-    </article>
-  </menu>
-  <menu nom_menu="Contact">
-    <article>
-      <nom>Contact</nom>
-      <element balise="Lien">http://www.google.com</element>
     </article>
   </menu>
 </barre_menu>

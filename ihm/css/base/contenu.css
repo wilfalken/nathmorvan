@@ -15,16 +15,16 @@
 #contenu img {
 
 	/* Ajout d'une bordure */
-	border: 1px solid #021a40;
+	/*border: 1px solid #021a40;*/
 	/* Ajout de coins arrondis */
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 	/* Bridage de la taille maximale des images */
 	max-height: 400px;
 	max-width: 800px;
 	/* Centrer image (deux lignes n�cessaires) */
 	display: block;
-	/* Deuxi�me pour center l'image,
-	* Par d�faut, on met 0,
+	/* Deuxiéme pour center l'image,
+	* Par défaut, on met 0,
 	* mais ici, on ajoute un peu de marges
 	* autour de l'image.
 	*/

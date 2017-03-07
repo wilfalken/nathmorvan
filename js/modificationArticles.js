@@ -2,10 +2,7 @@
  * intégralement chargé avant de lancer les instructions.
  */
 
- jQuery(function($){
-	
-
-	
+jQuery(function($){
 	$(".bouton").on('click',function(){
                 /* Définition des quatre variables nécessaires à la sauvegarde des modifications.
                  * Celle enregistrant le contenu de l'élément modifié sera mise à jour
@@ -35,26 +32,24 @@
 		switch (actionElement) {
 		
 			case 'bouton_modifier':
-                            if (baliseFromPHP == 'Image'){
-                                //alert ('io');
-                                //window.open();
-                            }
-                            else if (baliseFromPHP == 'Fichier'){
-                                alert ('tt');
-                            }
-                            else if (baliseFromPHP == 'Carrousel'){
-                                alert ('Fonctionnalité en cours de développement.');
+                            if (baliseFromPHP == 'Carrousel'){
+                                //var window.location ="index.php?article_a_afficher=gestionSlideShow";
+                                alert ("Pour modifier le carrousel d'images,\nmerci de consulter la page \"Gestion carrousel\".");
                             }
                             else {
                                 $(this).parent().parent().addClass('modification');
-                                // Masquer texte
-                                $(this).parent().prev().prev().hide();
+                                
+                                if (baliseFromPHP != 'Image' && baliseFromPHP != 'Fichier'){
+                                    // Masquer texte
+                                    $(this).parent().prev().prev().hide();
+                                    // Afficher 2 boutons modification texte
+                                    $(this).parent().next().show();
+                                }
                                 // Afficher textarea
 				$(this).parent().prev().show();
 				// Masquer 6 boutons modification
 				$(this).parent().hide();
-                                // Afficher 2 boutons modification texte
-                                $(this).parent().next().show();
+
                                 /* On n'enregistre pas les modifications ici, il s'agit juste d'une bascule de l'affichage
                                  * qui n'a pas à être rafraichit (=perte modification affichage DOM)
                                  */
@@ -146,7 +141,11 @@
                                 break;
 
 			case 'bouton_annuler_modification':
+                                /* Note : le fait de forcer le rafraissiment suffit
+                                 * pour remettre toutes les variables à zéro
+                                 */
                                 
+                    /*
                                 // Enregistrer le texte initial dans une variable afin de remettre le textarea à zéro
                                 var texteInitial = $(this).parent().prev().prev().prev().find('*').text();
                                 $(this).parent().prev().prev().find('*').val(texteInitial);
@@ -158,7 +157,7 @@
                                 $(this).parent().prev().show();
                                 // Masquer 2 boutons modification texte
 				$(this).parent().hide();
-                                $(this).parent().parent().removeClass('modification');
+                                $(this).parent().parent().removeClass('modification');*/
                                 return true;
                                 
 				break;

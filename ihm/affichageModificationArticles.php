@@ -42,9 +42,36 @@ Function afficher_modifier_article($article) {
             if ($element [0] == 'Lien'){
             $bloc .='<br><br>';
             }
-
-            $bloc .='<span class=texteModifiable><textarea COLS="100">'.utf8_encode($element [1]).'</textarea></span>';
-            // S'il ne s'agit pas d'un élément temporaire, on ajoute les boutons de modification
+            /* Ici commence la zone permettant les modifications.
+             * Par défaut, il s'agit de texte, on va donc masquer le texte affiché
+             * et affiché une textarea permettant la modification.
+             * S'il s'agit de fichier à remplacer (type image ou texte),
+             * la zone de modification sera un formulaire permettant l'upload.
+             */
+            $bloc .='<span class=texteModifiable>';
+            if ($element [0] == 'Image' ){
+                $bloc .= '<br>';
+                $bloc .= '<form action="../dao/uploadImage.php" method="post" enctype="multipart/form-data">';
+                $bloc .= "Choisisez l'image à charger : ";
+                $bloc .= ' <input type="file" name="fileToUpload" id="fileToUpload">';
+                $bloc .= '<input type="submit" value="Modifier l\'image" name="submit">';
+                $bloc .= '</form>';
+                $bloc .= '<a class=bouton name=bouton_annuler_modification href="">Annuler</a>';
+            }
+            else if ($element [0] == 'Fichier' ){
+                $bloc .= '<br>';
+                $bloc .= '<form action="../dao/uploadFichier.php" method="post" enctype="multipart/form-data">';
+                $bloc .= "Choisisez le fichier à charger : ";
+                $bloc .= ' <input type="file" name="fileToUpload" id="fileToUpload">';
+                $bloc .= '<input type="submit" value="Modifier le fichier" name="submit">';
+                $bloc .= '</form>';
+                $bloc .= '<a class=bouton name=bouton_annuler_modification href="">Annuler</a>';
+            }
+            else {
+                $bloc .= '<textarea COLS="100">'.utf8_encode($element [1]).'</textarea>';
+            }
+            
+            $bloc .= '</span>';
 
             /* Ajout des boutons de modification
              * Ceux-ci sont des liens mais il ne pointent vers rien :

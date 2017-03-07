@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
 <title>Ecole maternelle Dolto</title>
 <?php header('Content-type: text/html; charset=utf-8');?>
 
@@ -9,7 +10,7 @@
 // Liens vers les css
 include '../ihm/css/css_base.php';
 // Gestion de l'icône
-include '../ihm/icon/icon.php';
+//include '../ihm/icon/icon.php';
 // Include de la mise en forme des articles en balises html
 include '../ihm/affichageArticles.php';
 // Include de toutes les pages
@@ -87,6 +88,9 @@ les autres seront ajoutés dessus, c'est pourquoi il faut commencer par déclare
 <div id="footer"><?php afficher_footer();?>	</div>
 
 
+<!-- liens jQuery et script spécifiques au site -->
+<script src="../js/jquery-3.1.1.js"></script>
+<script src="../js/slideShow.js"></script>
 
 </body>
 </html>

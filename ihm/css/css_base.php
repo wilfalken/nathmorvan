@@ -23,3 +23,5 @@
 
 <link rel="stylesheet" type="text/css" href="../ihm/css/base/menu.css">
 
+<link rel="stylesheet" type="text/css" href="../ihm/css/base/slideshow.css">
+
