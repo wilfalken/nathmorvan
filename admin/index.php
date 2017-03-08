@@ -33,7 +33,7 @@ include '../dao/uploadFichier.php';
  * Ces dernières sont stockées dans $_SESSION afin de pouvoir être rappelées
  * lors du rechargement de la page d'index.
  */
-if (empty($_SESSION['articles'])&&empty($_SESSION['barre_menu'])&& empty($_SESSION['listeLiens'])){
+if (empty($_SESSION['articles'])&& empty($_SESSION['barre_menu'])&& empty($_SESSION['listeLiens'])){
     getXml();
 }
 // On déclare aussi une session admin afin de gérer l'affichage de la barre de menu

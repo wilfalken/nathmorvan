@@ -18,6 +18,7 @@ if ($message ==''){
 
 
 <?php if ($message !=''): ?>
+    <?php echo $message; ?>
     <!-- Déclaration du script sous condition qu'il y a bien quelque chose à afficher -->
     <script src="../js/admin/uploadModale.js"></script>
 <?php endif; ?>

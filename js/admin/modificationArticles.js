@@ -57,9 +57,10 @@ jQuery(function($){
                             break;
 				
 			case 'bouton_supprimer':
-                                var confirmationSuppression = confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');
-                                var truc = false
-                                if (truc){
+                                
+                                // Penser à mettre des " et non des ', sinon ce n'est pas pris en compte
+                                var confirmationSuppression = confirm("Êtes-vous sûr de vouloir supprimer cet élément ?");
+                                if (confirmationSuppression){
                                     // Enregistrement de la suppression
                                     enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
                                 }
@@ -70,45 +71,35 @@ jQuery(function($){
 			case 'bouton_ajouterDessus':
                                 // Enregistrement de l'id qui servira de point de repère pour l'insertion
                                 enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
-                                // Pas de rafraichissement du DOM
+                                // Rafraichissement du DOM
                                 return true;
 				break;
 				
 			case 'bouton_ajouterDessous':
                                 // Enregistrement de l'id qui servira de point de repère pour l'insertion
                                 enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
-                                // Pas de rafraichissement du DOM
+                                // Rafraichissement du DOM
                                 return true;
 				break;
 				
 			case 'bouton_deplacerHaut':
 				// On teste si l'élément précédent n'est pas le titre de l'article.
 				if($(this).parent().parent().prev().html().indexOf('<a class="bouton"')!==-1){
-					// On stocke les valeurs comprises entre <div class=element> et </div>.
-					var elementCourant= $(this).parent().parent().html().valueOf();
-					$(this).parent().parent().prev().before(copierElement(elementCourant));
-					$(this).parent().parent().remove();
                                         // Enregistrement du déplacement
                                         enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
-                                        // rafraichissement du DOM
+                                        // Rafraichissement du DOM
                                         return true;
 				};
-
 				break;
 				
 			case 'bouton_deplacerBas':
 				// On teste si l'élément n'est pas le dernier.
 				if($(this).parent().parent().next().html()!==null){
-					// On stocke les valeurs comprises entre <div class=element> et </div>.
-					var elementCourant= $(this).parent().parent().html().valueOf();
-					$(this).parent().parent().next().after(copierElement(elementCourant));
-					$(this).parent().parent().remove();
                                         // Enregistrement du déplacement
                                         enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
-                                        // rafraichissement du DOM
+                                        // Rafraichissement du DOM
                                         return true;
 				};
-
 				break;
 
 			case 'bouton_valider_modification':
@@ -138,22 +129,7 @@ jQuery(function($){
                                 /* Note : le fait de forcer le rafraissiment suffit
                                  * pour remettre toutes les variables à zéro
                                  */
-                                
-                    /*
-                                // Enregistrer le texte initial dans une variable afin de remettre le textarea à zéro
-                                var texteInitial = $(this).parent().prev().prev().prev().find('*').text();
-                                $(this).parent().prev().prev().find('*').val(texteInitial);
-				// Afficher texte
-                                $(this).parent().prev().prev().prev().show();
-                                // Masquer textarea
-				$(this).parent().prev().prev().hide(); 
-                                // Afficher 6 boutons modification
-                                $(this).parent().prev().show();
-                                // Masquer 2 boutons modification texte
-				$(this).parent().hide();
-                                $(this).parent().parent().removeClass('modification');*/
                                 return true;
-                                
 				break;
                                 
                         case 'bouton_valider_insertion':
@@ -231,7 +207,6 @@ jQuery(function($){
 
 	
 	function enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee){
-	//articlePHP = convert(article);
 	$.ajax({
 		/* L'objectif ici est de lancer une fonction PHP avec des arguments
 		 * Lien vers le fichier PHP qui contient la fonction
@@ -239,7 +214,7 @@ jQuery(function($){
 		 */
 		 
 	    //url: '../admin/save.php',
-            url: '../dao/articles_dao_write.php',
+            url: '../admin/index.php',
 	    type: 'POST',
             data: {fonction: 'enregistrerElementModifie', nomArticleModifie: nomArticleModifie, idElementModifie: idElementModifie, actionElement: actionElement, elementModifie: elementModifie, baliseModifiee: baliseModifiee},
 	    success: function(data) {

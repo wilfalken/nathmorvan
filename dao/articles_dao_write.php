@@ -4,13 +4,12 @@
  * il est appelé depuis le côté client par une fonction Ajax.
  * Comme ce fichier est également en include dans les upload, ajout d'un @ pour ne pas afficher l'erreur.
  */
-@session_start();
+//@session_start();
 
 
 // Partie concernant l'enregistrement des modification d'un élément d'un article
-if (!empty($_POST['nomArticleModifie']) && !empty($_POST['idElementModifie']) && !empty($_POST['actionElement'])){
- 
-    $fonction = $_POST['fonction'];
+if (!empty($_POST['fonction']) && $_POST['fonction'] == 'enregistrerElementModifie'){
+    // Javascript envoie des données qui doivent être passées à la moulinette de l'UTF8
     $nomArticleModifie = utf8_decode($_POST['nomArticleModifie']);
     $idElementModifie = utf8_decode($_POST['idElementModifie']);
     $actionElement = utf8_decode($_POST['actionElement']);
@@ -26,14 +25,13 @@ if (!empty($_POST['nomArticleModifie']) && !empty($_POST['idElementModifie']) &&
     unset($_POST['elementModifie']);
     unset($_POST['baliseModifiee']);
     // Appel de la fonction d'enregistrement de la modification d'un élément
-    $fonction($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie,$baliseModifiee);
+    enregistrerElementModifie($nomArticleModifie,$idElementModifie,$actionElement,$elementModifie,$baliseModifiee);
 }
 
 
 
 // Partie concernant l'enregistrement des noms d'articles
-if (!empty($_POST['ancienNomArticle']) && !empty($_POST['nouveauNomArticle'])){
-    $fonction = $_POST['fonction'];
+if (!empty($_POST['fonction']) && $_POST['fonction'] == 'renommerArticle'){
     // Javascript envoie des données qui doivent être passées à la moulinette de l'UTF8
     $ancienNomArticle = utf8_decode($_POST['ancienNomArticle']);
     $nouveauNomArticle = utf8_decode ($_POST['nouveauNomArticle']);
@@ -41,7 +39,7 @@ if (!empty($_POST['ancienNomArticle']) && !empty($_POST['nouveauNomArticle'])){
     unset($_POST['ancienNomArticle']);
     unset($_POST['nouveauNomArticle']);
     // Appel de la fonction d'enregistrement du nouveau nom d'article
-    $fonction($ancienNomArticle,$nouveauNomArticle);
+    renommerArticle($ancienNomArticle,$nouveauNomArticle);
 }
 
 
