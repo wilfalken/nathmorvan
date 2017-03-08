@@ -4,7 +4,7 @@
 
 jQuery(function($){
 	$(".bouton").on('click',function(){
-                /* Définition des quatre variables nécessaires à la sauvegarde des modifications.
+                /* Définition des six variables nécessaires à la sauvegarde des modifications.
                  * Celle enregistrant le contenu de l'élément modifié sera mise à jour
                  * ou non en fonction de l'action
                  * (par exemple, lors de la suppression, cela ne sert à rien).
@@ -32,8 +32,7 @@ jQuery(function($){
 		switch (actionElement) {
 		
 			case 'bouton_modifier':
-                            if (baliseFromPHP == 'Carrousel'){
-                                //var window.location ="index.php?article_a_afficher=gestionSlideShow";
+                            if (baliseFromPHP === 'Carrousel'){
                                 alert ("Pour modifier le carrousel d'images,\nmerci de consulter la page \"Gestion carrousel\".");
                             }
                             else {
@@ -59,19 +58,16 @@ jQuery(function($){
 				
 			case 'bouton_supprimer':
                                 var confirmationSuppression = confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');
-                                // Suppression de la <div class=element>
-                                if (confirmationSuppression){
-				$(this).parent().parent().remove();
+                                var truc = false
+                                if (truc){
+                                    // Enregistrement de la suppression
+                                    enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
                                 }
-                                // Enregistrement de la suppression
-                                enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
                                 // Rafraichissement du DOM
                                 return true;
 				break;
 				
 			case 'bouton_ajouterDessus':
-                                // Permet d'ajouter une <div class=element> avant this
-                                //$(this).parent().parent().before(ajouterElementTemporaire());
                                 // Enregistrement de l'id qui servira de point de repère pour l'insertion
                                 enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
                                 // Pas de rafraichissement du DOM
@@ -79,8 +75,6 @@ jQuery(function($){
 				break;
 				
 			case 'bouton_ajouterDessous':
-                                // Permet d'ajouter une <div class=element> après this
-                                //$(this).parent().parent().after(ajouterElementTemporaire());
                                 // Enregistrement de l'id qui servira de point de repère pour l'insertion
                                 enregistrerElementModifie(nomArticleModifie, idElementModifie, actionElement, elementModifie, baliseModifiee);
                                 // Pas de rafraichissement du DOM

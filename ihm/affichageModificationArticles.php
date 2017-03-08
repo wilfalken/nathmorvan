@@ -51,18 +51,26 @@ Function afficher_modifier_article($article) {
             $bloc .='<span class=texteModifiable>';
             if ($element [0] == 'Image' ){
                 $bloc .= '<br>';
-                $bloc .= '<form action="../dao/uploadImage.php" method="post" enctype="multipart/form-data">';
+                $bloc .= '<form action="" method="post" enctype="multipart/form-data">';
                 $bloc .= "Choisisez l'image à charger : ";
-                $bloc .= ' <input type="file" name="fileToUpload" id="fileToUpload">';
+                $bloc .= ' <input type="file" name="uploadImage">';
+                // On cache dans le formulaire l'id de l'élément modifié
+                $bloc .= ' <input class="valeurCachee" type="text" name="idImage" value="'.$id.'">';
+                // Ainsi que le nom de l'article
+                $bloc .= ' <input class="valeurCachee" type="text" name="nomArticle" value="'.$article[0][1].'">';
                 $bloc .= '<input type="submit" value="Modifier l\'image" name="submit">';
                 $bloc .= '</form>';
                 $bloc .= '<a class=bouton name=bouton_annuler_modification href="">Annuler</a>';
             }
             else if ($element [0] == 'Fichier' ){
                 $bloc .= '<br>';
-                $bloc .= '<form action="../dao/uploadFichier.php" method="post" enctype="multipart/form-data">';
+                $bloc .= '<form action="" method="post" enctype="multipart/form-data">';
                 $bloc .= "Choisisez le fichier à charger : ";
-                $bloc .= ' <input type="file" name="fileToUpload" id="fileToUpload">';
+                $bloc .= ' <input type="file" name="uploadFichier">';
+                // On cache dans le formulaire l'id de l'élément modifié
+                $bloc .= ' <input class="valeurCachee" type="text" name="idFichier" value="'.$id.'">';
+                // Ainsi que le nom de l'article
+                $bloc .= ' <input class="valeurCachee" type="text" name="nomArticle" value="'.$article[0][1].'">';
                 $bloc .= '<input type="submit" value="Modifier le fichier" name="submit">';
                 $bloc .= '</form>';
                 $bloc .= '<a class=bouton name=bouton_annuler_modification href="">Annuler</a>';

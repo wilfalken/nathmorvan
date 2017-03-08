@@ -4,8 +4,10 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Sous-titre">Carrousel</element>
+      <element balise="Image">_image_defaut.jpg</element>
       <element balise="Paragraphe">Oéportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.</element>
+      <element balise="Paragraphe">ihjorthiohreiohtoiiortion</element>
+      <element balise="Sous-titre">Carrousel</element>
       <element balise="Carrousel"></element>
       <element balise="Sous-titre">Autem</element>
       <element balise="Image">crayons.jpg</element>
@@ -58,6 +60,7 @@
   <menu nom_menu="Conseils d'école">
     <article>
       <nom>2015</nom>
+      <element balise="Fichier">_fichier_defaut.pdf</element>
       <element balise="Fichier">conseil.pdf</element>
     </article>
     <article>

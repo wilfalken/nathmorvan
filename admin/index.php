@@ -6,6 +6,8 @@
 <title>Ecole maternelle Dolto</title>
 <?php header('Content-type: text/html; charset=utf-8');?>
 <?php
+// Voir plus bas pour la gestion de la session
+session_start();
 
 // Liens vers les css
 include '../ihm/css/css_base.php';
@@ -17,15 +19,20 @@ include '../ihm/css/css_admin.php';
 include '../ihm/affichageModificationArticles.php';
 // Include de toutes les pages
 include '../dao/articles_dao_read.php';
+// Include de la fonction d'enregistrement
+include '../dao/articles_dao_write.php';
 // Include de la mise en forme de la barre de menu en balises html
 include "../ihm/affichageBarre_menu.php";
 // Include de la mise en forme du footer en balises html
 include "../ihm/affichageFooter.php";
+// Liens vers fichiers permettant les upload (Image, Fichier, Image pour carrousel (slideshow))
+include '../dao/uploadImageSlideShow.php';
+include '../dao/uploadImage.php';
+include '../dao/uploadFichier.php';
 /* Création des variables servant par la suite lors du premier accès au site.
  * Ces dernières sont stockées dans $_SESSION afin de pouvoir être rappelées
  * lors du rechargement de la page d'index.
  */
-session_start();
 if (empty($_SESSION['articles'])&&empty($_SESSION['barre_menu'])&& empty($_SESSION['listeLiens'])){
     getXml();
 }
@@ -41,8 +48,14 @@ $_SESSION['dolto']='admin';
 
 <!--  Div de contenu, le contenu du div est modifié en fonction des liens cliqués -->
 <div id="contenu">
+
+<!-- Affichage des fenêtres modales de résultats d'upload de fichier ou d'image -->
+<?php include '../ihm/affichageResultatUpLoadModale.php'; ?>
+
+
+
 <?php
-//print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
+//@print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
 /* $_GET permet de récupérer l'url affichée en clair dans la barre
  * Par défaut, cette zone est vide, on va donc afficher l'accueil.php.
  * On ne peut tester si $_GET est vide avec =='' ou ==null,
@@ -66,7 +79,7 @@ else if (!(in_array($_GET['article_a_afficher'], $_SESSION['listeLiens']))){
 	afficher_modifier_article($_SESSION['articles']['Accueil']);
 }
 
-// ... soit la page demand�e (affichée après le ?)
+// ... soit la page demandée (affichée après le ?)
 else {
 	$article_a_afficher = $_GET['article_a_afficher'];
 	afficher_modifier_article($_SESSION['articles'][$article_a_afficher]);
@@ -102,11 +115,7 @@ de la page où se trouve l'image
 
 
 <!-- liens jQuery et script spécifiques au site -->
-<script src="../js/jquery-3.1.1.js"></script>
-<script src="../js/gestionArticles.js"></script>
-<script src="../js/gestionSlideShow.js"></script>
-<script src="../js/modificationArticles.js"></script>
-<script src="../js/slideShow.js"></script>
+<?php include '../js/js_base.php'; include '../js/js_admin.php'; ?>
 
 
 </body>

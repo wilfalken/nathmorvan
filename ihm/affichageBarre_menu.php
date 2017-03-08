@@ -26,8 +26,12 @@ foreach ($barre_menu as $index => $menu){
 
 // Ajout d'éléments en cas de mode administrateur
 if ($_SESSION['dolto']=='admin'){
-   $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionArticles">Gestion articles</a></li>';
-   $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionSlideShow">Gestion carrousel</a></li>';
+    // Pages de gestion
+    $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionArticles">Gestion articles</a></li>';
+    $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionSlideShow">Gestion carrousel</a></li>';
+    // Guides en format PDF
+    $barre_menu_affichee .='<li><a href="../donnees/guides/guide_administrateur.pdf" target="_blank">Guide de l\'administrateur</a></li>';
+    $barre_menu_affichee .='<li><a href="../donnees/guides/guide_developpeur.pdf" target="_blank">Guide du développeur</a></li>';
 }
 
 // Fermeture de la balise de liste

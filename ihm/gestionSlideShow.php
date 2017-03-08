@@ -5,7 +5,10 @@ echo '<br><br>';
 
 // Ajout du formulaire d'upload
 $upload = '<span id=upload>';
-/* ../dao/uploadImageSlideShow.php */
+/* "action" est vide, il s'agit d'un lien.
+ * Ici, on le garde vide, puisqu'on cherche à rester sur la page.
+ * Les données mises dans $_FILES et $_POST sont récupérées par l'index.
+ */
 $upload .= '<form action="" method="post" enctype="multipart/form-data">';
 $upload .= "Ajouter une image dans le carrousel : ";
 $upload .= ' <input type="file" name="uploadImageSlideShow">';

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
+<barre_menu>
+  <menu nom_menu="Accueil">
+    <article>
+      <nom>Accueil</nom>
+      <element balise="Carrousel"></element>
+      <element balise="Sous-titre">Olim</element>
+      <element balise="Paragraphe">Et olim licet otiosae sint tribus pacataeque centuriae et nulla suffragiorum certamina set Pompiliani redierit securitas temporis, per omnes tamen quotquot sunt partes terrarum, ut domina suscipitur et regina et ubique patrum reverenda cum auctoritate canities populique Romani nomen circumspectum et verecundum.</element>
+      <element balise="Paragraphe">Quanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur.</element>
+      <element balise="Paragraphe">Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos.</element>
+    </article>
+  </menu>
+  <menu nom_menu="Présentation de l'école">
+    <article>
+      <nom>Classe passerelle</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Petite section</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Moyenne section</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Grande section</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Cantine</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Horaires et emplois du temps">
+    <article>
+      <nom>Horaires et emplois du temps</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Inscriptions">
+    <article>
+      <nom>Inscriptions</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Conseils d'école">
+    <article>
+      <nom>2015</nom>
+      <element balise="Fichier">_fichier_defaut.pdf</element>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+    <article>
+      <nom>2016</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+    <article>
+      <nom>2017</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+    <article>
+      <nom>Archives</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+  </menu>
+  <menu nom_menu="Contact">
+    <article>
+      <nom>Contact</nom>
+      <element balise="Lien">http://www.google.com</element>
+    </article>
+  </menu>
+</barre_menu>

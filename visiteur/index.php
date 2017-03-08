@@ -88,9 +88,8 @@ les autres seront ajoutés dessus, c'est pourquoi il faut commencer par déclare
 <div id="footer"><?php afficher_footer();?>	</div>
 
 
-<!-- liens jQuery et script spécifiques au site -->
-<script src="../js/jquery-3.1.1.js"></script>
-<script src="../js/slideShow.js"></script>
+<!-- liens jQuery et scripts spécifiques au site -->
+<?php include '../js/js_base.php'; ?>
 
 </body>
 </html>

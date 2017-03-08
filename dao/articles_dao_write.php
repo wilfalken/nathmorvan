@@ -1,6 +1,10 @@
 <?php
-// Lancement de session uniquement pour activer le stockage dans $_SESSION
-session_start();
+/* Lancement de session uniquement pour activer le stockage dans $_SESSION.
+ * On est obligé de le lancer car ce fichier n'est pas inclu dans index.php,
+ * il est appelé depuis le côté client par une fonction Ajax.
+ * Comme ce fichier est également en include dans les upload, ajout d'un @ pour ne pas afficher l'erreur.
+ */
+@session_start();
 
 
 // Partie concernant l'enregistrement des modification d'un élément d'un article
