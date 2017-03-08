@@ -4,7 +4,6 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Carrousel"></element>
       <element balise="Sous-titre">Autem</element>
       <element balise="Paragraphe">vffgf</element>
       <element balise="Sous-titre">Carrousel</element>
