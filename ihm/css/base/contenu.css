@@ -6,10 +6,6 @@
 	text-justify: inter-word;
 }
 
-#contenu {
-	font-family: 'Roboto', sans-serif;
-}
-
 
 
 #contenu img {
@@ -32,7 +28,6 @@
 }
 
 #contenu h1, #contenu h2 {
-	font-family: 'Gochi Hand', cursive;
 	/* Couleur des titres */
 	color: #5466a5;
 }
@@ -40,17 +35,12 @@
 #contenu h1 {
 	/* Position du titre */
 	text-align: center;
-	/* Taille du titre */
-	font-size: 140%;
 }
 
 
 #contenu h2 {
-	
 	/* Position du titre */
 	text-indent: 50px;
-	/* Taille du titre */
-	font-size: 120%;
 }
 
 @media screen and (min-width: 1100px) {

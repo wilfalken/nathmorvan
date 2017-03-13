@@ -19,21 +19,13 @@ Function getXml() {
 		
 		
 		// Partie création menu et liste des articles pour test adresse
-		$listeElementsMenu = null;
-		// S'il n'y a qu'un élément, on le met à la racine ...
-		if (count ( $xml_menu ) == 1) {
-			$barre_menu [utf8_decode ($xml_menu ['nom_menu'])] = utf8_decode ( $xml_menu ['nom_menu'] );
-			$listeLiens [] = utf8_decode ( $xml_menu ['nom_menu'] );
-			// Sinon, on créé un menu, définit par son nom et ses liens.
-		} else {
+		$listeElementsMenu = array();
 			$nomMenu = utf8_decode ( $xml_menu ['nom_menu'] );
 			foreach ( $xml_menu->children () as $xml_article ) {
 				$listeElementsMenu [] = utf8_decode ( $xml_article->nom );
-				$listeLiens []= utf8_decode ( $xml_article->nom );
-			}
-			$barre_menu [$nomMenu] = $listeElementsMenu;
+				$listeLiens []= utf8_decode ( $xml_article->nom );	
 		}
-		
+		$barre_menu [] = array ($nomMenu,$listeElementsMenu);
 		// Partie création articles
 		foreach ( $xml_menu->article as $xml_article ) {
 			/*

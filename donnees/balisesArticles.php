@@ -23,7 +23,7 @@ $balisesArticles = array (
 				'</a>'
 		),
     		'Fichier' => array (
-				'<a href="../donnees/fichiers/',
+				'<a target="_blank" href="../donnees/fichiers/',
 				'">',
 				'</a>'
 		),

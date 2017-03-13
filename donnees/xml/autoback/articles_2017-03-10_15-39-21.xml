@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
+<barre_menu>
+  <menu nom_menu="Conseils d'école">
+    <article>
+      <nom>2015</nom>
+      <element balise="Fichier">conseil1.pdf</element>
+    </article>
+    <article>
+      <nom>2016</nom>
+      <element balise="Fichier">conseil2.pdf</element>
+    </article>
+    <article>
+      <nom>2017</nom>
+      <element balise="Fichier">conseil3.pdf</element>
+    </article>
+    <article>
+      <nom>Archives</nom>
+      <element balise="Fichier">conseil4.pdf</element>
+    </article>
+  </menu>
+  <menu nom_menu="PrÃ©sentation de l'Ã©cole"/>
+</barre_menu>

@@ -20,22 +20,23 @@ echo $upload;
 echo '<br><br>';
 
 // Ajout de la liste des images présentes dans le répertoire du carrousel
-$carrousel ='';
-$carrousel .= '<span id=slideshow>';
-$cssDirectory = "../donnees/images/carrousel";
-    if ($dossier = opendir ($cssDirectory)) {
+$affichageListeCarrousel ='';
+$affichageListeCarrousel .= '<span id=repertoire>';
+$repertoire = "../donnees/images/carrousel";
+    if ($dossier = opendir ($repertoire)) {
         while ( false !== ($file = readdir ( $dossier )) ) {
             $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
             if ($fileExtension != "") {
-                $carrousel .= '<img src="../donnees/images/carrousel/'.$file.'"><br>';
-                $carrousel .= '<span class=nomImage>'.$file.'</span>';
-                $carrousel .= '<a class=bouton_slideshow name=supprimer_image_carrousel data-nomFichier="'.$file.'" href="">Supprimer cette image du carrousel</a><br><br>';
+                $affichageListeCarrousel .= '<a href="'.$repertoire.'/'.$file.'" target="_blank"><img src="'.$repertoire.'/'.$file.'"></a><br>';
+                $affichageListeCarrousel .= '<span class=texte>'.$file.'<br>(cliquez pour agrandir l\image)</span>';
+                $affichageListeCarrousel .= '<a class=bouton_repertoire name=supprimer_image_carrousel data-nomFichier="'.$file.'" data-nomRepertoire="'.$repertoire.'" href="">Supprimer cette image du carrousel</a><br><br>';
+                $affichageListeCarrousel .='<br><br><br>';
             }   
         }
         closedir ( $dossier );
     }
-$carrousel .='<br><br><br>';
 
-$carrousel .= '</span>';
-echo $carrousel;
+
+$affichageListeCarrousel .= '</span>';
+echo $affichageListeCarrousel;
 

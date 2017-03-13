@@ -48,9 +48,10 @@ $_SESSION['dolto']='visiteur';
  * il faut utiliser empty() ou isset()
  * On gère aussi le cas d'erreur quand une adresse est forcée dans la barre de navigation
  * en vérifiant que le lien utilisé est bien dans la liste désérializée.
+ * La valeur par défaut est le premier article.
  */
 if (empty($_GET['article_a_afficher']) || !(in_array($_GET['article_a_afficher'], $_SESSION['listeLiens']))){
-	$article_a_afficher = 'Accueil';
+	 afficher_article(reset($_SESSION['articles']));
 }
 
 /* Si l'espace apràs index.php? n'est pas vide,
@@ -58,9 +59,9 @@ if (empty($_GET['article_a_afficher']) || !(in_array($_GET['article_a_afficher']
  * la div "contenu"
  */
 else {
-	$article_a_afficher = $_GET['article_a_afficher'];
+    afficher_article($_SESSION['articles'][$_GET['article_a_afficher']]);
 }
-afficher_article($_SESSION['articles'][$article_a_afficher]);
+
 ?>
 </div>
 

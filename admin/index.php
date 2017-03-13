@@ -55,28 +55,31 @@ $_SESSION['dolto']='admin';
 
 
 <?php
-//@print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
+@print_r ($_SESSION['listeLiens']);
+echo "<br><br>";
+@print_r ($_SESSION['barre_menu']);
+echo "<br><br>";
+@print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
+echo "<br><br>";
+echo @$_SESSION['articles'][$_GET['article_a_afficher']][0][1];
 /* $_GET permet de récupérer l'url affichée en clair dans la barre
  * Par défaut, cette zone est vide, on va donc afficher l'accueil.php.
  * On ne peut tester si $_GET est vide avec =='' ou ==null,
  * il faut utiliser empty() ou isset()
  */
+$listeArticlesGestion = array ('gestionArticles','gestionSlideShow','gestionImages','gestionFichiers');
 
-// Soit la variable est vide ...
+// Soit la variable est vide et on affiche le premier article ...
 if (empty($_GET['article_a_afficher'])){
-	afficher_modifier_article($_SESSION['articles']['Accueil']);
+	afficher_modifier_article(reset($_SESSION['articles']));
 }
-// .. soit la page à afficher est la gestion d'article ...
-else if ($_GET['article_a_afficher']=='gestionArticles'){
-	include ('../ihm/gestionArticles.php');
+// .. soit la page à afficher fait partie de la liste des articles relatifs à la gestion du site ...
+else if (in_array($_GET['article_a_afficher'],$listeArticlesGestion)){
+	include ('../ihm/'.$_GET['article_a_afficher'].'.php');
 }
-// .. soit la page à afficher est la gestion d'article ...
-else if ($_GET['article_a_afficher']=='gestionSlideShow'){
-	include ('../ihm/gestionSlideShow.php');
-}
-// ... soit en cas d'erreur ou de variable , on affiche l'accueil
+// ... soit en cas d'erreur ou de variable , on affiche le premier article
 else if (!(in_array($_GET['article_a_afficher'], $_SESSION['listeLiens']))){
-	afficher_modifier_article($_SESSION['articles']['Accueil']);
+	afficher_modifier_article(reset($_SESSION['articles']));
 }
 
 // ... soit la page demandée (affichée après le ?)

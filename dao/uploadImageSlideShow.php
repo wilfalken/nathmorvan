@@ -13,7 +13,7 @@ function uploadImageSlideShow(){
         if(isset($_POST["submit"])) {
             $check = getimagesize($_FILES["uploadImageSlideShow"]["tmp_name"]);
             if($check !== false) {
-                $message .= "Le fichier est bien une image - " . $check["mime"] . ".<br>";
+                $message .= "Le fichier est bien une image - " . $check["mime"] . ".\n";
                 $uploadOk = 1;
             } else {
                 $message .= "Le fichier n'est pas une image.\n";
@@ -22,18 +22,18 @@ function uploadImageSlideShow(){
         }
         // Check if file already exists
         if (file_exists($target_file)) {
-            $message .= "Une image portant le même nom est déjà présente.<br>";
+            $message .= "Une image portant le même nom est déjà présente.\n";
             $uploadOk = 0;
         }
         // Check file size
         if ($_FILES["uploadImageSlideShow"]["size"] > 5000000) {
-            $message .= "L'image est trop lourde.<br>";
+            $message .= "L'image est trop lourde.<\n";
             $uploadOk = 0;
         }
         // Allow certain file formats
         if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
         && $fileType != "gif" ) {
-            $message .= "Seules les images de types JPG, JPEG, PNG & GIF sont autorisées.<br>";
+            $message .= "Seules les images de types JPG, JPEG, PNG & GIF sont autorisées.\n";
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error

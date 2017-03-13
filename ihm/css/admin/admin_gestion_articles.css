@@ -1,21 +1,41 @@
-.bouton_modifier_nom_article {
+#gestionArticles .nom:hover ul .listeModification {
+	display: block;
+}
+
+
+
+
+
+#gestionArticles .listeModification li {
     	height : 10px;
-	width: 150px;
+	width: 200px;
 	padding-left:7px;
         padding-right:3px;
         padding-bottom:5px;
-	border-style:solid;
-	border-width: 1px;
-	border-color: #596275;
-	border-radius: 5px;
-	text-decoration: none;
-	color: black;
-	background-color: white;
-	text-align: center;
-	position: relative;
+        border-left: 1px solid #596275;
+        border-right: 1px solid #596275;
 	font-size: small;
-        position:absolute;
-        right:35%;
         background-color: #f2f4ee;
+        /*display: none;*/
+        list-style-type: none;
+
 }
 
+#gestionArticles .listeModification li a {
+	text-decoration: none;
+        color:black;
+}
+
+/* Première ligne des menus déroulants */
+#gestionArticles .listeModification li:first-child {
+    border-top: 1px solid #596275;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Dernière ligne des menus déroulants */
+#gestionArticles .listeModification li:last-child {
+    border-bottom: 1px solid #596275;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

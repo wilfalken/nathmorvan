@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
+<barre_menu>
+  <menu nom_menu="Accueilp">
+    <article>
+      <nom>Accueilp</nom>
+      <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
+      <element balise="Sous-titre">titre</element>
+      <element balise="Paragraphe">iopuoireujrortio</element>
+      <element balise="Image">_image_defaut.jpg</element>
+      <element balise="Sous-titre">Carrousel</element>
+      <element balise="Paragraphe">Eodem tempore etiam Hymetii praeclarae indolis viri negotium est actitatum, cuius hunc novimus esse textum. cum Africam pro consule regeret Carthaginiensibus victus inopia iam lassatis, ex horreis Romano populo destinatis frumentum dedit, pauloque postea cum provenisset segetum copia, integre sine ulla restituit mora.</element>
+      <element balise="Paragraphe">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiae oppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.</element>
+      <element balise="Paragraphe">Nisi mihi Phaedrum, inquam, tu mentitum aut Zenonem putas, quorum utrumque audivi, cum mihi nihil sane praeter sedulitatem probarent, omnes mihi Epicuri sententiae satis notae sunt. atque eos, quos nominavi, cum Attico nostro frequenter audivi, cum miraretur ille quidem utrumque, Phaedrum autem etiam amaret, cotidieque inter nos ea, quae audiebamus, conferebamus, neque erat umquam controversia, quid ego intellegerem, sed quid probarem.</element>
+      <element balise="Paragraphe">Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve commentis id fieret, antequam effundendis rebus pertinacius incumberet confidentia, acciri mollioribus scriptis per simulationem tractatus publici nimis urgentis eundem placuerat Gallum, ut auxilio destitutus sine ullo interiret obstaculo.</element>
+      <element balise="Paragraphe">Postremo ad id indignitatis est ventum, ut cum peregrini ob formidatam haut ita dudum alimentorum inopiam pellerentur ab urbe praecipites, sectatoribus disciplinarum liberalium inpendio paucis sine respiratione ulla extrusis, tenerentur minimarum adseclae veri, quique id simularunt ad tempus, et tria milia saltatricum ne interpellata quidem cum choris totidemque remanerent magistris.</element>
+      <element balise="Sous-titre">Olim</element>
+      <element balise="Paragraphe">Et olim licet otiosae sint tribus pacataeque centuriae et nulla suffragiorum certamina set Pompiliani redierit securitas temporis, per omnes tamen quotquot sunt partes terrarum, ut domina suscipitur et regina et ubique patrum reverenda cum auctoritate canities populique Romani nomen circumspectum et verecundum.</element>
+      <element balise="Paragraphe">Quanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur.</element>
+      <element balise="Paragraphe">Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos.</element>
+    </article>
+  </menu>
+  <menu nom_menu="Présentation de l'écolei">
+    <article>
+      <nom>Classe passerelleppppppp</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Petite section</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Moyenne section</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Grande section</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Cantine</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>TAP</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Garderie</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Projet école</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Horaires et emplois du temps">
+    <article>
+      <nom>Horaires et emplois du temps</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Inscriptions">
+    <article>
+      <nom>Inscriptions</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Conseils d'école">
+    <article>
+      <nom>2015</nom>
+      <element balise="Fichier">conseil1.pdf</element>
+    </article>
+    <article>
+      <nom>2016</nom>
+      <element balise="Fichier">conseil2.pdf</element>
+    </article>
+    <article>
+      <nom>2017</nom>
+      <element balise="Fichier">conseil3.pdf</element>
+    </article>
+    <article>
+      <nom>Archives</nom>
+      <element balise="Fichier">conseil4.pdf</element>
+    </article>
+  </menu>
+  <menu nom_menu="Contact">
+    <article>
+      <nom>Contact</nom>
+      <element balise="Lien">http://www.google.com</element>
+    </article>
+  </menu>
+</barre_menu>

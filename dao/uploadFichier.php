@@ -20,7 +20,7 @@ function uploadFichier(){
         if(isset($_POST["submit"])) {
             $check = filesize($_FILES["uploadFichier"]["tmp_name"]);
             if($check !== false) {
-                $message .= "Le fichier est bien valide - " . $check["mime"] . ".<br>";
+                $message .= "Le fichier est bien valide - " . $check["mime"] . ".\n";
                 $uploadOk = 1;
             } else {
                 $message .= "Le fichier n'est pas valide.\n";
@@ -31,7 +31,7 @@ function uploadFichier(){
 
         // Check if file already exists
         if (file_exists($target_file)) {
-            $message .= "Un fichier portant le même nom est déjà présent.<br>";
+            $message .= "Un fichier portant le même nom est déjà présent.\n";
             $uploadOk = 0;
         }
         // Check file size
@@ -41,7 +41,7 @@ function uploadFichier(){
         }
         // Allow certain file formats
         if($fileType != "pdf" && $fileType != "odt" && $fileType != "odg" ) {
-            $message .= "Seules les fichiers de types PDF, ODT & ODG sont autorisées.<br>";
+            $message .= "Seules les fichiers de types PDF, ODT & ODG sont autorisées.\n";
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
@@ -61,7 +61,7 @@ function uploadFichier(){
         }
     }
     unset($_FILES["uploadFichier"]);
-    return $message.'<br>'.$idElement.'<br>'.$nomArticle;
+    return $message;
 }
 ?>
 

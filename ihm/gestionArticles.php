@@ -1,29 +1,121 @@
 <?php
 
-echo '<h1>Gestion générale des articles</h1>';	
+echo '<h1>Gestion générale des articles</h1>';
 
-/* On ajoute des <span> qui ne servent pas au css.
- * Ils servent de repère pour le déplacement dans le DOM avec jQuery
- */
-$lien_modif = '<a class=bouton_modifier_nom_article href="">Modifier le nom de l\'article</a>';
-$liste = '';
-foreach ($_SESSION['barre_menu'] as $index => $menu){
-	// S'il s'agit d'un lien direct, on l'ajoute
-	if (gettype($menu)=='string'){
-	$lien = $menu;
-	$liste .= '<span>'.utf8_encode($lien).'</span>'.$lien_modif.'<br>';
-	}
-	// Sinon, il s'agit d'une liste de lien
-	else if (gettype($menu)=='array'){
-		// On créé donc un menu ...
-		$liste .= '<span>'.utf8_encode($index).'</span>'.$lien_modif.'<br>';
-		// ... auquel on ajoute ses liens ...
-		foreach ($menu as $lien){
-			$liste .= '- '.'<span>'.utf8_encode($lien).'</span>'.$lien_modif.'<br>';
-		}
-	}
-	$liste .= '<br>';
+
+echo '<br><br>';
+
+// Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
+$listeNomsMenusArticles = array_merge(array_keys($_SESSION['articles']), array_keys($_SESSION['barre_menu']));
+$nomsMenusArticles = '';
+foreach ($listeNomsMenusArticles as $nom) {
+    $nomsMenusArticles .= $nom . "#";
 }
 
+$liste = '<span id=gestionArticles>';
+$idMenu = 0;
+$idArticle = 0;
+foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
+    $nomMenu = $menu[0];
+    // S'il s'agit d'un lien direct, on l'ajoute
+    if (count($menu[1]) == 1) {
+        $article = $menu[0];
+        $liste .= '<span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=0 data-nomArticle="' . utf8_encode($article) . '">' . $idMenu . ' ' . utf8_encode($article) . '</span>' .
+                '<ul class=listeModification>' .
+                '<li>' . boutonModificationNomMenu($nomsMenusArticles) . '</li>' .
+                '<li>' . boutonSuppressionMenuLienDirect() . '</li>' .
+                '<li>' . boutonAjouterArticleDansMenu($nomsMenusArticles) . '</li>' .
+                '<li>' . boutonAjouterMenuAuDessus($nomsMenusArticles) . '</li>' .
+                '<li>' . boutonAjouterMenuAuDessous($nomsMenusArticles) . '</li>' .
+                '<li>' . boutonDeplacerMenuVersHaut() . '</li>' .
+                '<li>' . boutonDeplacerMenuVersBas() . '</li>' .
+                '</ul>';
+    }
+    // Sinon, il s'agit d'une liste de lien
+    else {
+        // On créé donc un menu ...
+        $liste .= '<span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-nomArticle="">' . $idMenu . ' ' . utf8_encode($nomMenu) . '</span>' .
+                '<ul class=listeModification>' .
+                '<li>' . boutonModificationNomMenu($nomsMenusArticles) . '</li>' .
+                '<li>' . boutonSuppressionMenu() . '</li>' .
+                '<li>' . boutonAjouterMenuAuDessus($nomsMenusArticles) . '</li>' .
+                '<li>' . boutonAjouterMenuAuDessous($nomsMenusArticles) . '</li>' .
+                '<li>' . boutonDeplacerMenuVersHaut() . '</li>' .
+                '<li>' . boutonDeplacerMenuVersBas() . '</li>' .
+                '</ul>';
+        // ... auquel on ajoute ses liens ...
+        foreach ($menu[1] as $idArticle => $article) {
+            $liste .= '- ' . '<span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=' . $idArticle . ' data-nomArticle="' . utf8_encode($article) . '">' . $idArticle . '  ' . utf8_encode($article) . '</span>' .
+                    '<ul class=listeModification>' .
+                    '<li>' . boutonModificationNomArticle($nomsMenusArticles) . '</li>' .
+                    '<li>' . boutonSuppressionArticle() . '</li>' .
+                    '<li>' . boutonAjouterArticleAuDessus($nomsMenusArticles) . '</li>' .
+                    '<li>' . boutonAjouterArticleAuDessous($nomsMenusArticles) . '</li>' .
+                    '<li>' . boutonDeplacerArticleVersHaut() . '</li>' .
+                    '<li>' . boutonDeplacerArticleVersBas() . '</li>' .
+                    '</ul>';
+        }
+    }
+}
+$liste .= '</span>';
+
 echo $liste;
+
+function boutonAjouterMenuAuDessous($nomsMenusArticles) {
+    return '<a class=bouton_gestion_article name=ajouterMenuAuDessous data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un menu au-dessous</a>';
+}
+
+function boutonAjouterMenuAuDessus($nomsMenusArticles) {
+    return '<a class=bouton_gestion_article name=ajouterMenuAuDessus data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un menu au-dessus</a>';
+}
+
+function boutonAjouterArticleAuDessous($nomsMenusArticles) {
+    return '<a class=bouton_gestion_article name=ajouterArticleAuDessous data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un article au-dessous</a>';
+}
+
+function boutonAjouterArticleDansMenu($nomsMenusArticles) {
+    return '<a class=bouton_gestion_article name=ajouterArticleAuDessous data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un article</a>';
+}
+
+function boutonAjouterArticleAuDessus($nomsMenusArticles) {
+    return '<a class=bouton_gestion_article name=ajouterArticleAuDessus data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un article au-dessus</a>';
+}
+
+function boutonDeplacerMenuVersBas() {
+    return '<a class=bouton_gestion_article name=deplacerMenuVersBas href="">Déplacer le menu vers le bas</a>';
+}
+
+function boutonDeplacerMenuVersHaut() {
+    return '<a class=bouton_gestion_article name=deplacerMenuVersHaut href="">Déplacer le menu vers le haut</a>';
+}
+
+function boutonDeplacerArticleVersBas() {
+    return '<a class=bouton_gestion_article name=deplacerArticleVersBas href="">Déplacer l\'article vers le bas</a>';
+}
+
+function boutonDeplacerArticleVersHaut() {
+    return '<a class=bouton_gestion_article name=deplacerArticleVersHaut href="">Déplacer l\'article vers le haut</a>';
+}
+
+function boutonSuppressionMenu() {
+    return '<a class=bouton_gestion_article name=suppressionMenu href="">Supprimer le menu et ses articles</a>';
+}
+
+// C'est un doublon de celui juste au-dessus mais on change le texte affiché pour l'utilisateur
+function boutonSuppressionMenuLienDirect() {
+    return '<a class=bouton_gestion_article name=suppressionMenu href="">Supprimer le menu et son article</a>';
+}
+
+function boutonSuppressionArticle() {
+    return '<a class=bouton_gestion_article name=suppressionArticle href="">Supprimer l\'article</a>';
+}
+
+function boutonModificationNomArticle($nomsMenusArticles) {
+    return '<a class=bouton_gestion_article name=modificationNomArticle data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Modifier le nom de l\'article</a>';
+}
+
+function boutonModificationNomMenu($nomsMenusArticles) {
+    return '<a class=bouton_gestion_article name=modificationNomMenu data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Modifier le nom du menu</a>';
+}
+
 ?>
