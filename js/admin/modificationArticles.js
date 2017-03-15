@@ -147,7 +147,7 @@ jQuery(function($){
 
 		
 		}
-		
+		alert('i');
 
 	});
 
@@ -212,11 +212,9 @@ jQuery(function($){
 		 * Lien vers le fichier PHP qui contient la fonction
 		 * mais également la récupération des éléments via la méthode POST
 		 */
-		 
-	    //url: '../admin/save.php',
             url: '../admin/index.php',
 	    type: 'POST',
-            data: {fonction: 'enregistrerElementModifie', nomArticleModifie: nomArticleModifie, idElementModifie: idElementModifie, actionElement: actionElement, elementModifie: elementModifie, baliseModifiee: baliseModifiee},
+            data: {fonction: 'modificationArticles', nomArticleModifie: nomArticleModifie, idElementModifie: idElementModifie, actionElement: actionElement, elementModifie: elementModifie, baliseModifiee: baliseModifiee},
 	    success: function(data) {
 	        //alert('Données sauvegardées !');
 	    }

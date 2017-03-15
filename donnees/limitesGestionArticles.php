@@ -1,4 +1,8 @@
 <?php
+/* Ces valeurs sont envoyés côté client par gestionArticles.php,
+ * puis utilisé par gestionArticles.js (appelé dans l'index)
+ */
+
 
 /* Il s'agit du nombre de menus que peut créer l'administrateur en plus du menu "Menu administrateur".
  * 0 ou négatif pour illimité.

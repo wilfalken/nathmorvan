@@ -1,56 +1,56 @@
 #menu {
-	position: fixed;
-        /* Coordonnées négatives : étrange ... */
-	left: -40px;
-	top: -10px;
-	font-size: small;
+    position: fixed;
+    /* Coordonnées négatives : étrange ... */
+    left: -40px;
+    top: -10px;
+    font-size: small;
 }
 
 
 
 /* Lignes qui permettent d'afficher les lignes en cas de survol */
 #menu .lignes {
-	display: none;
+    display: none;
 }
 
 #menu li:hover ul.lignes {
-	display: block;
+    display: block;
 }
 
 /* Gestion du décalage des lignes inférieures */
 #menu .titres, #menu .lignes {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 
 
 #menu .titres li {
-	/* Insertion espace entre les titres*/
-	margin-right: 0px;
-	float: left;
-	width: 170px;
-	height: 22px;
-	background-color: rgba(255, 255, 255, 0.5);
-        /*border-radius: 5px;*/
-        padding-left: 5px;
-        padding-right: 5px;
+    /* Insertion espace entre les titres*/
+    margin-right: 0px;
+    float: left;
+    width: 170px;
+    height: 22px;
+    background-color: rgba(255, 255, 255, 0.5);
+    /*border-radius: 5px;*/
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* Lignes des menus déroulants */
 #menu .lignes li {
-	position: relative;
-	float: left;
-        padding-top: 4px;
-	box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
-	background-color: rgba(255, 255, 255, 1);
-	top: 3px;
-	left: -43px;
+    position: relative;
+    float: left;
+    padding-top: 4px;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 1);
+    top: 3px;
+    left: -43px;
 
-        width: 167px;
-        height: 22px;
-        /* On ajoute la propriété de z-index afin d'avoir les menus déroulant passant au dessus */
-        z-index: 2;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 167px;
+    height: 22px;
+    /* On ajoute la propriété de z-index afin d'avoir les menus déroulant passant au dessus */
+    z-index: 2;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Première ligne des menus déroulants */
@@ -71,16 +71,16 @@
 
 /* Pour toutes les cases */
 #menu ul li {
-	position: relative;
-	background: white;
-	float: left;
-	text-decoration: none;
-	text-align: center;
+    position: relative;
+    background: white;
+    float: left;
+    text-decoration: none;
+    text-align: center;
 
 }
 
 #menu .titres a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 /* Ajout d'un espace au début de la ligne */
@@ -90,19 +90,19 @@
 }
 
 #menu .lignes a {
-        /* Cette ligne permet d'avoir le surlignage sur tout la largeur */
-	display: block;
-	text-decoration: none;
-	text-align: left;
+    /* Cette ligne permet d'avoir le surlignage sur tout la largeur */
+    display: block;
+    text-decoration: none;
+    text-align: left;
 }
 
 
 #menu .titres li:hover {
-	background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
 
 }
 
 
 #menu .lignes a:hover{
-	background: #e7e1f2;
+    background: #e7e1f2;
 }

@@ -15,20 +15,26 @@ include '../ihm/css/css_base.php';
 include '../ihm/css/css_admin.php';
 //Gestion de l'icône
 //include '../ihm/icon/icon.php';
+//// Include de toutes les pages
+include '../dao/articles_dao_read.php';
 // Include de la mise en forme des articles en balises html
 include '../ihm/affichageModificationArticles.php';
-// Include de toutes les pages
-include '../dao/articles_dao_read.php';
-// Include de la fonction d'enregistrement
-include '../dao/articles_dao_write.php';
 // Include de la mise en forme de la barre de menu en balises html
 include "../ihm/affichageBarre_menu.php";
 // Include de la mise en forme du footer en balises html
 include "../ihm/affichageFooter.php";
-// Liens vers fichiers permettant les upload (Image, Fichier, Image pour carrousel (slideshow))
-include '../dao/uploadImageSlideShow.php';
-include '../dao/uploadImage.php';
-include '../dao/uploadFichier.php';
+
+
+
+// Include du controleur si une fonction a été appelée depuis Javascript
+if (!empty($_POST['fonction'])){
+    include '../controleur/controleur.php';
+}
+// Include du controleur d'upload si une tentive de chargement a été faite
+if (!empty($_FILES)){
+    include '../controleur/controleurUpLoad.php';
+}
+
 /* Création des variables servant par la suite lors du premier accès au site.
  * Ces dernières sont stockées dans $_SESSION afin de pouvoir être rappelées
  * lors du rechargement de la page d'index.
@@ -48,25 +54,26 @@ $_SESSION['dolto']='admin';
 
 <!--  Div de contenu, le contenu du div est modifié en fonction des liens cliqués -->
 <div id="contenu">
-
-<!-- Affichage des fenêtres modales de résultats d'upload de fichier ou d'image -->
-<?php include '../ihm/affichageResultatUpLoadModale.php'; ?>
-
-
-
 <?php
-@print_r ($_SESSION['listeLiens']);
-echo "<br><br>";
-@print_r ($_SESSION['barre_menu']);
-echo "<br><br>";
-@print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
-echo "<br><br>";
-echo @$_SESSION['articles'][$_GET['article_a_afficher']][0][1];
+
+// Affichage des fenêtres modales de résultats d'upload de fichier ou d'image
+include '../ihm/affichageResultatUpLoadModale.php';
+
+
+//@print_r ($_SESSION['listeLiens']);
+//echo "<br><br>";
+//@print_r ($_SESSION['barre_menu']);
+//echo "<br><br>";
+//@print_r($_SESSION['articles'][$_GET['article_a_afficher']]);
+//echo "<br><br>";
+//echo @$_SESSION['articles'][$_GET['article_a_afficher']][0][1];
 /* $_GET permet de récupérer l'url affichée en clair dans la barre
  * Par défaut, cette zone est vide, on va donc afficher l'accueil.php.
  * On ne peut tester si $_GET est vide avec =='' ou ==null,
  * il faut utiliser empty() ou isset()
  */
+
+// Définition des ihm relatives à la gestion, ils sont donc autorisés en accès
 $listeArticlesGestion = array ('gestionArticles','gestionSlideShow','gestionImages','gestionFichiers');
 
 // Soit la variable est vide et on affiche le premier article ...
@@ -117,7 +124,7 @@ de la page où se trouve l'image
 <div id="footer"><?php afficher_footer();?></div>
 
 
-<!-- liens jQuery et script spécifiques au site -->
+<!-- liens jQuery et scripts spécifiques au site -->
 <?php include '../js/js_base.php'; include '../js/js_admin.php'; ?>
 
 

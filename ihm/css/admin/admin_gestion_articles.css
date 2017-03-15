@@ -1,33 +1,37 @@
-#gestionArticles .nom:hover ul .listeModification {
-	display: block;
+#gestionArticles li:hover ul.listeModification {
+    display: block;
 }
 
+#gestionArticles {
+    list-style-type: none
+}
 
+#gestionArticles .listeModification {
+    display: none;
+}
 
 
 
 #gestionArticles .listeModification li {
-    	height : 10px;
-	width: 200px;
-	padding-left:7px;
-        padding-right:3px;
-        padding-bottom:5px;
-        border-left: 1px solid #596275;
-        border-right: 1px solid #596275;
-	font-size: small;
-        background-color: #f2f4ee;
-        /*display: none;*/
-        list-style-type: none;
-
+    height : 10px;
+    width: 200px;
+    padding-left: 7px;
+    padding-bottom: 5px;
+    border-left: 1px solid #596275;
+    border-right: 1px solid #596275;
+    font-size: small;
+    background-color: #f2f4ee;
+    list-style-type: none;
 }
 
 #gestionArticles .listeModification li a {
-	text-decoration: none;
-        color:black;
+    text-decoration: none;
+    color:black;
 }
 
 /* Première ligne des menus déroulants */
 #gestionArticles .listeModification li:first-child {
+    padding-top: 5px;
     border-top: 1px solid #596275;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -35,6 +39,7 @@
 
 /* Dernière ligne des menus déroulants */
 #gestionArticles .listeModification li:last-child {
+    padding-bottom: 10px;
     border-bottom: 1px solid #596275;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;

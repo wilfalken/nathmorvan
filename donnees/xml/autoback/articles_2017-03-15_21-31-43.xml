@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
 <barre_menu>
-  <menu nom_menu="Présentation de l'écolet">
+  <menu nom_menu="Présentation de l'école">
     <article>
       <nom>Petite section</nom>
       <element balise="Image">_image_defaut.jpg</element>

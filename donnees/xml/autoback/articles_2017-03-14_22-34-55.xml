@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
 <barre_menu>
-  <menu nom_menu="Présentation de l'écolet">
+  <menu nom_menu="Présentation de l'écoleuuu">
     <article>
       <nom>Petite section</nom>
-      <element balise="Image">_image_defaut.jpg</element>
-      <element balise="Paragraphe">Article en cours de rédactiiiiion</element>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Moyenne section</nom>
@@ -35,7 +34,7 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Paragraphe">hujdyttrththooo</element>
+      <element balise="Paragraphe">hujdyttrthth</element>
       <element balise="Carrousel"></element>
       <element balise="Sous-titre">titre</element>
       <element balise="Sous-titre">Hoho</element>

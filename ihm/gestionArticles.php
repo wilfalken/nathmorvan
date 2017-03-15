@@ -1,5 +1,7 @@
 <?php
 
+include '../donnees/limitesGestionArticles.php';
+
 echo '<h1>Gestion générale des articles</h1>';
 
 
@@ -12,15 +14,17 @@ foreach ($listeNomsMenusArticles as $nom) {
     $nomsMenusArticles .= $nom . "#";
 }
 
-$liste = '<span id=gestionArticles>';
+$liste = '<ul id=gestionArticles >';
 $idMenu = 0;
 $idArticle = 0;
 foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
     $nomMenu = $menu[0];
+    $nombreMenus = count($_SESSION['barre_menu']);
     // S'il s'agit d'un lien direct, on l'ajoute
     if (count($menu[1]) == 1) {
         $article = $menu[0];
-        $liste .= '<span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=0 data-nomArticle="' . utf8_encode($article) . '">' . $idMenu . ' ' . utf8_encode($article) . '</span>' .
+        $nombreArticles = 1;
+        $liste .= '<li><span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=0 data-nomArticle="' . utf8_encode($article) . '" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '><b>' . utf8_encode($article) . '</b></span>' .
                 '<ul class=listeModification>' .
                 '<li>' . boutonModificationNomMenu($nomsMenusArticles) . '</li>' .
                 '<li>' . boutonSuppressionMenuLienDirect() . '</li>' .
@@ -29,12 +33,13 @@ foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
                 '<li>' . boutonAjouterMenuAuDessous($nomsMenusArticles) . '</li>' .
                 '<li>' . boutonDeplacerMenuVersHaut() . '</li>' .
                 '<li>' . boutonDeplacerMenuVersBas() . '</li>' .
-                '</ul>';
+                '</ul></li>';
     }
     // Sinon, il s'agit d'une liste de lien
     else {
         // On créé donc un menu ...
-        $liste .= '<span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-nomArticle="">' . $idMenu . ' ' . utf8_encode($nomMenu) . '</span>' .
+        $nombreArticles = count($menu[1]);
+        $liste .= '<li><span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-nomArticle="" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '><b>' . utf8_encode($nomMenu) . '</b></span>' .
                 '<ul class=listeModification>' .
                 '<li>' . boutonModificationNomMenu($nomsMenusArticles) . '</li>' .
                 '<li>' . boutonSuppressionMenu() . '</li>' .
@@ -42,10 +47,10 @@ foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
                 '<li>' . boutonAjouterMenuAuDessous($nomsMenusArticles) . '</li>' .
                 '<li>' . boutonDeplacerMenuVersHaut() . '</li>' .
                 '<li>' . boutonDeplacerMenuVersBas() . '</li>' .
-                '</ul>';
+                '</ul></li>';
         // ... auquel on ajoute ses liens ...
         foreach ($menu[1] as $idArticle => $article) {
-            $liste .= '- ' . '<span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=' . $idArticle . ' data-nomArticle="' . utf8_encode($article) . '">' . $idArticle . '  ' . utf8_encode($article) . '</span>' .
+            $liste .= '<li><span class=nom data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=' . $idArticle . ' data-nomArticle="' . utf8_encode($article) . '" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '>' . utf8_encode($article) . '</span>' .
                     '<ul class=listeModification>' .
                     '<li>' . boutonModificationNomArticle($nomsMenusArticles) . '</li>' .
                     '<li>' . boutonSuppressionArticle() . '</li>' .
@@ -53,11 +58,11 @@ foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
                     '<li>' . boutonAjouterArticleAuDessous($nomsMenusArticles) . '</li>' .
                     '<li>' . boutonDeplacerArticleVersHaut() . '</li>' .
                     '<li>' . boutonDeplacerArticleVersBas() . '</li>' .
-                    '</ul>';
+                    '</ul></li>';
         }
-    }
+    }$liste .= '<br>';
 }
-$liste .= '</span>';
+$liste .= '</ul>';
 
 echo $liste;
 

@@ -8,6 +8,10 @@ jQuery(function ($) {
         var nomMenu = $(this).parent().parent().prev().attr('data-nomMenu');
         var idMenu = $(this).parent().parent().prev().attr('data-idMenu');
         var idArticle = $(this).parent().parent().prev().attr('data-idArticle');
+        var nombreMenusMaximum = $(this).parent().parent().prev().attr('data-nombreMenusMaximum');
+        var nombreArticlesMaximum = $(this).parent().parent().prev().attr('data-nombreArticlesMaximum');
+        var nombreMenus = $(this).parent().parent().prev().attr('data-nombreMenus');
+        var nombreArticles = $(this).parent().parent().prev().attr('data-nombreArticles');
         var action = this.name;
         /* Vérification que 'data-nomsMenusArticles' existe bien
          * (il n'est utilisé que pour les modifications de noms et les ajouts)
@@ -19,7 +23,8 @@ jQuery(function ($) {
         }
         var modification = "";
 
-        alert(" article " + idArticle + " : " + nomArticle + " | menu " + idMenu + " : " + nomMenu + " | action : " + action);
+        //alert(nombreMenus + '/' + nombreMenusMaximum + ' ' + nombreArticles + '/' + nombreArticlesMaximum);
+        //alert(" article " + idArticle + " : " + nomArticle + " | menu " + idMenu + " : " + nomMenu + " | action : " + action);
 
         switch (action) {
             case 'modificationNomArticle':
@@ -79,38 +84,54 @@ jQuery(function ($) {
                 break;
 
             case 'ajouterArticleAuDessus':
-                var nouvelArticle = prompt("Entrez un nouveau nom d'article");
-                if (nomsMenusArticles.indexOf(nouvelArticle) != -1) {
-                    alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
-                } else if (nouvelArticle != '' && nouvelArticle != null) {
-                    enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouvelArticle);
+                if (nombreArticles => nombreArticlesMaximum) {
+                    alert("Le nombre d'articles est limité à " + nombreArticlesMaximum + ".");
+                } else {
+                    var nouvelArticle = prompt("Entrez un nouveau nom d'article");
+                    if (nomsMenusArticles.indexOf(nouvelArticle) != -1) {
+                        alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
+                    } else if (nouvelArticle != '' && nouvelArticle != null) {
+                        enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouvelArticle);
+                    }
                 }
                 break;
 
             case 'ajouterArticleAuDessous':
-                var nouvelArticle = prompt("Entrez un nouveau nom d'article");
-                if (nomsMenusArticles.indexOf(nouvelArticle) != -1) {
-                    alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
-                } else if (nouvelArticle != '' && nouvelArticle != null) {
-                    enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouvelArticle);
+                if (nombreArticles => nombreArticlesMaximum) {
+                    alert("Le nombre d'articles est limité à " + nombreArticlesMaximum + ".");
+                } else {
+                    var nouvelArticle = prompt("Entrez un nouveau nom d'article");
+                    if (nomsMenusArticles.indexOf(nouvelArticle) != -1) {
+                        alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
+                    } else if (nouvelArticle != '' && nouvelArticle != null) {
+                        enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouvelArticle);
+                    }
                 }
                 break;
 
             case 'ajouterMenuAuDessus':
-                var nouveauMenu = prompt("Entrez un nouveau nom d'article");
-                if (nomsMenusArticles.indexOf(nouveauMenu) != -1) {
-                    alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
-                } else if (nouveauMenu != '' && nouveauMenu != null) {
-                    enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouveauMenu);
+                if (nombreMenus => nombreMenusMaximum) {
+                    alert("Le nombre de menus est limité à " + nombreArticlesMaximum + ".");
+                } else {
+                    var nouveauMenu = prompt("Entrez un nouveau nom de menu");
+                    if (nomsMenusArticles.indexOf(nouveauMenu) != -1) {
+                        alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
+                    } else if (nouveauMenu != '' && nouveauMenu != null) {
+                        enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouveauMenu);
+                    }
                 }
                 break;
 
             case 'ajouterMenuAuDessous':
-                var nouveauMenu = prompt("Entrez un nouveau nom d'article");
-                if (nomsMenusArticles.indexOf(nouveauMenu) != -1) {
-                    alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
-                } else if (nouveauMenu != '' && nouveauMenu != null) {
-                    enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouveauMenu);
+                if (nombreMenus => nombreMenusMaximum) {
+                    alert("Le nombre de menus est limité à " + nombreArticlesMaximum + ".");
+                } else {
+                    var nouveauMenu = prompt("Entrez un nouveau nom de menu");
+                    if (nomsMenusArticles.indexOf(nouveauMenu) != -1) {
+                        alert("Ce nom est déjà utilisé.\nChoisissez-en un autre.");
+                    } else if (nouveauMenu != '' && nouveauMenu != null) {
+                        enregistrerModification(nomArticle, nomMenu, action, idArticle, idMenu, nouveauMenu);
+                    }
                 }
                 break;
 
@@ -131,7 +152,7 @@ jQuery(function ($) {
              */
             url: '../admin/index.php',
             type: 'POST',
-            data: {fonction: 'gestionArticle', nomArticle: nomArticle, nomMenu: nomMenu, actionBouton: actionBouton, idArticle: idArticle, idMenu: idMenu, modification: modification}
+            data: {fonction: 'gestionArticles', nomArticle: nomArticle, nomMenu: nomMenu, actionBouton: actionBouton, idArticle: idArticle, idMenu: idMenu, modification: modification}
         });
     }
 
