@@ -1,62 +1,11 @@
 #footer {
-	background-color: #393931;
-	position: fixed;
+	position: absolute;
 	left: 0px;
-	bottom: 0px;
+	/*bottom: 0px;*/
 	width: 100%;
 	text-align: center;
-	box-shadow: 0px 0px 5px 1px #979797;
-}
-
-#footer a {
-	text-decoration: none;
-}
-
-#footer a:hover {
-	text-shadow: 0px 0px 2px #EEEEEE, 0px 0px 5px #DDDDDD, 0px 0px 1px #111111;
-}
-
-/* Si largeur supérieure à 640, on met sur une ligne */
-@media screen and (min-width: 640px) {
-#footer {
-    height: 15px;
-  }
-#footer .ligne2::before {
-    content: ' - ';
-}
-#footer .ligne3::before {
-    content: ' - ';
-}
-}
-
-/* Si largeur inférieure à 640, on met sur plusieurs lignes */
-@media screen and (min-width: 370px) and (max-width: 640px) {
-#footer {
-    height: 30px;
-}
-#footer .ligne2::before {
-    content: ' - ';
-}
-#footer .ligne3::before {
-    content: '\A';
-    white-space: pre-line;
-}
-}
-
-/* Si largeur inférieure à 640, on met sur plusieurs lignes */
-@media screen and (max-width: 370px) {
-#footer {
-    height: 45px;
-    position: absolute;
-}
-#footer .ligne2::before {
-    content: '\A';
-    white-space: pre-line;
-}  
-#footer .ligne3::before {
-    content: '\A';
-    white-space: pre-line;
-}  
-  
-
+	border-top: 1px solid #707070;
+        border-bottom: 1px solid #707070;
+        padding-top: 10px;
+        padding-bottom: 10px;
 }

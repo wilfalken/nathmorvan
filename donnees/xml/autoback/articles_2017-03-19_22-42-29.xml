@@ -29,6 +29,8 @@
       <nom>Petite section</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
+  </menu>
+  <menu nom_menu="Horaires et emplois du temps">
     <article>
       <nom>Moyenne section</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
@@ -41,36 +43,18 @@
       <nom>Cantine</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
-    <article>
-      <nom>TAP</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
-  </menu>
-  <menu nom_menu="Horaires et emplois du temps">
-    <article>
-      <nom>Garderie</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
-    <article>
-      <nom>Projet école</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
-    <article>
-      <nom>Horaires et emplois du temps</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
       <nom>Inscriptions</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
-  </menu>
-  <menu nom_menu="Conseils d'école">
     <article>
       <nom>2015</nom>
       <element balise="Fichier">conseil1.pdf</element>
     </article>
+  </menu>
+  <menu nom_menu="Conseils d'école">
     <article>
       <nom>2016</nom>
       <element balise="Fichier">conseil2.pdf</element>

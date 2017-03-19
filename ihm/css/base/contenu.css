@@ -1,86 +1,84 @@
 #contenu {
-	margin-left: 15%;
-	margin-right: 15%;
-	/* Justification du texte */
-	text-align: justify;
-	text-justify: inter-word;
+    margin-left: 15%;
+    margin-right: 15%;
+    /* Justification du texte */
+    text-align: justify;
+    text-justify: inter-word;
+    margin-top:80px;
+    margin-bottom:40px;
 }
 
 
 
 #contenu img {
-
-	/* Ajout d'une bordure */
-	/*border: 1px solid #021a40;*/
-	/* Ajout de coins arrondis */
-	/*border-radius: 5px;*/
-	/* Bridage de la taille maximale des images */
-	max-height: 400px;
-	max-width: 800px;
-	/* Centrer image (deux lignes n�cessaires) */
-	display: block;
-	/* Deuxiéme pour center l'image,
-	* Par défaut, on met 0,
-	* mais ici, on ajoute un peu de marges
-	* autour de l'image.
-	*/
-	margin: 50px auto;
+    /* Bridage de la taille maximale des images */
+    max-height: 400px;
+    max-width: 800px;
+    /* Centrer image (deux lignes nécessaires) */
+    display: block;
+    /* Deuxiéme pour center l'image,
+    * Par défaut, on met 0,
+    * mais ici, on ajoute un peu de marges
+    * autour de l'image.
+    */
+    margin: 50px auto;
 }
 
-#contenu h1, #contenu h2 {
-	/* Couleur des titres */
-	color: #5466a5;
-}
+
 
 #contenu h1 {
-	/* Position du titre */
-	text-align: center;
+    /* Position du titre */
+    text-align: center;
 }
 
 
 #contenu h2 {
-	/* Position du titre */
-	text-indent: 50px;
+    /* Position du titre */
+    text-indent: 50px;
 }
 
+
+
+/*
 @media screen and (min-width: 1100px) {
-#contenu {
-    	margin-top:80px;
-	margin-bottom:40px;
-  }
+    #contenu {
+        margin-top:80px;
+        margin-bottom:40px;
+    }
 }
 
 @media screen and (min-width: 640px) and (max-width: 1100px) {
-#contenu {
-    	margin-top:110px;
-	margin-bottom:40px;
-  }
+    #contenu {
+        margin-top:110px;
+        margin-bottom:40px;
+    }
 }
 
 @media screen and (min-width: 598px) and (max-width: 640px) {
-#contenu {
-    	margin-top:130px;
-	margin-bottom:55px;
-  }
+    #contenu {
+        margin-top:130px;
+        margin-bottom:55px;
+    }
 }
 
 @media screen and (min-width: 370px) and (max-width: 598px) {
-#contenu {
-    	margin-top:130px;
-	margin-bottom:55px;
-  }
+    #contenu {
+        margin-top:130px;
+        margin-bottom:55px;
+    }
 }
 
 @media screen and (min-width: 360px) and (max-width: 370px) {
-#contenu {
-    	margin-top:210px;
-	margin-bottom:70px;
-  }
+    #contenu {
+        margin-top:210px;
+        margin-bottom:70px;
+    }
 }
 
 @media screen and (max-width: 360px) {
-#contenu {
-    	margin-top:210px;
-	margin-bottom:70px;
-  }
+    #contenu {
+        margin-top:210px;
+        margin-bottom:70px;
+    }
 }
+*/

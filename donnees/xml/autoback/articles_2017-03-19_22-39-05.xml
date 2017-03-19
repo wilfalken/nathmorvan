@@ -65,12 +65,12 @@
       <nom>Inscriptions</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
-  </menu>
-  <menu nom_menu="Conseils d'école">
     <article>
       <nom>2015</nom>
       <element balise="Fichier">conseil1.pdf</element>
     </article>
+  </menu>
+  <menu nom_menu="Conseils d'école">
     <article>
       <nom>2016</nom>
       <element balise="Fichier">conseil2.pdf</element>

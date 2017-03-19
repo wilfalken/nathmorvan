@@ -28,7 +28,7 @@
     /* Insertion espace entre les titres*/
     margin-right: 0px;
     float: left;
-    width: 170px;
+    width: 100px;
     height: 22px;
     background-color: rgba(255, 255, 255, 0.5);
     /*border-radius: 5px;*/
@@ -43,10 +43,10 @@
     padding-top: 4px;
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 1);
-    top: 3px;
+
     left: -43px;
 
-    width: 167px;
+    width: 180px;
     height: 22px;
     /* On ajoute la propriété de z-index afin d'avoir les menus déroulant passant au dessus */
     z-index: 2;

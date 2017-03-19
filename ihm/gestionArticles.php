@@ -1,6 +1,5 @@
 <?php
 
-include '../donnees/limitesGestionArticles.php';
 
 echo '<h1>Gestion générale des articles</h1>';
 

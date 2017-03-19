@@ -23,8 +23,10 @@ include '../ihm/affichageModificationArticles.php';
 include "../ihm/affichageBarre_menu.php";
 // Include de la mise en forme du footer en balises html
 include "../ihm/affichageFooter.php";
-
-
+// Include des paramètres de configuration
+include '../donnees/config.php';
+// Include pour test
+//include '../dao/save.php';
 
 // Include du controleur si une fonction a été appelée depuis Javascript
 if (!empty($_POST['fonction'])){

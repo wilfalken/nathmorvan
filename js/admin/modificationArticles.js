@@ -214,8 +214,9 @@ jQuery(function($){
 		 */
             url: '../admin/index.php',
 	    type: 'POST',
+            async: false,
             data: {fonction: 'modificationArticles', nomArticleModifie: nomArticleModifie, idElementModifie: idElementModifie, actionElement: actionElement, elementModifie: elementModifie, baliseModifiee: baliseModifiee},
-	    success: function(data) {
+	    success: function() {
 	        //alert('Données sauvegardées !');
 	    }
 	});

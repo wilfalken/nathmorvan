@@ -15,6 +15,7 @@ jQuery(function($){
              */
             url: '../admin/index.php',
                     type: 'POST',
+                    async: false,
                     data: {fonction: 'supprimerDuRepertoire', nomFichier: nomFichier, nomRepertoire: nomRepertoire},
                     	    success: function() {
 	        //alert('Données sauvegardées !');

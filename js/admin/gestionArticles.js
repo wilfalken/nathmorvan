@@ -84,7 +84,7 @@ jQuery(function ($) {
                 break;
 
             case 'ajouterArticleAuDessus':
-                if (nombreArticles => nombreArticlesMaximum) {
+                if (nombreArticles >= nombreArticlesMaximum) {
                     alert("Le nombre d'articles est limité à " + nombreArticlesMaximum + ".");
                 } else {
                     var nouvelArticle = prompt("Entrez un nouveau nom d'article");
@@ -97,7 +97,7 @@ jQuery(function ($) {
                 break;
 
             case 'ajouterArticleAuDessous':
-                if (nombreArticles => nombreArticlesMaximum) {
+                if (nombreArticles >= nombreArticlesMaximum) {
                     alert("Le nombre d'articles est limité à " + nombreArticlesMaximum + ".");
                 } else {
                     var nouvelArticle = prompt("Entrez un nouveau nom d'article");
@@ -110,7 +110,7 @@ jQuery(function ($) {
                 break;
 
             case 'ajouterMenuAuDessus':
-                if (nombreMenus => nombreMenusMaximum) {
+                if (nombreMenus >= nombreMenusMaximum) {
                     alert("Le nombre de menus est limité à " + nombreArticlesMaximum + ".");
                 } else {
                     var nouveauMenu = prompt("Entrez un nouveau nom de menu");
@@ -123,7 +123,7 @@ jQuery(function ($) {
                 break;
 
             case 'ajouterMenuAuDessous':
-                if (nombreMenus => nombreMenusMaximum) {
+                if (nombreMenus >= nombreMenusMaximum) {
                     alert("Le nombre de menus est limité à " + nombreArticlesMaximum + ".");
                 } else {
                     var nouveauMenu = prompt("Entrez un nouveau nom de menu");
@@ -152,7 +152,11 @@ jQuery(function ($) {
              */
             url: '../admin/index.php',
             type: 'POST',
-            data: {fonction: 'gestionArticles', nomArticle: nomArticle, nomMenu: nomMenu, actionBouton: actionBouton, idArticle: idArticle, idMenu: idMenu, modification: modification}
+            async: false,
+            data: {fonction: 'gestionArticles', nomArticle: nomArticle, nomMenu: nomMenu, actionBouton: actionBouton, idArticle: idArticle, idMenu: idMenu, modification: modification},
+            	    error: function() {
+	        //alert('Données sauvegardées !');
+	    }
         });
     }
 

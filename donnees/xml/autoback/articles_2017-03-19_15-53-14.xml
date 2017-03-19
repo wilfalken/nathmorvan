@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
+<barre_menu>
+  <menu nom_menu="test">
+    <article>
+      <nom>test</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Image">t - Copie.jpg</element>
+    </article>
+    <article>
+      <nom>frrooooooooooo</nom>
+      <element balise="Paragraphe">Articleiiuionuuuuuuuuiiiiiiiiiiiiii</element>
+    </article>
+  </menu>
+  <menu nom_menu="frrooooooooooo">
+    <article>
+      <nom>jyyhjy</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="frrooooooooooo">
+    <article>
+      <nom>frrooooooooooo</nom>
+      <element balise="Paragraphe">Articleiiuionuuuuuuuuiiiiiiiiiiiiii</element>
+    </article>
+    <article>
+      <nom>jyyhjy</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Horaires et emploi">
+    <article>
+      <nom>Horaires et emploi</nom>
+      <element balise="Paragraphe">Article en cours de rédacthhyyhythy</element>
+    </article>
+    <article>
+      <nom>o u</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>iuy</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>ytrt</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Conseils d'école">
+    <article>
+      <nom>2015</nom>
+      <element balise="Fichier">conseil1.pdf</element>
+    </article>
+    <article>
+      <nom>2016</nom>
+      <element balise="Fichier">conseil2.pdf</element>
+    </article>
+    <article>
+      <nom>2017</nom>
+      <element balise="Fichier">conseil3.pdf</element>
+    </article>
+    <article>
+      <nom>Archives</nom>
+      <element balise="Fichier">conseil4.pdf</element>
+    </article>
+  </menu>
+  <menu nom_menu="Inscriptions">
+    <article>
+      <nom>Inscriptions</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+</barre_menu>

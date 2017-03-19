@@ -1,36 +1,10 @@
 #header {
-	background-color: #513885;
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	box-shadow: 0px 0px 10px 1px #565656;
-}
-
-/* Si largeur supérieure à 640, on met sur une ligne */
-@media screen and (min-width: 1100px) {
-    #header {
-    height: 30px;
-    }
-}
-
-/* Si largeur supérieure à 640, on met sur une ligne */
-@media screen and (min-width: 598px) and (max-width: 1100px){
-    #header {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 2px solid black;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.3);
     height: 60px;
-    }
-}
-
-/* Si largeur supérieure à 640, on met sur une ligne */
-@media screen and (min-width: 360px) and (max-width: 598px){
-    #header {
-    height: 80px;
-    }
-}
-
-/* Si largeur supérieure à 640, on met sur une ligne */
-@media screen and (max-width: 360px) {
-    #header {
-    height: 160px;
-    }
 }
