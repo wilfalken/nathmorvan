@@ -1,3 +1,8 @@
+#gestionArticles .nom {
+
+}
+
+
 #gestionArticles li:hover ul.listeModification {
     display: block;
 }
@@ -6,21 +11,26 @@
     list-style-type: none
 }
 
-#gestionArticles .listeModification {
+#gestionArticles ul.listeModification {
     display: none;
+    position: absolute;
+    left: 40%;
+    margin-top: -1em;
+    z-index: 2;
 }
 
 
 
 #gestionArticles .listeModification li {
-    height : 10px;
+    height : 12px;
     width: 200px;
     padding-left: 7px;
     padding-bottom: 5px;
     border-left: 1px solid #596275;
     border-right: 1px solid #596275;
     font-size: small;
-    background-color: #f2f4ee;
+    /*background-color: #f2f4ee;*/
+    background-color: white;
     list-style-type: none;
 }
 
@@ -29,18 +39,27 @@
     color:black;
 }
 
+#gestionArticles .listeModification li:hover {
+    background-color: #E5E5E5;
+}
+
+#gestionArticles li:hover {
+    background-color: #F5F5F5;
+}
+
+
 /* Première ligne des menus déroulants */
 #gestionArticles .listeModification li:first-child {
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     border-top: 1px solid #596275;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    /*border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
 }
 
 /* Dernière ligne des menus déroulants */
 #gestionArticles .listeModification li:last-child {
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
     border-bottom: 1px solid #596275;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    /*border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;*/
 }

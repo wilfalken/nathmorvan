@@ -107,8 +107,9 @@ les autres seront ajoutés dessus, c'est pourquoi il faut commencer par déclare
 
 
 <!--  couleur sous Header -->
+<!--
 <div id="header"></div>
-
+-->
 
 
 <!--
@@ -120,7 +121,7 @@ de la page où se trouve l'image
 
 
 <!--  menu du Header -->
-<div id="menu"><?php afficher_barre_menu($_SESSION['barre_menu']);?></div>
+<div><?php afficher_barre_menu($_SESSION['barre_menu']);?></div>
 
 <!--  Footer -->
 <div id="footer"><?php afficher_footer();?></div>

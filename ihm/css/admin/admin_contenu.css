@@ -1,82 +1,86 @@
 #contenu .element:hover {
-	background-color: #f2f4ee;
-	border-style:solid;
-	border-width: 1px;
-	border-color: #596275;
-	padding-bottom:30px;
-	padding-left:20px;
-	padding-right:20px;
+    background-color: #f2f4ee;
+    /*border-style:solid;
+    border-width: 1px;
+    border-color: #596275;*/
+    padding-bottom:30px;
+    /*padding-left:20px;
+    padding-right:20px;*/
+    box-shadow: inset 0px 0px 20px 10px white;
 }
 
 
 /* Les boutons sont masqués par défaut */
-#contenu .bouton {
-	position: relative;
-	float: left;
-	/* Par défaut, ils sont cachés */
-	display: none;
-        /* Dimension bouton */
-	height : 10px;
-	width: 100px;
-        /* Espace autour bouton */
-        margin-right: 10px;
-        margin-bottom: 10px;
-        /* Espace sous le texte dans le bouton */
-	padding-bottom: 7px;
-        /* Définition bordure */
-	border-style: solid;
-	border-width: 1px;
-	border-color: #596275;
-	border-radius: 3px;
-        /* Suppression du typage du lien */
-	text-decoration: none;
-	color: black;
-        /* Couleur de fond */
-	background-color: white;
-	text-align: center;
-	font-size: small;
+#contenu .element .bouton {
+    position: relative;
+    float: left;
+    /* Par défaut, ils sont cachés */
+    display: none;
+    /* Dimension bouton */
+    height : 10px;
+    width: 100px;
+    /* Espace autour bouton */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* Espace sous le texte dans le bouton */
+    padding-bottom: 7px;
+    /* Définition bordure */
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff9600;
+    /*border-radius: 3px;*/
+    /* Suppression du typage du lien */
+    text-decoration: none;
+    color: black;
+    /* Couleur de fond */
+    background-color: white;
+    text-align: center;
+    font-size: small;
 }
 
 /* Ajout d'un espace entre le texarea et les boutons*/
 #contenu textarea {
-        margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 /* Les boutons sont affichés en cas de survol - en fonction des affichages définis en PHP */
 #contenu .element:hover .bouton {
-	display: block;
+    display: block;
 }
 
 
 /* Par défaut le textarea est masqué */
 #contenu .texteModifiable {
-	display: none;
+    display: none;
 }
 
 
 /* De même que les boutons de validations de modification */
 #contenu .boutons_validation {
-	display: none;
+    display: none;
 }
 
 
-#contenu .element.modification{
-    	border-style:solid;
-	border-width: 1px;
-        border-color: red;
-        border-radius: 0px;
-        padding-top:10px;
-        padding-bottom:30px;
-	padding-left:20px;
-	padding-right:20px;
-        background-color: #ffD0D0;
-        
+#contenu .element.modification {
+    border-style:solid;
+    border-width: 1px;
+    border-color: red;
+    border-radius: 0px;
+    padding-top:10px;
+    padding-bottom:30px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color: #ffD0D0;
+}
+
+#contenu .element.modification:hover {
+    box-shadow: none;
 }
 
 
 /* Pour forcer l'affichage des boutons - qui seront masqués par type de boutons */
 #contenu .element.modification .bouton {
-	display: block;
+    display: block;
 }
 
 

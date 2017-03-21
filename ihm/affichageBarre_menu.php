@@ -1,15 +1,16 @@
 <?php
 Function afficher_barre_menu($barre_menu) {
 
-
+$barre_menu_affichee = '<div id="image_header"><img src="../ihm/img/header.png"></div>';
 // Ouverture de la balise de liste
-$barre_menu_affichee = '<ul class="titres">';
+$barre_menu_affichee .= '<div  id="menu"><ul class="titres">';
 foreach ($barre_menu as $menu){
 	// S'il s'agit d'un lien direct, on l'ajoute
 	if (count($menu[1])==1){
             $lien = $menu[0];
-            $barre_menu_affichee .= '<li><a href="index.php?article_a_afficher='.utf8_encode ($lien).'">'.utf8_encode ($lien).'</a></li>';
-	}
+            $barre_menu_affichee .= '<li><a href="index.php?article_a_afficher='.utf8_encode ($lien).'">'.utf8_encode ($lien).'</a></li>';            
+        }
+        
 	// Sinon, il s'agit d'une liste de lien
 	else {
 		// On créé donc un menu ...
@@ -24,7 +25,7 @@ foreach ($barre_menu as $menu){
 }
 // Ajout d'éléments en cas de mode administrateur
 if ($_SESSION['dolto']=='admin'){
-    $barre_menu_affichee .= '<li>Menu administrateur<ul class="lignes">';
+    $barre_menu_affichee .= '<li><div>Menu administrateur</div><ul class="lignes">';
     // Pages de gestion
     $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionArticles">Gestion des articles</a></li>';
     $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionSlideShow">Gestion du carrousel</a></li>';
@@ -37,7 +38,7 @@ if ($_SESSION['dolto']=='admin'){
 }
 
 // Fermeture de la balise de liste
-$barre_menu_affichee .= '</ul>';
+$barre_menu_affichee .= '</ul></div>';
 
 // Affichage de la barre de menu
 echo $barre_menu_affichee;

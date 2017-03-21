@@ -1,11 +1,14 @@
 #menu {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid #7e869a;
+    border-bottom: 1px solid #7e869a;
     position: fixed;
-    /* Coordonnées négatives : étrange ... */
-    left: -40px;
-    top: -10px;
-    font-size: small;
+    left: 0px;
+    top: 10px;
+    width: 100%;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
+    height: 79px;    
 }
-
 
 
 /* Lignes qui permettent d'afficher les lignes en cas de survol */
@@ -13,96 +16,86 @@
     display: none;
 }
 
-#menu li:hover ul.lignes {
+#menu li:hover .lignes {
     display: block;
 }
 
-/* Gestion du décalage des lignes inférieures */
 #menu .titres, #menu .lignes {
-    list-style-type: none;
+    list-style: none;
 }
-
-
 
 #menu .titres li {
     /* Insertion espace entre les titres*/
-    margin-right: 0px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     float: left;
-    width: 100px;
-    height: 22px;
     background-color: rgba(255, 255, 255, 0.5);
     /*border-radius: 5px;*/
     padding-left: 5px;
     padding-right: 5px;
+    border: solid 1px #596275;
+    width: 100px;
+    height: 50px;
 }
 
+
+
 /* Lignes des menus déroulants */
-#menu .lignes li {
+#menu .lignes li { 
+    margin-bottom: 0px;
+    border: none;
+    border-left: solid 1px #596275;
+    border-right: solid 1px #596275;
     position: relative;
     float: left;
     padding-top: 4px;
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 1);
-
-    left: -43px;
-
+    background-color: white;
+    left: -50px;
     width: 180px;
     height: 22px;
     /* On ajoute la propriété de z-index afin d'avoir les menus déroulant passant au dessus */
-    z-index: 2;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 3;
 }
 
-/* Première ligne des menus déroulants */
-#menu .lignes  :first-child {
 
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+
+/* Première ligne des menus déroulants */
+#menu .lignes  li:first-child {
+    border-top: solid 1px #596275;
 }
 
 /* Dernière ligne des menus déroulants */
-#menu .lignes :last-child {
-
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    /* On n'affiche pas la ligne de séparation pour la dernière ligne */
-    border-bottom: 0px;
+#menu .lignes li:last-child {
+    border-bottom: solid 1px #596275;
 }
 
 /* Pour toutes les cases */
-#menu ul li {
-    position: relative;
-    background: white;
-    float: left;
+#menu li {
     text-decoration: none;
     text-align: center;
+}
 
+#menu li a {
+    display: block;
 }
 
 #menu .titres a {
     text-decoration: none;
 }
 
-/* Ajout d'un espace au début de la ligne */
-#menu .lignes a::before {
-    content : '  ';
-    white-space: pre-wrap;
-}
 
 #menu .lignes a {
     /* Cette ligne permet d'avoir le surlignage sur tout la largeur */
+    padding-left: 1em;
     display: block;
     text-decoration: none;
     text-align: left;
 }
 
 
-#menu .titres li:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-
-}
-
-
-#menu .lignes a:hover{
-    background: #e7e1f2;
+@media screen and (max-width: 640px) {
+    #menu {
+        display:none;
+    }
 }

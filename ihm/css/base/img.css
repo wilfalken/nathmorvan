@@ -1,9 +1,11 @@
 #image_header {
 	position: fixed;
 	right: 0px;
-	top: 0px;
+	top: 10px;
 }
 
-#image_header img {
-	height: 320px;
+@media screen and (max-width: 640px) {
+#image_header {
+    display:none;
+  }
 }

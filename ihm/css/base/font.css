@@ -1,7 +1,7 @@
 /* Le lien vers la police est dans ihm/css/css_base.php */
 @font-face {
-	font-family: "Muli";
-	src: url('https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900');
+    font-family: "Muli";
+    src: url('https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900');
 }
 
 /* On applique à l'ensemble du document et on fait des exceptions */
@@ -9,17 +9,25 @@ body {
     /* Poid normal = 400, pas possible de mettre moins */
     font-family: 'Muli', sans-serif;
     font-weight: 400;
-    color: #202020;
+
 }
 
-/* Couleur des titres du contenu */
-#contenu h1, #contenu h2 {
-    color: #5466a5;
+
+
+/****************************************************************/
+/*                          Articles                            */
+/****************************************************************/
+
+#contenu p {
+    color: #505050;
 }
 
-/* Titres et sous-tires dans les articles */
-/* La taille est exprimée en 'em', norme responsive */
+#contenu a {
+    color: #505050;
+}
+
 #contenu h1 {
+    color: #5466a5;
     font-weight: 700;
     font-style: normal;
     font-size: 1.8em;
@@ -28,11 +36,40 @@ body {
     font-weight: 600;
     font-style: normal;
     font-size: 1.6em;
+    color: #63c000;
 }    
 
-/* Liens directs ou dans menu */
-#menu, #menu a {
-    color: #2b3664;
+
+
+/****************************************************************/
+/*                            Menu                              */
+/****************************************************************/
+
+/* Liens indirects */
+#menu .titres li{
+    color: #ff9600;
+    font-size: small;
+}
+
+
+/* Liens directs */
+#menu .titres li a {
+    color: #63c000;
+}
+
+#menu .titres li:hover {
+    background-color: #ff9600;
+    color: white;
+}
+
+#menu .lignes li {
+    background-color: white;
+    color: #ff9600;
+    font-size: small;
+}
+#menu .lignes li:hover{
+    background-color: white;    
+    background: #e7e1f2;
 }
 
 /* Nom menus (et articles par dépendance parent) */
@@ -42,25 +79,25 @@ body {
 }
 
 /* Surchage nom articles */
-#menu .lignes li {
-    font-weight: normal;
+#menu .lignes li a {
+    font-weight: 400;
+    color: #5466a5;
 }
 
+
+
+/****************************************************************/
+/*                           Footer                             */
+/****************************************************************/
 #footer {
-        font-style: normal;
-        font-size: 0.8em;
-        font-weight: 500;
-        color: #707070;
+    font-style: normal;
+    font-size: 0.8em;
+    font-weight: 500;
+    color: #707070;
 }
 
 #footer a {
-        font-style: normal;
-        text-decoration: none;
-        color: #707070;
-}
-
-
-#footer a:hover {
-	/*text-shadow: 0px 0px 2px #EEEEEE, 0px 0px 5px #DDDDDD, 0px 0px 1px #111111;*/
-        /*font-weight: 700;*/
+    font-style: normal;
+    text-decoration: none;
+    color: #707070;
 }

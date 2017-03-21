@@ -61,7 +61,7 @@ foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
         }
     }$liste .= '<br>';
 }
-$liste .= '</ul>';
+$liste .= '</ul><br><br><br><br>';
 
 echo $liste;
 
