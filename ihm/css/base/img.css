@@ -1,11 +1,12 @@
-#image_header {
-	position: fixed;
+.image_header img{
+    	position: fixed;
 	right: 0px;
 	top: 10px;
+        height: 80px;
 }
 
 @media screen and (max-width: 640px) {
-#image_header {
+.image_header img{
     display:none;
   }
 }

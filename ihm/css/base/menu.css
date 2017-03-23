@@ -62,7 +62,12 @@
     z-index: 3;
 }
 
-
+#menu img {
+    	position: fixed;
+	right: 0px;
+	top: 10px;
+        z-index: -1;
+}
 
 /* Première ligne des menus déroulants */
 #menu .lignes  li:first-child {
