@@ -1,7 +1,17 @@
-#gestionArticles .nom {
-
+#gestionArticles .lienDirect {
+    color:#63c000;
+    padding-left:20px;
 }
 
+#gestionArticles .menu {
+    color:#ff9600;
+    padding-left:20px;
+}
+
+#gestionArticles .article {
+    color:#7e869a;
+    padding-left:40px;
+}
 
 #gestionArticles li:hover ul.listeModification {
     display: block;
@@ -26,12 +36,28 @@
     width: 200px;
     padding-left: 7px;
     padding-bottom: 5px;
-    border-left: 1px solid #596275;
-    border-right: 1px solid #596275;
+    border-left: 1px solid #ff9600;
+    border-right: 1px solid #ff9600;
     font-size: small;
     /*background-color: #f2f4ee;*/
     background-color: white;
     list-style-type: none;
+}
+
+/* Première ligne des menus déroulants */
+#gestionArticles .listeModification li:first-child {
+    /*padding-top: 5px;*/
+    border-top: 1px solid #ff9600;
+    /*border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}
+
+/* Dernière ligne des menus déroulants */
+#gestionArticles .listeModification li:last-child {
+    /*padding-bottom: 10px;*/
+    border-bottom: 1px solid #ff9600;
+    /*border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;*/
 }
 
 #gestionArticles .listeModification li a {
@@ -40,26 +66,13 @@
 }
 
 #gestionArticles .listeModification li:hover {
-    background-color: #E5E5E5;
+    background-color: #a2ccc8;
 }
+
 
 #gestionArticles li:hover {
     background-color: #F5F5F5;
 }
 
 
-/* Première ligne des menus déroulants */
-#gestionArticles .listeModification li:first-child {
-    /*padding-top: 5px;*/
-    border-top: 1px solid #596275;
-    /*border-top-left-radius: 5px;
-    border-top-right-radius: 5px;*/
-}
 
-/* Dernière ligne des menus déroulants */
-#gestionArticles .listeModification li:last-child {
-    /*padding-bottom: 10px;*/
-    border-bottom: 1px solid #596275;
-    /*border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;*/
-}

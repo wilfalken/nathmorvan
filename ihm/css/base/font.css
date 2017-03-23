@@ -47,19 +47,27 @@ body {
 
 /* Liens indirects */
 #menu .titres li{
-    color: #ff9600;
     font-size: small;
-}
-
-
-/* Liens directs */
-#menu .titres li a {
-    color: #63c000;
+        color: #ff9600;
 }
 
 #menu .titres li:hover {
     background-color: #ff9600;
-    color: white;
+        color:white;
+}
+
+
+/* Liens directs */
+
+
+
+#menu .lienDirect {
+    color: #63c000;
+}
+
+#menu .lienDirect:hover {
+    color:white;
+    background-color:#63c000;
 }
 
 #menu .lignes li {

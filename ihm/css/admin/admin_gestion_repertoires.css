@@ -1,33 +1,74 @@
 #repertoire .bouton_repertoire {
 
-        display: block;
-        /* Dimension bouton */
-	height : 10px;
-	width: 250px;
-        /* Espace autour bouton */
-        margin-right: 10px;
-        margin-bottom: 10px;
-        /* Espace sous le texte dans le bouton */
-	padding-bottom: 7px;
-        /* Définition bordure */
-	border-style: solid;
-	border-width: 1px;
-	border-color: #596275;
-	border-radius: 3px;
-        /* Suppression du typage du lien */
-	text-decoration: none;
-	color: black;
-        /* Couleur de fond */
-	background-color: #f2f4ee;
-	text-align: center;
-	font-size: small;
-        margin: 0px auto;
+    display: block;
+    /* Dimension bouton */
+    height : 10px;
+    width: 250px;
+    /* Espace autour bouton */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* Espace sous le texte dans le bouton */
+    padding-bottom: 7px;
+    /* Définition bordure */
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff9600;
+    /* Suppression du typage du lien */
+    text-decoration: none;
+    color: black;
+    /* Couleur de fond */
+    background-color: white;
+    text-align: center;
+    font-size: small;
+    margin: 0px auto;
 }
 
+#repertoire .bouton_repertoire:hover, #upload input[type=file]:hover, #upload input[type=submit]:hover {
+    color:white;
+    background-color: #ff9600;
+}
+
+#upload {
+    text-align: center;
+}
+
+
+
+
+#upload input[type=file], #upload input[type=submit] {
+
+    display: block;
+    /* Dimension bouton */
+    height : 20px;
+    width: 250px;
+    /* Espace autour bouton */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* Espace sous le texte dans le bouton */
+    padding-bottom: 7px;
+    /* Définition bordure */
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff9600;
+    /* Suppression du typage du lien */
+    text-decoration: none;
+    color: black;
+    /* Couleur de fond */
+    background-color: white;
+    text-align: center;
+    font-size: small;
+    margin: 0px auto;
+    cursor:pointer;
+}
+#upload input[type=file] {
+    height : 10px;
+}
+
+
 #repertoire img {
-	max-width: 150px;
-        max-height: 150px;
-        margin: 0px auto;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 0px auto;
 }
 
 #repertoire .texte {

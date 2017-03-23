@@ -1,8 +1,12 @@
 <?php
 
-echo '<h1>Gestion des images visibles dans le carrousel</h1>';
+//echo '<script type="text/javascript">function getfile(){document.getElementById("hiddenfile").click();document.getElementById("selectedfile").value=document.getElementById("hiddenfile").value}</script>';
+
+echo '<h1>Gestion des images<br>visibles dans le carrousel</h1>';
 echo '<br><br>';
 
+
+echo '<p style="text-align: center;">Ajouter une image dans le carrousel :</p>';
 // Ajout du formulaire d'upload
 $upload = '<span id=upload>';
 /* "action" est vide, il s'agit d'un lien.
@@ -10,15 +14,17 @@ $upload = '<span id=upload>';
  * Les données mises dans $_FILES et $_POST sont récupérées par l'index.
  */
 $upload .= '<form action="" method="post" enctype="multipart/form-data">';
-$upload .= "Ajouter une image dans le carrousel : ";
-$upload .= ' <input type="file" name="uploadImageSlideShow">';
+//$upload .= '<input type="button" class="selectedfile" value="Parcourir ...">';
+$upload .= '<input type="file" name="uploadImageSlideShow" class="hiddenfile" onclick="getfile()">';
+$upload .= '<br>';
+$upload .= '<span id=texteImage><span><br>';
 $upload .= '<input type="submit" value="Charger l\'image dans le carrousel" name="submit">';
 $upload .= '</form>';
 $upload .= '</span>';
 echo $upload;
 
-echo '<br><br>';
-
+echo '<br><br><br>';
+echo '<p style="text-align: center;">Images déjà présentes dans le carrousel :</p><br>';
 // Ajout de la liste des images présentes dans le répertoire du carrousel
 $affichageListeCarrousel ='';
 $affichageListeCarrousel .= '<span id=repertoire>';
@@ -28,7 +34,7 @@ $repertoire = "../donnees/images/carrousel";
             $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
             if ($fileExtension != "") {
                 $affichageListeCarrousel .= '<a href="'.$repertoire.'/'.$file.'" target="_blank"><img src="'.$repertoire.'/'.$file.'"></a><br>';
-                $affichageListeCarrousel .= '<span class=texte>'.$file.'<br>(cliquez pour agrandir l\image)</span>';
+                $affichageListeCarrousel .= '<span class=texte>'.$file.'<br>(cliquez pour agrandir l\'image)</span>';
                 $affichageListeCarrousel .= '<a class=bouton_repertoire name=supprimer_image_carrousel data-nomFichier="'.$file.'" data-nomRepertoire="'.$repertoire.'" href="">Supprimer cette image du carrousel</a><br><br>';
                 $affichageListeCarrousel .='<br><br><br>';
             }   

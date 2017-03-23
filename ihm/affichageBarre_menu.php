@@ -8,7 +8,7 @@ foreach ($barre_menu as $menu){
 	// S'il s'agit d'un lien direct, on l'ajoute
 	if (count($menu[1])==1){
             $lien = $menu[0];
-            $barre_menu_affichee .= '<li><a href="index.php?article_a_afficher='.utf8_encode ($lien).'">'.utf8_encode ($lien).'</a></li>';            
+            $barre_menu_affichee .= '<li><a class="lienDirect" href="index.php?article_a_afficher='.utf8_encode ($lien).'">'.utf8_encode ($lien).'</a></li>';            
         }
         
 	// Sinon, il s'agit d'une liste de lien
