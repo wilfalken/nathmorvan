@@ -32,7 +32,7 @@ function uploadImage() {
     }
     // Check if file already exists
     if (file_exists($target_file)) {
-        $message .= "Une image portant le même nom est déjà présente. ";
+        $message .= "Une image portant le même nom est déjà présente. Consultez l'article de gestion des images. ";
         $uploadOk = 0;
     }
     // Check file size
@@ -60,7 +60,8 @@ function uploadImage() {
             $message .= "Il y a eu une erreur lors du chargement. ";
         }
     }
-
+    
+    echo '<script>alert("'. $message.'");</script>';
     unset($_FILES["uploadImage"]);
     return $message;
 }

@@ -75,6 +75,10 @@
     display: block;
 }
 
-
+#contenu .center {
+    display:block;
+    position: relative;
+    left:70%;
+}
 
 

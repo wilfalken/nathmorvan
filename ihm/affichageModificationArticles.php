@@ -50,7 +50,7 @@ Function afficher_modifier_article($article) {
                  */
                 $bloc .= '<span class=texteModifiable>';
                 if ($element [0] == 'Image') {
-                    $bloc .= '<br>';
+                    $bloc .= '<p style="font-size: small;text-align:center;color:black;">Image actuelle : '.$article[$id][1].'</p>';
                     $bloc .= '<form  id=upload action="" method="post" enctype="multipart/form-data">';
                     $bloc .= '<span class="textInput">Choisisez l\'image à charger : </span>';
                     $bloc .= ' <input type="file" name="uploadImage" id="file" class="inputFile">';
@@ -62,13 +62,14 @@ Function afficher_modifier_article($article) {
                     $bloc .= ' <input type="hidden" name="nomArticle" value="' . $article[0][1] . '">';
                     $bloc .= '<input type="submit" value="Modifier l\'image" name="submit" class="invisible">';
                     $bloc .= '</form>';
-                    $bloc .= '<a class=bouton name=bouton_annuler_modification href="">Annuler</a><br>';
+                    $bloc .= '<a class="bouton center" name=bouton_annuler_modification href="">Annuler</a><br>';                   
                 } else if ($element [0] == 'Fichier') {
                     $bloc .= '<br>';
+                    $bloc .= '<p style="font-size: small;text-align:center;color:black;">Fichier actuel : '.$article[$id][1].'</p>';
                     $bloc .= '<form  id=upload action="" method="post" enctype="multipart/form-data">';
                     $bloc .= '<span class="textInput">Choisisez le fichier à charger : </span>';
                     $bloc .= ' <input type="file" name="uploadFichier" id="file" class="inputFile">';
-                    $bloc .= '<label for=" " id="affichageFichierChoisi" class="textInput">Aucune image sélectionnée</label>';
+                    $bloc .= '<label for=" " id="affichageFichierChoisi" class="textInput">Aucun fichier sélectionné</label>';
                     $bloc .= '<label for="file" class="labelInput">Choisir un fichier ...</label>';
                     // On cache dans le formulaire l'id de l'élément modifié
                     $bloc .= ' <input type="hidden" name="idFichier" value="' . $id . '">';
@@ -76,7 +77,7 @@ Function afficher_modifier_article($article) {
                     $bloc .= ' <input type="hidden" name="nomArticle" value="' . $article[0][1] . '">';
                     $bloc .= '<input type="submit" value="Modifier le fichier" name="submit" class="invisible">';
                     $bloc .= '</form>';
-                    $bloc .= '<a class=bouton name=bouton_annuler_modification href="">Annuler</a><br>';
+                    $bloc .= '<a class="bouton center" name=bouton_annuler_modification href="">Annuler</a><br>';
                 } else {
                     $style = "";
                     $nbcols="100";
@@ -84,7 +85,7 @@ Function afficher_modifier_article($article) {
                         $style = 'style="font-weight: 600; font-style: normal; font-size: 1.6em; color: #63c000;"';
                         $nbcols="50";
                     }
-                    $bloc .= '<textarea COLS="'.$nbcols.'" '.$style.'>' . utf8_encode($element [1]) . '</textarea>';
+                    $bloc .= '<textarea COLS="'.$nbcols.'" '.$style.'>' . utf8_encode($element [1]) . '</textarea><br>';
                 }
 
                 $bloc .= '</span>';

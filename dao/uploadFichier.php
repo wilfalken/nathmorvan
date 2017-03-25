@@ -23,7 +23,7 @@ function uploadFichier() {
     if (isset($_POST["submit"])) {
         $check = filesize($_FILES["uploadFichier"]["tmp_name"]);
         if ($check !== false) {
-            $message .= "Le fichier est bien valide - " . $check["mime"] . ". ";
+            $message .= "Le fichier est bien valide. ";
             $uploadOk = 1;
         } else {
             $message .= "Le fichier n'est pas valide. ";
@@ -34,7 +34,7 @@ function uploadFichier() {
 
     // Check if file already exists
     if (file_exists($target_file)) {
-        $message .= "Un fichier portant le même nom est déjà présent. ";
+        $message .= "Un fichier portant le même nom est déjà présent. Consultez l'article de gestion des fichiers. ";
         $uploadOk = 0;
     }
     // Check file size
@@ -44,7 +44,7 @@ function uploadFichier() {
     }
     // Allow certain file formats
     if ($fileType != "pdf" && $fileType != "odt" && $fileType != "odg") {
-        $message .= "Seules les fichiers de types PDF, ODT & ODG sont autorisées. ";
+        $message .= "Seuls les fichiers de types PDF, ODT & ODG sont autorisés. ";
         $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
@@ -55,14 +55,15 @@ function uploadFichier() {
         if (move_uploaded_file($_FILES["uploadFichier"]["tmp_name"], $target_file)) {
             $message .= "Votre fichier " . basename($_FILES["uploadFichier"]["name"]) . " a bien été chargé. ";
             // Mise à jour de la liste des articles
-            $_SESSION['articles'][$nomArticle][$idElement][1] = basename($_FILES["uploadImage"]["name"]);
+            $_SESSION['articles'][$nomArticle][$idElement][1] = basename($_FILES["uploadFichier"]["name"]);
             // Et sauvegarde dans le XML (fonction définie dans articles_dao_write.php
             saveXml($_SESSION['articles'], $_SESSION['barre_menu']);
         } else {
             $message .= "Il y a eu une erreur lors du chargement. ";
         }
     }
-
+    
+    echo '<script>alert("'. $message.'");</script>';
     unset($_FILES["uploadFichier"]);
     return $message;
 }

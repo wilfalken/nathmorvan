@@ -4,7 +4,7 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Image">tumblr_mxpzeeCyHS1t1jhdpo1_1280.jpg</element>
+      <element balise="Image">t - Copie.jpg</element>
       <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
       <element balise="Sous-titre">titre</element>
       <element balise="Carrousel"></element>
@@ -70,7 +70,7 @@
   <menu nom_menu="Conseils d'école">
     <article>
       <nom>2015</nom>
-      <element balise="Fichier">TP_GIT.pdf</element>
+      <element balise="Fichier"></element>
     </article>
     <article>
       <nom>2016</nom>

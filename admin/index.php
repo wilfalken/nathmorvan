@@ -26,7 +26,7 @@ include "../ihm/affichageFooter.php";
 // Include des paramètres de configuration
 include '../donnees/config.php';
 // Include pour test
-include '../dao/save.php';
+include '../dao/saveTexte.php';
 
 // Include du controleur si une fonction a été appelée depuis Javascript
 if (!empty($_POST['fonction'])){
@@ -58,8 +58,7 @@ $_SESSION['dolto']='admin';
 <div id="contenu">
 <?php
 
-// Affichage des fenêtres modales de résultats d'upload de fichier ou d'image
-include '../ihm/affichageResultatUpLoadModale.php';
+
 
 
 //@print_r ($_SESSION['listeLiens']);
