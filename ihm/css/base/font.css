@@ -39,6 +39,11 @@ body {
     color: #63c000;
 }    
 
+#contenu textarea {
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+    color: #505050;
+}
 
 
 /****************************************************************/
@@ -48,12 +53,12 @@ body {
 /* Liens indirects */
 #menu .titres li{
     font-size: small;
-        color: #ff9600;
+    color: #ff9600;
 }
 
 #menu .titres li:hover {
     background-color: #ff9600;
-        color:white;
+    color:white;
 }
 
 

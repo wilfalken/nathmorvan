@@ -6,10 +6,20 @@
     left: 0px;
     top: 10px;
     width: 100%;
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
     height: 79px;    
 }
+#menu .outerBox  {
+          display:table;
+              width: 100px;
+              height: 50px;
+}
 
+
+#menu .innerBox {
+    display: table-cell;
+    vertical-align: middle;
+}
 
 /* Lignes qui permettent d'afficher les lignes en cas de survol */
 #menu .lignes {
@@ -24,28 +34,29 @@
     list-style: none;
 }
 
+
+
 #menu .titres li {
+
     /* Insertion espace entre les titres*/
     margin-right: 5px;
     margin-bottom: 5px;
     float: left;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: solid 1px #596275;
-
+    background-color: rgba(255, 255, 255, 0.6);
+    /*border: solid 1px #596275;*/
 }
 
+/* obligation de dupliquer les dimensions sinon l'affichage des lignes est inclu dans le titre */
 #menu .titres li, #menu .lienDirect {
     width: 100px;
     height: 50px;
 }
 
-#menu .lienDirect {
-    width: 100px;
-    height: 50px;
-}
+
 
 /* Lignes des menus déroulants */
 #menu .lignes li { 
+    display: block;
     margin-bottom: 0px;
     border: none;
     border-left: solid 1px #596275;
@@ -63,10 +74,10 @@
 }
 
 #menu img {
-    	position: fixed;
-	right: 0px;
-	top: 10px;
-        z-index: -1;
+    position: fixed;
+    left: 0px;
+    top: 10px;
+    z-index: -1;
 }
 
 /* Première ligne des menus déroulants */

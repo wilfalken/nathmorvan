@@ -4,6 +4,7 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
+      <element balise="Image">t - Copie.jpg</element>
       <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
       <element balise="Sous-titre">titre</element>
       <element balise="Carrousel"></element>

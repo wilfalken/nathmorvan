@@ -147,7 +147,7 @@ jQuery(function($){
 
 		
 		}
-		alert('i');
+
 
 	});
 

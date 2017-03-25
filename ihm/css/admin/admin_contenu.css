@@ -1,11 +1,10 @@
+#contenu textarea {
+    border: solid 1px #63c000;
+}
+
 #contenu .element:hover {
     background-color: #f2f4ee;
-    /*border-style:solid;
-    border-width: 1px;
-    border-color: #596275;*/
     padding-bottom:30px;
-    /*padding-left:20px;
-    padding-right:20px;*/
     box-shadow: inset 0px 0px 20px 10px white;
 }
 
@@ -37,6 +36,11 @@
     font-size: small;
 }
 
+#contenu .element .bouton:hover{
+    color:white;
+    background-color: #ff9600;
+}
+
 /* Ajout d'un espace entre le texarea et les boutons*/
 #contenu textarea {
     margin-bottom: 10px;
@@ -60,20 +64,9 @@
 }
 
 
-#contenu .element.modification {
-    border-style:solid;
-    border-width: 1px;
-    border-color: red;
-    border-radius: 0px;
-    padding-top:10px;
-    padding-bottom:30px;
-    padding-left:20px;
-    padding-right:20px;
-    background-color: #ffD0D0;
-}
 
 #contenu .element.modification:hover {
-    box-shadow: none;
+    background-color: #ffD0D0;
 }
 
 

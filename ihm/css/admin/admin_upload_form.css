@@ -1,4 +1,62 @@
-#contenu .element .valeurCachee {
-    display: none;
+#contenu .element .inputFile, #upload .inputFile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
+
+#upload {
+    text-align: center;
+}
+
+
+#upload .invisible {
+    visibility: hidden;
+}
+
+#upload .visible {
+    visibility: visible;
+}
+
+#upload .textInput {
+        font-size: small;
+}
+
+#repertoire .bouton_repertoire, #upload .labelInput, #upload input[type=submit] {
+
+    display: block;
+    /* Dimension bouton */
+    height : 10px;
+    width: 250px;
+    /* Espace autour bouton */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* Espace sous le texte dans le bouton */
+    padding-bottom: 7px;
+    /* Définition bordure */
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff9600;
+    /* Suppression du typage du lien */
+    text-decoration: none;
+    color: black;
+    /* Couleur de fond */
+    background-color: white;
+    text-align: center;
+    font-size: small;
+    margin: 0px auto;
+    cursor:pointer;
+}
+
+#upload input[type=submit] {
+        height : 20px;
+}
+
+#repertoire .bouton_repertoire:hover, #upload .labelInput:hover, #upload input[type=submit]:hover {
+    color:white;
+    background-color: #ff9600;
+}
+
 

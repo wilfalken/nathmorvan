@@ -1,29 +1,31 @@
 <?php
 
-//echo '<script type="text/javascript">function getfile(){document.getElementById("hiddenfile").click();document.getElementById("selectedfile").value=document.getElementById("hiddenfile").value}</script>';
 
 echo '<h1>Gestion des images<br>visibles dans le carrousel</h1>';
 echo '<br><br>';
 
 
 echo '<p style="text-align: center;">Ajouter une image dans le carrousel :</p>';
+//echo '<p style="text-align: center;" id="affichageFichierChoisi">Aucun fichier sélectionné</p>';
 // Ajout du formulaire d'upload
-$upload = '<span id=upload>';
+//$upload = '<span id=upload>';
+
 /* "action" est vide, il s'agit d'un lien.
  * Ici, on le garde vide, puisqu'on cherche à rester sur la page.
  * Les données mises dans $_FILES et $_POST sont récupérées par l'index.
  */
-$upload .= '<form action="" method="post" enctype="multipart/form-data">';
-//$upload .= '<input type="button" class="selectedfile" value="Parcourir ...">';
-$upload .= '<input type="file" name="uploadImageSlideShow" class="hiddenfile" onclick="getfile()">';
-$upload .= '<br>';
-$upload .= '<span id=texteImage><span><br>';
-$upload .= '<input type="submit" value="Charger l\'image dans le carrousel" name="submit">';
+//$upload .= '<input type="file" class="input_file" onmousedown="return false" onkeydown="return false" class="inputFile" onchange="document.getElementById("input_text_file").value = this.value" />';
+$upload = '<form id=upload action="" method="post" enctype="multipart/form-data">';
+$upload .= '<input type="file" name="uploadImageSlideShow" id="file" class="inputFile">';
+$upload .= '<label for="file" class="labelInput">Choisir une image ...</label>';
+$upload .= '<label for=" " id="affichageFichierChoisi" class="textInput">Aucune image sélectionnée</label>';
+$upload .= '<br><br>';
+$upload .= '<input type="submit" id="loadFile" value="Charger l\'image dans le carrousel" name="submit" class="invisible">';
 $upload .= '</form>';
-$upload .= '</span>';
+//$upload .= '</span>';
 echo $upload;
 
-echo '<br><br><br>';
+echo '<br><br>';
 echo '<p style="text-align: center;">Images déjà présentes dans le carrousel :</p><br>';
 // Ajout de la liste des images présentes dans le répertoire du carrousel
 $affichageListeCarrousel ='';

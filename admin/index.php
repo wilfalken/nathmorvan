@@ -26,7 +26,7 @@ include "../ihm/affichageFooter.php";
 // Include des paramètres de configuration
 include '../donnees/config.php';
 // Include pour test
-//include '../dao/save.php';
+include '../dao/save.php';
 
 // Include du controleur si une fonction a été appelée depuis Javascript
 if (!empty($_POST['fonction'])){
