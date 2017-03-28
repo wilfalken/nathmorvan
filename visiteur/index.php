@@ -48,7 +48,7 @@ $_SESSION['dolto']='visiteur';
  * il faut utiliser empty() ou isset()
  * On gère aussi le cas d'erreur quand une adresse est forcée dans la barre de navigation
  * en vérifiant que le lien utilisé est bien dans la liste désérializée.
- * La valeur par défaut est le premier article.
+ * La valeur par défaut est le premier article (fonction reset()).
  */
 if (empty($_GET['article_a_afficher']) || !(in_array($_GET['article_a_afficher'], $_SESSION['listeLiens']))){
 	 afficher_article(reset($_SESSION['articles']));

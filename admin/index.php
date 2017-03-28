@@ -77,7 +77,7 @@ $_SESSION['dolto']='admin';
 // Définition des ihm relatives à la gestion, ils sont donc autorisés en accès
 $listeArticlesGestion = array ('gestionArticles','gestionSlideShow','gestionImages','gestionFichiers');
 
-// Soit la variable est vide et on affiche le premier article ...
+// Soit la variable est vide et on affiche le premier article (fonction reset())...
 if (empty($_GET['article_a_afficher'])){
 	afficher_modifier_article(reset($_SESSION['articles']));
 }

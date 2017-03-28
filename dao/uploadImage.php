@@ -61,7 +61,7 @@ function uploadImage() {
         }
     }
     
-    echo '<script>alert("'. $message.'");</script>';
+
     unset($_FILES["uploadImage"]);
     return $message;
 }

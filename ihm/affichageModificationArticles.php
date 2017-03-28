@@ -81,11 +81,13 @@ Function afficher_modifier_article($article) {
                 } else {
                     $style = "";
                     $nbcols="100";
+                    $nblignes="10";
                     if ($element [0] == 'Sous-titre') {
                         $style = 'style="font-weight: 600; font-style: normal; font-size: 1.6em; color: #63c000;"';
                         $nbcols="50";
+                        $nblignes="1";
                     }
-                    $bloc .= '<textarea COLS="'.$nbcols.'" '.$style.'>' . utf8_encode($element [1]) . '</textarea><br>';
+                    $bloc .= '<textarea rows="'.$nblignes.'" cols="'.$nbcols.'" '.$style.'>' . utf8_encode($element [1]) . '</textarea><br>';
                 }
 
                 $bloc .= '</span>';

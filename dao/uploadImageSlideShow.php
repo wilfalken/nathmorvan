@@ -51,7 +51,7 @@ function uploadImageSlideShow() {
         }
     }
 
-    echo '<script>alert("' . $message . '");</script>';
+
     unset($_FILES["uploadImageSlideShow"]);
     return $message;
 }
