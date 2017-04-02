@@ -10,7 +10,7 @@ Function afficher_modifier_article($article) {
             $bloc = '<div class="element modification" data-numero=' . $id . '>' . $balisesArticles [$element [0]] . '</div>';
         } else {
             // Gestion des liens et fichiers qui comportent trois balises
-            if (($element [0] == 'Fichier') || ($element [0] == 'Lien')) {
+            if (($element [0] == 'Fichier') || ($element [0] == 'Lien') || ($element [0] == 'Image')) {
                 // Récupération des balises d'ouverture, centrale et de fermeture
                 $in = $balisesArticles [$element [0]] [0];
                 $mid = $balisesArticles [$element [0]] [1];
@@ -28,7 +28,7 @@ Function afficher_modifier_article($article) {
                 $in = $balisesArticles [$element [0]] [0];
                 $out = $balisesArticles [$element [0]] [1];
                 // Affichage de chaque élément
-                $bloc = $in . $element [1] . $out;
+                $bloc = $in . utf8_encode($element [1]) . $out;
             }
             /* Si ce n'est pas un Titre article (h1),
              * on met le bloc dans un span et on ajoute
@@ -37,7 +37,7 @@ Function afficher_modifier_article($article) {
              * il est modifiable par la gestion du nombre d'article.
              */
             if ($element [0] != 'Titre article') {
-                $bloc = '<div class="element" data-numero=' . $id . ' data-balise=' . $element [0] . '><span class=texteAffiche>' . utf8_encode($bloc) . '</span>';
+                $bloc = '<div class="element" data-numero=' . $id . ' data-balise=' . $element [0] . '><span class=texteAffiche>' . $bloc . '</span>';
                 // Gestion d'un espace supplémentaire pour les liens
                 if ($element [0] == 'Lien') {
                     $bloc .= '<br><br>';

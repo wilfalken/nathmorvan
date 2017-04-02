@@ -5,7 +5,7 @@ Function afficher_article($article) {
     // Affichage de l'article mis en forme selon ses balises.
     foreach ( $article as $element ) {
         // Gestion des liens et fichiers qui comportent trois balises
-        if (($element [0] == 'Fichier') || ($element [0] == 'Lien')) {
+        if (($element [0] == 'Fichier') || ($element [0] == 'Lien') || ($element [0] == 'Image')) {
             // Récupération des balises d'ouverture, centrale et de fermeture
             $in = $balisesArticles [$element [0]] [0];
             $mid = $balisesArticles [$element [0]] [1];
