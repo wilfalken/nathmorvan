@@ -34,7 +34,7 @@ $repertoire = "../donnees/images/carrousel";
     if ($dossier = opendir ($repertoire)) {
         while ( false !== ($file = readdir ( $dossier )) ) {
             $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
-            if ($fileExtension != "") {
+            if ($fileExtension != "" && (strpos($file,"."))) {
                 $affichageListeCarrousel .= '<a href="'.$repertoire.'/'.$file.'" target="_blank"><img src="'.$repertoire.'/'.$file.'"></a><br>';
                 $affichageListeCarrousel .= '<span class=texte>'.$file.'<br>(cliquez pour agrandir l\'image)</span>';
                 $affichageListeCarrousel .= '<a class=bouton_repertoire name=supprimer_image_carrousel data-nomFichier="'.$file.'" data-nomRepertoire="'.$repertoire.'" href="">Supprimer cette image du carrousel</a><br><br>';

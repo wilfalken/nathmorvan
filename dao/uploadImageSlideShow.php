@@ -24,11 +24,14 @@ function uploadImageSlideShow() {
             $uploadOk = 0;
         }
     }
-    // Check if file already exists
+//     Check if file already exists
     if (file_exists($target_file)) {
         $message .= "Une image portant le même nom est déjà présente. ";
         $uploadOk = 0;
     }
+
+
+
     // Check file size
     if ($_FILES["uploadImageSlideShow"]["size"] > 5000000) {
         $message .= "L'image est trop lourde. ";
@@ -46,6 +49,7 @@ function uploadImageSlideShow() {
     } else {
         if (move_uploaded_file($_FILES["uploadImageSlideShow"]["tmp_name"], $target_file)) {
             $message .= "Votre fichier " . basename($_FILES["uploadImageSlideShow"]["name"]) . " a bien été chargé. ";
+            include '../dao/uploadRenommerFichier.php';
         } else {
             $message .= "Il y a eu une erreur lors du chargement. ";
         }

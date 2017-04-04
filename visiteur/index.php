@@ -70,21 +70,7 @@ le navigateur affiche les éléments en les empilant, le premier déclaré sera 
 les autres seront ajoutés dessus, c'est pourquoi il faut commencer par déclarer le contenu
 -->
 
-<!--  le header est divisé en trois :
-- header pour la couleur de fond
-- image-header pour l'image
-- menu pour le menu
- -->
 
-<!--  couleur sous Header -->
-<!--
-<div id="header"></div>
--->
-
-<!--  Image sous le menu -->
-<!--
-<div id="image_header"><img src="../ihm/img/header.png"></div>
--->
 
 <!--  menu du Header -->
 <div><?php afficher_barre_menu($_SESSION['barre_menu']);?></div>

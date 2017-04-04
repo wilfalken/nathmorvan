@@ -28,6 +28,7 @@ include '../donnees/config.php';
 // Include pour test
 include '../dao/saveTexte.php';
 
+
 // Include du controleur si une fonction a été appelée depuis Javascript
 if (!empty($_POST['fonction'])){
     include '../controleur/controleur.php';
@@ -105,18 +106,7 @@ les autres seront ajoutés dessus, c'est pourquoi il faut commencer par déclare
 -->
 
 
-<!--  couleur sous Header -->
-<!--
-<div id="header"></div>
--->
 
-
-<!--
-Il ne faut pas mettre l'image sous le menu
-cela bloque la sélection des éléments en mode admin sur toute la partie
-de la page où se trouve l'image
--->
-<!--  <div id="image_header"><img src="../ihm/img/header.png"></div> -->
 
 
 <!--  menu du Header -->

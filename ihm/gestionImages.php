@@ -22,7 +22,7 @@ $repertoire = "../donnees/images";
     if ($dossier = opendir ($repertoire)) {
         while ( false !== ($file = readdir ( $dossier )) ) {
             $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
-            if ($fileExtension != "" && $file != '_image_defaut.jpg' && $file !='carrousel') {
+            if ($fileExtension != "" && $file != '_image_defaut.jpg' && (strpos($file,"."))) {
                 $affichageListeImages .= '<a href="'.$repertoire.'/'.$file.'" target="_blank"><img src="'.$repertoire.'/'.$file.'"></a>';
                 $affichageListeImages .= '<span class=texte>'.$file.'<br>(cliquez pour agrandir l\image)</span>';
                 if (!array_key_exists($file, $listeImagesStockees)){

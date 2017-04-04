@@ -1,20 +1,41 @@
+#titre {
+    position: fixed;
+    left: 20px;
+    top: 0px;
+    z-index: 5;
+    /*-ms-transform: rotate(270deg);*/ /* IE 9 */
+    /*-webkit-transform: rotate(270deg);*/ /* Chrome, Safari, Opera */
+    /*transform: rotate(270deg);*/
+}
+
+
 #menu {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
     border-top: 1px solid #7e869a;
     border-bottom: 1px solid #7e869a;
     position: fixed;
     left: 0px;
-    top: 10px;
+    top: 25px;
     width: 100%;
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
-    height: 79px;    
+    height: 50px;    
 }
 #menu .outerBox  {
-          display:table;
-              width: 100px;
-              height: 50px;
+    display:table;
+    width: 100px;
+    height: 50px;
 }
 
+#menu ul img{
+    position: fixed;
+    top: 25px;
+}
+
+#menu .titres {
+    position:absolute;
+    left:-30px;
+    top: -16px;
+}
 
 #menu .innerBox {
     display: table-cell;
@@ -37,13 +58,11 @@
 
 
 #menu .titres li {
-
     /* Insertion espace entre les titres*/
     margin-right: 5px;
     margin-bottom: 5px;
     float: left;
-    background-color: rgba(255, 255, 255, 0.6);
-    /*border: solid 1px #596275;*/
+    /*background-color: rgba(255, 255, 255, 0.6);*/
 }
 
 /* obligation de dupliquer les dimensions sinon l'affichage des lignes est inclu dans le titre */

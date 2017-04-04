@@ -54,6 +54,7 @@ function uploadFichier() {
     } else {
         if (move_uploaded_file($_FILES["uploadFichier"]["tmp_name"], $target_file)) {
             $message .= "Votre fichier " . basename($_FILES["uploadFichier"]["name"]) . " a bien été chargé. ";
+            include '../dao/uploadRenommerFichier.php';
             // Mise à jour de la liste des articles
             $_SESSION['articles'][$nomArticle][$idElement][1] = basename($_FILES["uploadFichier"]["name"]);
             // Et sauvegarde dans le XML (fonction définie dans articles_dao_write.php

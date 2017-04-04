@@ -1,9 +1,11 @@
 <?php
 Function afficher_barre_menu($barre_menu) {
 
-//echo '<div class="image_header"><img src="../ihm/img/header.png"></div>';
+
 // Ouverture de la balise de liste
-$barre_menu_affichee = '<div  id="menu"><ul class="titres"><img src="../ihm/img/header.png">';
+$barre_menu_affichee = '<div id=titre><span style="color:#ff9600;">E</span>cole <span style="color:#63c000;">F</span>rançoise <span style="color:#63c000;">D</span>olto'
+        . '</div><div  id="menu">'
+        . '<ul class="titres"><img src="../ihm/img/header.png">';
 foreach ($barre_menu as $menu){
 	// S'il s'agit d'un lien direct, on l'ajoute
 	if (count($menu[1])==1){

@@ -35,6 +35,9 @@ function uploadImage() {
         $message .= "Une image portant le même nom est déjà présente. Consultez l'article de gestion des images. ";
         $uploadOk = 0;
     }
+
+
+
     // Check file size
     if ($_FILES["uploadImage"]["size"] > 5000000) {
         $message .= "L'image est trop lourde. ";
@@ -52,6 +55,7 @@ function uploadImage() {
     } else {
         if (move_uploaded_file($_FILES["uploadImage"]["tmp_name"], $target_file)) {
             $message .= "Votre fichier " . basename($_FILES["uploadImage"]["name"]) . " a bien été chargé. ";
+            include '../dao/uploadRenommerFichier.php';
             // Mise à jour de la liste des articles
             $_SESSION['articles'][$nomArticle][$idElement][1] = basename($_FILES["uploadImage"]["name"]);
             // Et sauvegarde dans le XML (fonction définie dans articles_dao_write.php
@@ -60,7 +64,7 @@ function uploadImage() {
             $message .= "Il y a eu une erreur lors du chargement. ";
         }
     }
-    
+
 
     unset($_FILES["uploadImage"]);
     return $message;
