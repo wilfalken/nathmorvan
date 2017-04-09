@@ -22,3 +22,13 @@ $nombreMenusMaximum = 6;
  */
 $nombreArticlesMaximum = 6;
 
+/* Il s'agit de la taile des images du carrousel
+ * une fois réduites et recadrées (16/9)
+ */
+$dimensionsImagesReduitesSlideshow = [640,360];
+
+/* Il s'agit de la taile maximale des images du contenu
+ * une fois réduites.
+ * En cas de modification, il faut également modifier le slideshow.css.
+ */
+$dimensionsImagesReduites = [640,640];

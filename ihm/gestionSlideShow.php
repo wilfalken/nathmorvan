@@ -14,13 +14,12 @@ echo '<p style="text-align: center;">Ajouter une image dans le carrousel :</p>';
  * Ici, on le garde vide, puisqu'on cherche à rester sur la page.
  * Les données mises dans $_FILES et $_POST sont récupérées par l'index.
  */
-//$upload .= '<input type="file" class="input_file" onmousedown="return false" onkeydown="return false" class="inputFile" onchange="document.getElementById("input_text_file").value = this.value" />';
-$upload = '<form id=upload action="" method="post" enctype="multipart/form-data">';
+$upload = '<form class="upload" action="" method="post" enctype="multipart/form-data">';
 $upload .= '<input type="file" name="uploadImageSlideShow" id="file" class="inputFile">';
 $upload .= '<label for="file" class="labelInput">Choisir une image ...</label>';
 $upload .= '<label for=" " id="affichageFichierChoisi" class="textInput">Aucune image sélectionnée</label>';
 $upload .= '<br><br>';
-$upload .= '<input type="submit" id="loadFile" value="Charger l\'image dans le carrousel" name="submit" class="invisible">';
+$upload .= '<input type="submit" id="modifierFichierChoisi" value="Charger l\'image dans le carrousel" name="submit"  disabled>';
 $upload .= '</form>';
 //$upload .= '</span>';
 echo $upload;
@@ -35,7 +34,7 @@ $repertoire = "../donnees/images/carrousel";
         while ( false !== ($file = readdir ( $dossier )) ) {
             $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
             if ($fileExtension != "" && (strpos($file,"."))) {
-                $affichageListeCarrousel .= '<a href="'.$repertoire.'/'.$file.'" target="_blank"><img src="'.$repertoire.'/'.$file.'"></a><br>';
+                $affichageListeCarrousel .= '<a href="'.$repertoire.'/'.$file.'" target="_blank"><img src="'.$repertoire.'/vignettes/'.$file.'"></a><br>';
                 $affichageListeCarrousel .= '<span class=texte>'.$file.'<br>(cliquez pour agrandir l\'image)</span>';
                 $affichageListeCarrousel .= '<a class=bouton_repertoire name=supprimer_image_carrousel data-nomFichier="'.$file.'" data-nomRepertoire="'.$repertoire.'" href="">Supprimer cette image du carrousel</a><br><br>';
                 $affichageListeCarrousel .='<br><br><br>';

@@ -1,4 +1,4 @@
-#contenu .element .inputFile, #upload .inputFile {
+#contenu .element .inputFile, .upload .inputFile {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -7,24 +7,16 @@
   z-index: -1;
 }
 
-#upload {
+.upload {
     text-align: center;
 }
 
 
-#upload .invisible {
-    visibility: hidden;
-}
-
-#upload .visible {
-    visibility: visible;
-}
-
-#upload .textInput {
+.upload .textInput {
         font-size: small;
 }
 
-#repertoire .bouton_repertoire, #upload .labelInput, #upload input[type=submit] {
+#repertoire .bouton_repertoire, .upload .labelInput, .upload input[type=submit] {
 
     display: block;
     /* Dimension bouton */
@@ -50,11 +42,11 @@
     cursor:pointer;
 }
 
-#upload input[type=submit] {
+.upload input[type=submit] {
         height : 20px;
 }
 
-#repertoire .bouton_repertoire:hover, #upload .labelInput:hover, #upload input[type=submit]:hover {
+#repertoire .bouton_repertoire:hover, .upload .labelInput:hover, .upload input[type=submit]:hover {
     color:white;
     background-color: #ff9600;
 }

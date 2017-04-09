@@ -71,22 +71,19 @@
   <menu nom_menu="Conseils d'école">
     <article>
       <nom>2016 - 2017</nom>
-      <element balise="Fichier">conseil3_[nm8o].pdf</element>
-      <element balise="Fichier">Php2017_[nm8o].pdf</element>
-      <element balise="Image">_image_defaut.jpg</element>
+      <element balise="Fichier">conseil3.pdf</element>
     </article>
     <article>
       <nom>2015 - 2016</nom>
-      <element balise="Fichier">Php2017_[c9vq].pdf</element>
-      <element balise="Fichier">Symfony2017_[nm8o].pdf</element>
+      <element balise="Fichier">conseil2.pdf</element>
     </article>
     <article>
       <nom>2014 - 2015</nom>
-      <element balise="Fichier">TP_GIT_[nm8o].pdf</element>
+      <element balise="Fichier">TP_GIT.pdf</element>
     </article>
     <article>
       <nom>Archives</nom>
-      <element balise="Fichier">conseil4_[nm8o].pdf</element>
+      <element balise="Fichier">conseil4.pdf</element>
     </article>
   </menu>
   <menu nom_menu="Contact">

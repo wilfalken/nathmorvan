@@ -25,20 +25,17 @@ function uploadImageSlideShow() {
         }
     }
 //     Check if file already exists
-    if (file_exists($target_file)) {
-        $message .= "Une image portant le même nom est déjà présente. ";
-        $uploadOk = 0;
-    }
-
-
-
+//    if (file_exists($target_file)) {
+//        $message .= "Une image portant le même nom est déjà présente. ";
+//        $uploadOk = 0;
+//    }
     // Check file size
-    if ($_FILES["uploadImageSlideShow"]["size"] > 5000000) {
+    if ($_FILES["uploadImageSlideShow"]["size"] > 5242880) {
         $message .= "L'image est trop lourde. ";
         $uploadOk = 0;
     }
     // Allow certain file formats
-    if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif") {
+    if (strtolower($fileType) != "jpg" && strtolower($fileType) != "png" && strtolower($fileType) != "jpeg" && strtolower($fileType) != "gif") {
         $message .= "Seules les images de types JPG, JPEG, PNG & GIF sont autorisées. ";
         $uploadOk = 0;
     }
@@ -49,7 +46,68 @@ function uploadImageSlideShow() {
     } else {
         if (move_uploaded_file($_FILES["uploadImageSlideShow"]["tmp_name"], $target_file)) {
             $message .= "Votre fichier " . basename($_FILES["uploadImageSlideShow"]["name"]) . " a bien été chargé. ";
+
+            // Renommage du fichier avec un ID
             include '../dao/uploadRenommerFichier.php';
+            $nouveauNom = renommerFichier($_FILES["uploadImageSlideShow"]["name"], $target_dir);
+            rename($target_file, $target_dir . $nouveauNom);
+            // Copie du fichier dans le répertoire des vignettes
+            copy($target_dir . $nouveauNom, $target_dir . "vignettes/" . $nouveauNom);
+            // Mise à la taille définie dans donnees/config.php
+            include '../donnees/config.php';
+
+
+            // Création des deux objets de type image
+            switch (strtolower($fileType)) {
+                case "jpg":
+                case "jpeg":
+                    $imageOrigine = imagecreatefromjpeg($target_dir . "vignettes/" . $nouveauNom);
+                    break;
+                case "png":
+                    $imageOrigine = imagecreatefrompng($target_dir . "vignettes/" . $nouveauNom);
+                    break;
+                case "gif":
+                    $imageOrigine = imagecreatefromgif($target_dir . "vignettes/" . $nouveauNom);
+                    break;
+            }
+            $vignette = imagecreatetruecolor($dimensionsImagesReduitesSlideshow[0], $dimensionsImagesReduitesSlideshow[1]) or die("Erreur");
+
+            // Récupération des dimensions de l'image
+            $dimensionsActuellesImage = getimagesize($target_dir . "vignettes/" . $nouveauNom);
+
+            // Calcul de la zone de pixels qui va être utilisée dans la vignette
+            if ($dimensionsActuellesImage[0] / $dimensionsImagesReduitesSlideshow[0] > $dimensionsActuellesImage[1] / $dimensionsImagesReduitesSlideshow[1]) {
+                $nouvelleLargeur = $dimensionsImagesReduitesSlideshow[0] / $dimensionsImagesReduitesSlideshow[1] * $dimensionsActuellesImage[1];
+                $nouvelleHauteur = $dimensionsActuellesImage[1];
+            } else {
+                $nouvelleLargeur = $dimensionsActuellesImage[0];
+                $nouvelleHauteur = $dimensionsImagesReduitesSlideshow[1] / $dimensionsImagesReduitesSlideshow[0] * $dimensionsActuellesImage[0];
+            }
+
+            // Calcul de la position du coin supérieur gauche de la zone de pixels choisie
+            $decalageLargeur = -($nouvelleLargeur - $dimensionsActuellesImage[0]) / 2;
+            $decalageHauteur = -($nouvelleHauteur - $dimensionsActuellesImage[1]) / 2;
+
+            // Copie de la zone de pixels choisie dans l'image d'origine vers la vignette
+            imagecopyresampled($vignette, $imageOrigine, 0, 0, $decalageLargeur, $decalageHauteur, $dimensionsImagesReduitesSlideshow[0], $dimensionsImagesReduitesSlideshow[1], $nouvelleLargeur, $nouvelleHauteur);
+
+            // Sauvegarde de la vignette à un taux de compression élévé (=nombre faible)
+                        switch (strtolower($fileType)) {
+                case "jpg":
+                case "jpeg":
+                    imagejpeg($vignette, $target_dir . "vignettes/" . $nouveauNom, 50);
+                    break;
+                case "png":
+                    imagepng($vignette, $target_dir . "vignettes/" . $nouveauNom, 5);
+                    break;
+                case "gif":
+                    imagegif($vignette, $target_dir . "vignettes/" . $nouveauNom);
+                    break;
+            }
+            
+            // Suppression des deux objets
+            imagedestroy($imageOrigine);
+            imagedestroy($vignette);
         } else {
             $message .= "Il y a eu une erreur lors du chargement. ";
         }

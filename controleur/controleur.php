@@ -10,7 +10,7 @@ switch ($_POST['fonction']) {
         include '../controleur/modificationArticles.php';
         break;
     case 'supprimerDuRepertoire':
-        include '../controleur/supprimerDuRepertoire.php';
+        include '../dao/supprimerDuRepertoire.php';
         break;
 
 }

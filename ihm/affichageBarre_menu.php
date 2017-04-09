@@ -35,7 +35,7 @@ if ($_SESSION['dolto']=='admin'){
     $barre_menu_affichee .='<li><a href="index.php?article_a_afficher=gestionFichiers">Gestion des fichiers</a></li>';
     // Guides en format PDF
     $barre_menu_affichee .='<li><a href="../donnees/guides/guide_administrateur.pdf" target="_blank">Guide de l\'administrateur</a></li>';
-    $barre_menu_affichee .='<li><a href="../donnees/guides/guide_developpeur.pdf" target="_blank">Guide du développeur</a></li>';
+    //$barre_menu_affichee .='<li><a href="../donnees/guides/guide_developpeur.pdf" target="_blank">Guide du développeur</a></li>';
     $barre_menu_affichee .= '</ul></li>';
 }
 

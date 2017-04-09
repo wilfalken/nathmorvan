@@ -1,6 +1,7 @@
 <?php
 
 function renommerFichier($nomFichier, $repertoire) {
+    //saveTexte($nomFichier);
     // Récupération de la liste des fichiers présents
     if ($dossier = opendir($repertoire)) {
         while (false !== ($file = readdir($dossier))) {
@@ -22,8 +23,8 @@ function renommerFichier($nomFichier, $repertoire) {
         for ($i = 0; $i < 4; $i++) {
             $code .= $alphaNum[rand(0, count($alphaNum) - 1)];
         }
-        $nouveauNomFichier = explode(".", $nomFichier)[0] . "##" . $code . "." . explode(".", $nomFichier)[1];
-        $nombreEssais ++;
+        $nouveauNomFichier = explode(".", $nomFichier)[0] . "_[" . $code . "]." . explode(".", $nomFichier)[1];
+        //$nombreEssais ++;
     } while (in_array($nouveauNomFichier, $listeFichiersExistant));
     //echo $nombreEssais . "<br>";
     return $nouveauNomFichier;

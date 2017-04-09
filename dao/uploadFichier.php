@@ -33,17 +33,17 @@ function uploadFichier() {
 
 
     // Check if file already exists
-    if (file_exists($target_file)) {
-        $message .= "Un fichier portant le même nom est déjà présent. Consultez l'article de gestion des fichiers. ";
-        $uploadOk = 0;
-    }
+//    if (file_exists($target_file)) {
+//        $message .= "Un fichier portant le même nom est déjà présent. Consultez l'article de gestion des fichiers. ";
+//        $uploadOk = 0;
+//    }
     // Check file size
-    if ($_FILES["uploadFichier"]["size"] > 5000000) {
+    if ($_FILES["uploadFichier"]["size"] > 5242880) {
         $message .= "Le fichier est trop lourd. ";
         $uploadOk = 0;
     }
     // Allow certain file formats
-    if ($fileType != "pdf" && $fileType != "odt" && $fileType != "odg") {
+    if (strtolower ($fileType) != "pdf" && strtolower ($fileType) != "odt" && strtolower ($fileType) != "odg") {
         $message .= "Seuls les fichiers de types PDF, ODT & ODG sont autorisés. ";
         $uploadOk = 0;
     }
@@ -54,9 +54,14 @@ function uploadFichier() {
     } else {
         if (move_uploaded_file($_FILES["uploadFichier"]["tmp_name"], $target_file)) {
             $message .= "Votre fichier " . basename($_FILES["uploadFichier"]["name"]) . " a bien été chargé. ";
+            
+            // Renommage du fichier avec un ID
             include '../dao/uploadRenommerFichier.php';
+           $nouveauNom = renommerFichier($_FILES["uploadFichier"]["name"], $target_dir);
+            rename($target_file, $target_dir . $nouveauNom);
+            
             // Mise à jour de la liste des articles
-            $_SESSION['articles'][$nomArticle][$idElement][1] = basename($_FILES["uploadFichier"]["name"]);
+            $_SESSION['articles'][$nomArticle][$idElement][1] = $nouveauNom;
             // Et sauvegarde dans le XML (fonction définie dans articles_dao_write.php
             saveXml($_SESSION['articles'], $_SESSION['barre_menu']);
         } else {

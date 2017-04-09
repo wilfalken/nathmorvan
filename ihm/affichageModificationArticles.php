@@ -11,12 +11,18 @@ Function afficher_modifier_article($article) {
         } else {
             // Gestion des liens et fichiers qui comportent trois balises
             if (($element [0] == 'Fichier') || ($element [0] == 'Lien') || ($element [0] == 'Image')) {
+                // Si c'est un fichier, on affiche le nom sans l'identifiant et le type de fichier (extension)
+                if ($element [0] == 'Fichier') {
+                    $texteVisible = explode("_[", $element[1])[0] . " - Fichier de type " . explode("].", $element[1])[1];
+                } else {
+                    $texteVisible = $element[1];
+                }
                 // Récupération des balises d'ouverture, centrale et de fermeture
                 $in = $balisesArticles [$element [0]] [0];
                 $mid = $balisesArticles [$element [0]] [1];
                 $out = $balisesArticles [$element [0]] [2];
                 // Affichage de chaque élément
-                $bloc = $in . $element[1] . $mid . $element[1] . $out . '<br>';
+                $bloc = $in . $element[1] . $mid . $texteVisible . $out . '<br>';
             }
             // Gestion du carrousel qui est un ensemble de balise
             else if ($element [0] == 'Carrousel') {
@@ -50,44 +56,44 @@ Function afficher_modifier_article($article) {
                  */
                 $bloc .= '<span class=texteModifiable>';
                 if ($element [0] == 'Image') {
-                    $bloc .= '<p style="font-size: small;text-align:center;color:black;">Image actuelle : '.$article[$id][1].'</p>';
-                    $bloc .= '<form  id=upload action="" method="post" enctype="multipart/form-data">';
+                    $bloc .= '<p style="font-size: small;text-align:center;color:black;">Image actuelle : ' . $article[$id][1] . '</p>';
+                    $bloc .= '<form  class="upload" action="" method="post" enctype="multipart/form-data">';
                     $bloc .= '<span class="textInput">Choisisez l\'image à charger : </span>';
-                    $bloc .= ' <input type="file" name="uploadImage" id="file" class="inputFile">';
-                    $bloc .= '<label for="file" class="labelInput">Choisir une image ...</label>';
-                    $bloc .= '<label for=" " id="affichageFichierChoisi" class="textInput">Aucune image sélectionnée</label>';
+                    $bloc .= '<input type="file" id="file' . $id . '" name="uploadImage"  class="inputFile">';
+                    $bloc .= '<label for="file' . $id . '" class="labelInput">Choisir une image ...</label>';
+                    $bloc .= '<label for=" " id="affichageFichierChoisi' . $id . '" class="textInput">Aucune image sélectionnée</label>';
                     // On cache dans le formulaire l'id de l'élément modifié
-                    $bloc .= ' <input type="hidden" name="idImage" value="' . $id . '">';
+                    $bloc .= '<input type="hidden" name="idImage" value="' . $id . '">';
                     // Ainsi que le nom de l'article
-                    $bloc .= ' <input type="hidden" name="nomArticle" value="' . $article[0][1] . '">';
-                    $bloc .= '<input type="submit" value="Modifier l\'image" name="submit" class="invisible">';
+                    $bloc .= '<input type="hidden" name="nomArticle" value="' . $article[0][1] . '">';
+                    $bloc .= '<input type="submit" id="modifierFichierChoisi' . $id . '" value="Modifier l\'image" name="submit" disabled>';
                     $bloc .= '</form>';
-                    $bloc .= '<a class="bouton center" name=bouton_annuler_modification href="">Annuler</a><br>';                   
+                    $bloc .= '<a class="bouton center" name=bouton_annuler_modification href="">Annuler</a><br>';
                 } else if ($element [0] == 'Fichier') {
                     $bloc .= '<br>';
-                    $bloc .= '<p style="font-size: small;text-align:center;color:black;">Fichier actuel : '.$article[$id][1].'</p>';
-                    $bloc .= '<form  id=upload action="" method="post" enctype="multipart/form-data">';
+                    $bloc .= '<p style="font-size: small;text-align:center;color:black;">Fichier actuel : ' . $article[$id][1] . '</p>';
+                    $bloc .= '<form  class="upload" action="" method="post" enctype="multipart/form-data">';
                     $bloc .= '<span class="textInput">Choisisez le fichier à charger : </span>';
-                    $bloc .= ' <input type="file" name="uploadFichier" id="file" class="inputFile">';
-                    $bloc .= '<label for=" " id="affichageFichierChoisi" class="textInput">Aucun fichier sélectionné</label>';
-                    $bloc .= '<label for="file" class="labelInput">Choisir un fichier ...</label>';
+                    $bloc .= '<input type="file" id="file' . $id . '" name="uploadFichier" class="inputFile">';
+                    $bloc .= '<label for=" " id="affichageFichierChoisi' . $id . '" class="textInput">Aucun fichier sélectionné</label>';
+                    $bloc .= '<label for="file' . $id . '" class="labelInput">Choisir un fichier ...</label>';
                     // On cache dans le formulaire l'id de l'élément modifié
-                    $bloc .= ' <input type="hidden" name="idFichier" value="' . $id . '">';
+                    $bloc .= '<input type="hidden" name="idFichier" value="' . $id . '">';
                     // Ainsi que le nom de l'article
-                    $bloc .= ' <input type="hidden" name="nomArticle" value="' . $article[0][1] . '">';
-                    $bloc .= '<input type="submit" value="Modifier le fichier" name="submit" class="invisible">';
+                    $bloc .= '<input type="hidden" name="nomArticle" value="' . $article[0][1] . '">';
+                    $bloc .= '<input type="submit" id="modifierFichierChoisi' . $id . '" value="Modifier le fichier" name="submit" disabled>';
                     $bloc .= '</form>';
                     $bloc .= '<a class="bouton center" name=bouton_annuler_modification href="">Annuler</a><br>';
                 } else {
                     $style = "";
-                    $nbcols="100";
-                    $nblignes="10";
+                    $nbcols = "100";
+                    $nblignes = "10";
                     if ($element [0] == 'Sous-titre') {
                         $style = 'style="font-weight: 600; font-style: normal; font-size: 1.6em; color: #63c000;"';
-                        $nbcols="50";
-                        $nblignes="1";
+                        $nbcols = "50";
+                        $nblignes = "1";
                     }
-                    $bloc .= '<textarea rows="'.$nblignes.'" cols="'.$nbcols.'" '.$style.'>' . utf8_encode($element [1]) . '</textarea><br>';
+                    $bloc .= '<textarea rows="' . $nblignes . '" cols="' . $nbcols . '" ' . $style . '>' . utf8_encode($element [1]) . '</textarea><br>';
                 }
 
                 $bloc .= '</span>';

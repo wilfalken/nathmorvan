@@ -17,18 +17,18 @@ $balisesArticles = array(
     ),
     'Image' => array(
         '<a target="_blank" href="../donnees/images/',
-        '"><img src="../donnees/images/',
+        '"><img src="../donnees/images/vignettes/',
         '"></a>'
     ),
     'Lien' => array(
-        '<a href="',
+        '<br><a href="',
         '">',
-        '</a>'
+        '</a><br>'
     ),
     'Fichier' => array(
-        '<a target="_blank" href="../donnees/fichiers/',
+        '<br><a target="_blank" href="../donnees/fichiers/',
         '">',
-        '</a>'
+        '</a><br>'
     ),
     'temp' => '<span><br><select name=type>'
     . '<option>Sous-titre</option>'
@@ -49,9 +49,9 @@ function getCarrousel() {
     $carrouselDirectory = "../donnees/images/carrousel";
     if ($dossier = opendir($carrouselDirectory)) {
         while (false !== ($file = readdir($dossier))) {
-            $fileExtension = explode(".", $file)[count(explode(".", $file)) - 1];
-            if ($fileExtension != "") {
-                $carrousel .= '<li><a target="_blank" href="../donnees/images/carrousel/' . $file . '"><img src="../donnees/images/carrousel/' . $file . '"></a></li>';
+            $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
+            if ($fileExtension != "" && (strpos($file,"."))) {
+                $carrousel .= '<li><a target="_blank" href="../donnees/images/carrousel/' . $file . '"><img src="../donnees/images/carrousel/vignettes/' . $file . '"></a></li>';
             }
         }
         closedir($dossier);
