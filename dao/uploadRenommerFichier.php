@@ -1,13 +1,20 @@
 <?php
 
 function renommerFichier($nomFichier, $repertoire) {
-    //saveTexte($nomFichier);
+    // Suppression des points dans les noms de fichiers
+    $extension = explode(".", $nomFichier)[count(explode(".", $nomFichier)) - 1];
+    $longueurExtension = strlen($extension);
+    $nomSansPoint = substr($nomFichier, 0, strlen($nomFichier) - $longueurExtension);
+    $nomFichier = str_replace(".", "", $nomSansPoint) . "." . strtolower($extension);
+
+
     // Récupération de la liste des fichiers présents
+    $listeFichiersExistant[] = "";
     if ($dossier = opendir($repertoire)) {
         while (false !== ($file = readdir($dossier))) {
             $fileExtension = explode(".", $file)[count(explode(".", $file)) - 1];
             // Permet de supprimer les répertoires et "." et ".."
-            if ($fileExtension != "" && (strpos($file,"."))) {
+            if ($fileExtension != "" && (strpos($file, "."))) {
                 $listeFichiersExistant[] = $file;
                 //echo $file."<br>";
             }
