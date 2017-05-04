@@ -4,7 +4,7 @@
 <title>Ecole maternelle Dolto</title>
 <!--  Renvoi vers la page index visiteur -->
 <meta http-equiv="Refresh" content="0;url=visiteur/index.php">
-<!--  Gestion de l'icône -->
+<!--  Gestion de l'icÃ´ne -->
 <?php include 'ihm/icon/icon.php';?>
 </head>
 <body>
