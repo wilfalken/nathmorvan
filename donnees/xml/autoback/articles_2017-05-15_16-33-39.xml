@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
+<barre_menu>
+  <menu nom_menu="menu">
+    <article>
+      <nom>menu</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Conseils d'école">
+    <article>
+      <nom>titre</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>2014</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>2015</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+    <article>
+      <nom>2015</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+  </menu>
+  <menu nom_menu="Conseils d'école">
+    <article>
+      <nom>2014</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>2015bis</nom>
+      <element balise="Paragraphe">2015 bis</element>
+    </article>
+  </menu>
+  <menu nom_menu="Inscriptions">
+    <article>
+      <nom>Inscriptions</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Contact">
+    <article>
+      <nom>Contact</nom>
+      <element balise="Paragraphe">Paragraphe en cours de modificationrt</element>
+      <element balise="Lien">http://www.google.fr</element>
+    </article>
+  </menu>
+</barre_menu>

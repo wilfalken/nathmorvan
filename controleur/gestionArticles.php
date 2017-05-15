@@ -95,12 +95,21 @@ switch ($actionBouton) {
                 $menuTemp [] = $element;
             }
         }
+        if (count($menuTemp)==1){
+            $ancienNom = $menuTemp [0];
+            $nouveauNom = $_SESSION['barre_menu'][$idMenu][0];
+            $menuTemp [0] = $_SESSION['barre_menu'][$idMenu][0];
+        }
         $_SESSION['barre_menu'][$idMenu][1] = $menuTemp;
 
         // Suppression de l'article de la liste des liens
         foreach ($listeArticles as $id => $value) {
             if ($value == $nomArticle) {
                 unset($_SESSION['listeLiens'][$id]);
+            }
+            if ($value == $ancienNom) {
+                unset($_SESSION['listeLiens'][$id]);
+                $_SESSION['listeLiens'][] = $nouveauNom;
             }
         }
 
@@ -174,7 +183,7 @@ switch ($actionBouton) {
             unset($articleSuivTemp);
         }
         /* Dans le cas où l'article est le dernier du menu,
-         * on le déplace dans le menu précédent,
+         * on le déplace dans le menu suivant,
          * si le menu n'est pas le dernier.
          */ else {
             if ($idMenu < (count($_SESSION['barre_menu']) - 1)) {
@@ -186,7 +195,7 @@ switch ($actionBouton) {
                     $menuTemp[] = $_SESSION['barre_menu'][$idMenu + 1][1][$i];
                 }
                 $_SESSION['barre_menu'][$idMenu + 1][1] = $menuTemp;
-                unset($articleTemp);
+                unset($menuTemp);
             }
         }
         break;

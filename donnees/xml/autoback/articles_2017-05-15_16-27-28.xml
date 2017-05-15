@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
 <barre_menu>
-  <menu nom_menu="Accueil">
+  <menu nom_menu="Accueillll">
     <article>
-      <nom>Accueil</nom>
+      <nom>Accueillll</nom>
       <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
       <element balise="Sous-titre">titre</element>
       <element balise="Paragraphe">iopuoireujrortio</element>
-      <element balise="Image">_image_defaut.jpg</element>
+      <element balise="Image">IMG_2373_[32c4].jpg</element>
       <element balise="Sous-titre">Carrousel</element>
       <element balise="Paragraphe">Eodem tempore etiam Hymetii praeclarae indolis viri negotium est actitatum, cuius hunc novimus esse textum. cum Africam pro consule regeret Carthaginiensibus victus inopia iam lassatis, ex horreis Romano populo destinatis frumentum dedit, pauloque postea cum provenisset segetum copia, integre sine ulla restituit mora.</element>
       <element balise="Paragraphe">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiae oppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.</element>
@@ -20,7 +20,7 @@
       <element balise="Paragraphe">Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos.</element>
     </article>
   </menu>
-  <menu nom_menu="Présentation de l'école">
+  <menu nom_menu="Présentation de l'écoleééé">
     <article>
       <nom>Classe passerelle</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
@@ -45,6 +45,14 @@
       <nom>TAP</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
+    <article>
+      <nom>Garderie</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Projet école</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
   </menu>
   <menu nom_menu="Horaires et emplois du temps">
     <article>
@@ -60,11 +68,6 @@
   </menu>
   <menu nom_menu="Conseils d'école">
     <article>
-      <nom>Conseils d'école</nom>
-    </article>
-  </menu>
-  <menu nom_menu="Contact">
-    <article>
       <nom>2015</nom>
       <element balise="Fichier">conseil.pdf</element>
     </article>
@@ -73,8 +76,19 @@
       <element balise="Fichier">conseil.pdf</element>
     </article>
     <article>
+      <nom>2017</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+    <article>
+      <nom>Archives</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+  </menu>
+  <menu nom_menu="Contact">
+    <article>
       <nom>Contact</nom>
-      <element balise="Lien">http://www.google.com</element>
+      <element balise="Paragraphe">Paragraphe en cours de modificationrt</element>
+      <element balise="Lien">http://www.google.fr</element>
     </article>
   </menu>
 </barre_menu>

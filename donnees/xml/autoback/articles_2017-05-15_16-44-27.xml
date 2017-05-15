@@ -45,11 +45,25 @@
       <nom>TAP</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
+    <article>
+      <nom>Garderie</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
   </menu>
   <menu nom_menu="Horaires et emplois du temps">
     <article>
+      <nom>Projet école</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom></nom>
+    </article>
+    <article>
       <nom>Horaires et emplois du temps</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom></nom>
     </article>
   </menu>
   <menu nom_menu="Inscriptions">
@@ -60,11 +74,6 @@
   </menu>
   <menu nom_menu="Conseils d'école">
     <article>
-      <nom>Conseils d'école</nom>
-    </article>
-  </menu>
-  <menu nom_menu="Contact">
-    <article>
       <nom>2015</nom>
       <element balise="Fichier">conseil.pdf</element>
     </article>
@@ -72,6 +81,16 @@
       <nom>2016</nom>
       <element balise="Fichier">conseil.pdf</element>
     </article>
+    <article>
+      <nom>2017</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+    <article>
+      <nom>Archives</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+  </menu>
+  <menu nom_menu="Contact">
     <article>
       <nom>Contact</nom>
       <element balise="Lien">http://www.google.com</element>

@@ -60,7 +60,8 @@
   </menu>
   <menu nom_menu="Conseils d'école">
     <article>
-      <nom>Conseils d'école</nom>
+      <nom>Inscriptions</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Contact">

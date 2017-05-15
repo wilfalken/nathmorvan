@@ -22,7 +22,7 @@ Function afficher_modifier_article($article) {
                 $mid = $balisesArticles [$element [0]] [1];
                 $out = $balisesArticles [$element [0]] [2];
                 // Affichage de chaque élément
-                $bloc = $in . $element[1] . $mid . $texteVisible . $out . '<br>';
+                $bloc = $in . $element[1] . $mid . $texteVisible . $out ;
             }
             // Gestion du carrousel qui est un ensemble de balise
             else if ($element [0] == 'Carrousel') {
@@ -43,18 +43,20 @@ Function afficher_modifier_article($article) {
              * il est modifiable par la gestion du nombre d'article.
              */
             if ($element [0] != 'Titre article') {
-                $bloc = '<div class="element" data-numero=' . $id . ' data-balise=' . $element [0] . '><span class=texteAffiche>' . $bloc . '</span>';
                 // Gestion d'un espace supplémentaire pour les liens
+                $classLien = "";
                 if ($element [0] == 'Lien') {
-                    $bloc .= '<br><br>';
+                    $classLien = ' lien';
                 }
+                $bloc = '<div class="element" data-numero=' . $id . ' data-balise=' . $element [0] . '><span class="texteAffiche'.$classLien.'">' . $bloc . '</span>';
+
                 /* Ici commence la zone permettant les modifications.
                  * Par défaut, il s'agit de texte, on va donc masquer le texte affiché
                  * et affiché une textarea permettant la modification.
                  * S'il s'agit de fichier à remplacer (type image ou texte),
                  * la zone de modification sera un formulaire permettant l'upload.
                  */
-                $bloc .= '<span class=texteModifiable>';
+                $bloc .= '<span class="texteModifiable'.$classLien.'">';
                 if ($element [0] == 'Image') {
                     $bloc .= '<p style="font-size: small;text-align:center;color:black;">Image actuelle : ' . $article[$id][1] . '</p>';
                     $bloc .= '<form  class="upload" action="" method="post" enctype="multipart/form-data">';

@@ -25,8 +25,7 @@ include "../ihm/affichageBarre_menu.php";
 include "../ihm/affichageFooter.php";
 // Include des paramètres de configuration
 include '../donnees/config.php';
-// Include pour test
-include '../dao/saveTexte.php';
+
 
 
 // Include du controleur si une fonction a été appelée depuis Javascript

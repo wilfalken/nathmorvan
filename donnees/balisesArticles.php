@@ -21,14 +21,14 @@ $balisesArticles = array(
         '"></a>'
     ),
     'Lien' => array(
-        '<br><a href="',
+        '<a target="_blank" href="',
         '">',
-        '</a><br>'
+        '</a>'
     ),
     'Fichier' => array(
-        '<br><a target="_blank" href="../donnees/fichiers/',
+        '<a target="_blank" href="../donnees/fichiers/',
         '">',
-        '</a><br>'
+        '</a>'
     ),
     'temp' => '<span><br><select name=type>'
     . '<option>Sous-titre</option>'

@@ -20,12 +20,13 @@ $nombreMenusMaximum = 6;
  * 0 ou négatif pour illimité.
  * Même remarque pour la notion de limite effective.
  */
-$nombreArticlesMaximum = 6;
+$nombreArticlesMaximum = 10;
 
 /* Il s'agit de la taile des images du carrousel
- * une fois réduites et recadrées (16/9)
+ * une fois réduites et recadrées (4/3)
+ * A modifier également dans slideshow.css
  */
-$dimensionsImagesReduitesSlideshow = [640,360];
+$dimensionsImagesReduitesSlideshow = [640,480];
 
 /* Il s'agit de la taile maximale des images du contenu
  * une fois réduites.

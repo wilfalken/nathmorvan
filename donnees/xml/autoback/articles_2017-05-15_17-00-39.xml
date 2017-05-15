@@ -48,22 +48,25 @@
   </menu>
   <menu nom_menu="Horaires et emplois du temps">
     <article>
-      <nom>Horaires et emplois du temps</nom>
+      <nom>Garderie</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Projet école</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
-      <nom>Inscriptions</nom>
+      <nom>Horaires et emplois du temps</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">
     <article>
-      <nom>Conseils d'école</nom>
+      <nom>Inscriptions</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
-  </menu>
-  <menu nom_menu="Contact">
     <article>
       <nom>2015</nom>
       <element balise="Fichier">conseil.pdf</element>
@@ -72,9 +75,19 @@
       <nom>2016</nom>
       <element balise="Fichier">conseil.pdf</element>
     </article>
+  </menu>
+  <menu nom_menu="Contact">
     <article>
       <nom>Contact</nom>
       <element balise="Lien">http://www.google.com</element>
+    </article>
+    <article>
+      <nom>Archives</nom>
+      <element balise="Fichier">conseil.pdf</element>
+    </article>
+    <article>
+      <nom></nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
 </barre_menu>
