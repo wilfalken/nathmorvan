@@ -105,10 +105,10 @@ function uploadImage() {
             switch (strtolower($fileType)) {
                 case "jpg":
                 case "jpeg":
-                    imagejpeg($vignette, $target_dir . "vignettes/" . $nouveauNom, 50);
+                    imagejpeg($vignette, $target_dir . "vignettes/" . $nouveauNom, 40);
                     break;
                 case "png":
-                    imagepng($vignette, $target_dir . "vignettes/" . $nouveauNom, 5);
+                    imagepng($vignette, $target_dir . "vignettes/" . $nouveauNom, 4);
                     break;
                 case "gif":
                     imagegif($vignette, $target_dir . "vignettes/" . $nouveauNom);

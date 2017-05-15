@@ -11,20 +11,40 @@
 
 
 #contenu img {
-    /* Bridage de la taille maximale des images */
-    max-height: 400px;
-    max-width: 800px;
+
     /* Centrer image (deux lignes nécessaires) */
     display: block;
     /* Deuxiéme pour center l'image,
     * Par défaut, on met 0,
-    * mais ici, on ajoute un peu de marges
-    * autour de l'image.
     */
-    margin: 50px auto;
+    margin: 0px auto;
+
+}
+
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+    #contenu img {
+    /* Bridage de la taille maximale des images */
+    max-height: 480px;
+    max-width: 480px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 750px) {
+    #contenu img {
+    /* Bridage de la taille maximale des images */
+    max-height: 320px;
+    max-width: 320px;
+    }
 }
 
 
+@media screen and  (max-width: 500px) {
+    #contenu img {
+    /* Bridage de la taille maximale des images */
+    max-height: 200px;
+    max-width: 200px;
+    }
+}
 
 #contenu h1 {
     /* Position du titre */
