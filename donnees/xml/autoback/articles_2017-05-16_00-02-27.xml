@@ -3,7 +3,7 @@
 <barre_menu>
   <menu nom_menu="Accueil">
     <article>
-      <nom>Accueil</nom>
+      <nom>ert</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>

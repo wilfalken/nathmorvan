@@ -8,7 +8,7 @@
     border-bottom: 1px solid #707070;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-
+    z-index: 1;
 }
 
 #footer span{

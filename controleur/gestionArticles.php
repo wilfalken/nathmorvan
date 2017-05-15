@@ -95,7 +95,8 @@ switch ($actionBouton) {
                 $menuTemp [] = $element;
             }
         }
-        if (count($menuTemp)==1){
+        // S'il ne reste qu'un article, celui va prendre le nom du menu
+        if (count($menuTemp) == 1) {
             $ancienNom = $menuTemp [0];
             $nouveauNom = $_SESSION['barre_menu'][$idMenu][0];
             $menuTemp [0] = $_SESSION['barre_menu'][$idMenu][0];
@@ -103,15 +104,30 @@ switch ($actionBouton) {
         $_SESSION['barre_menu'][$idMenu][1] = $menuTemp;
 
         // Suppression de l'article de la liste des liens
-        foreach ($listeArticles as $id => $value) {
+        foreach ($_SESSION['listeLiens'] as $id => $value) {
             if ($value == $nomArticle) {
                 unset($_SESSION['listeLiens'][$id]);
             }
+            // S'il ne reste qu'un article, il faut modifier son nom dans la liste des liens autorisés
             if ($value == $ancienNom) {
                 unset($_SESSION['listeLiens'][$id]);
                 $_SESSION['listeLiens'][] = $nouveauNom;
             }
         }
+
+        // Mise à jour du nom de l'article s'il ne reste qu'un article
+        // Modification de la liste des articles
+        $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
+        // Mise à jour du titre de l'article
+        $sauvegardeArticle[0][1] = $nouveauNom;
+        // Suppression de l'article avec l'ancien nom
+        unset($_SESSION['articles'][$ancienNom]);
+        // Ajout de l'article avec le nouveau nom
+        $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
+        unset($ancienNom);
+        unset($nouveauNom);
+        unset($sauvegardeArticle);
+
 
         break;
 
@@ -168,6 +184,33 @@ switch ($actionBouton) {
                 unset($menuTemp);
             }
         }
+
+        /* S'il ne reste plus qu'un article dans le menu,
+         * on remplace son nom par celui du menu
+         */
+        if (count($_SESSION['barre_menu'][$idMenu][1]) == 1) {
+            $menuTemp = $_SESSION['barre_menu'][$idMenu][1];
+            $ancienNom = $menuTemp [0];
+            $nouveauNom = $_SESSION['barre_menu'][$idMenu][0];
+            $menuTemp [0] = $_SESSION['barre_menu'][$idMenu][0];
+
+            $_SESSION['barre_menu'][$idMenu][1] = $menuTemp;
+            // puis on modifie son nom dans la liste des liens
+            foreach ($_SESSION['listeLiens'] as $id => $value) {
+                if ($value == $ancienNom) {
+                    unset($_SESSION['listeLiens'][$id]);
+                    $_SESSION['listeLiens'][] = $nouveauNom;
+                }
+            }
+            // enfin on modifie son nom dans les articles
+            $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
+            $sauvegardeArticle[0][1] = $nouveauNom;
+            unset($_SESSION['articles'][$ancienNom]);
+            $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
+            unset($ancienNom);
+            unset($nouveauNom);
+            unset($sauvegardeArticle);
+        }
         break;
 
 
@@ -190,13 +233,40 @@ switch ($actionBouton) {
                 $menuTemp = array();
                 $menuTemp[] = $_SESSION['barre_menu'][$idMenu][1][$idArticle];
                 unset($_SESSION['barre_menu'][$idMenu][1][$idArticle]);
-                $nombreArticlesTempSuiv = count($_SESSION['barre_menu'][$idMenu + 1]);
+                $nombreArticlesTempSuiv = count($_SESSION['barre_menu'][$idMenu + 1][1]);
                 for ($i = 0; $i < $nombreArticlesTempSuiv; $i++) {
                     $menuTemp[] = $_SESSION['barre_menu'][$idMenu + 1][1][$i];
                 }
                 $_SESSION['barre_menu'][$idMenu + 1][1] = $menuTemp;
                 unset($menuTemp);
             }
+        }
+
+        /* S'il ne reste plus qu'un article dans le menu,
+         * on remplace son nom par celui du menu
+         */
+        if (count($_SESSION['barre_menu'][$idMenu][1]) == 1) {
+            $menuTemp = $_SESSION['barre_menu'][$idMenu][1];
+            $ancienNom = $menuTemp [0];
+            $nouveauNom = $_SESSION['barre_menu'][$idMenu][0];
+            $menuTemp [0] = $_SESSION['barre_menu'][$idMenu][0];
+
+            $_SESSION['barre_menu'][$idMenu][1] = $menuTemp;
+            // puis on modifie son nom dans la liste des liens
+            foreach ($_SESSION['listeLiens'] as $id => $value) {
+                if ($value == $ancienNom) {
+                    unset($_SESSION['listeLiens'][$id]);
+                    $_SESSION['listeLiens'][] = $nouveauNom;
+                }
+            }
+            // enfin on modifie son nom dans les articles
+            $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
+            $sauvegardeArticle[0][1] = $nouveauNom;
+            unset($_SESSION['articles'][$ancienNom]);
+            $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
+            unset($ancienNom);
+            unset($nouveauNom);
+            unset($sauvegardeArticle);
         }
         break;
 
@@ -255,6 +325,37 @@ switch ($actionBouton) {
     case 'ajouterArticleAuDessous':
         // Décalage des articles présents ...
         $nombreArticlesDansMenu = count($_SESSION['barre_menu'][$idMenu][1]);
+        /* Si on est dans le cas d'un lien direct,
+         * l'article déjà présent à le nom du menu.
+         * Il faut le renommer pour éviter les conflits au cas où
+         * cet article est déplacé dans un autre menu et donc
+         * le nouvel article prendrait le nom du menu. On aurait
+         * donc deux articles avec le même nom.
+         */
+        if ($nombreArticlesDansMenu == 1) {
+            $ancienNom = $_SESSION['barre_menu'][$idMenu][1][0];
+            $_SESSION['barre_menu'][$idMenu][1][0] = 'Titre ' . $_SESSION['barre_menu'][$idMenu][1][0];
+            $nouveauNom = $_SESSION['barre_menu'][$idMenu][1][0];
+
+            // Modification de la liste des articles
+            $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
+            // Mise à jour du titre de l'article
+            $sauvegardeArticle[0][1] = $nouveauNom;
+            // Suppression de l'article avec l'ancien nom
+            unset($_SESSION['articles'][$ancienNom]);
+            // Ajout de l'article avec le nouveau nom
+            $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
+            unset($sauvegardeArticle);
+
+            foreach ($_SESSION['listeLiens'] as $id => $pageAutorisee) {
+                if ($pageAutorisee == $ancienNom) {
+                    unset($_SESSION['listeLiens'] [$id]);
+                    $_SESSION['listeLiens'] [] = $nouveauNom;
+                }
+            }
+            unset($ancienNom);
+            unset($nouveauNom);
+        }
         for ($i = $nombreArticlesDansMenu; $i > $idArticle + 1; $i--) {
             $_SESSION['barre_menu'][$idMenu][1][$i] = $_SESSION['barre_menu'][$idMenu][1][$i - 1];
         }

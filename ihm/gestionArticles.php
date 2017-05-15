@@ -4,10 +4,15 @@
 echo '<h1>Gestion générale des articles</h1>';
 
 
-echo '<br><br>';
+
 
 // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
-$listeNomsMenusArticles = array_merge(array_keys($_SESSION['articles']), array_keys($_SESSION['barre_menu']));
+$listeNomsMenusArticles = array_merge(array_keys($_SESSION['articles']));
+
+foreach ($_SESSION['barre_menu'] as $nom){
+    $listeNomsMenusArticles [] = $nom [0];
+}
+
 $nomsMenusArticles = '';
 foreach ($listeNomsMenusArticles as $nom) {
     $nomsMenusArticles .= $nom . "#";

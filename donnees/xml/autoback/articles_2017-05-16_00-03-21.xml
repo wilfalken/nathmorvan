@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE barre_menu SYSTEM "../donnes/dtd/articles.dtd">
 <barre_menu>
-  <menu nom_menu="Accueil">
-    <article>
-      <nom>Accueil</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
+  <menu nom_menu="Présentation de l'école">
     <article>
       <nom>Titre Accueil</nom>
       <element balise="Carrousel"></element>
@@ -24,8 +20,6 @@
       <element balise="Paragraphe">Quanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur.</element>
       <element balise="Paragraphe">Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos.</element>
     </article>
-  </menu>
-  <menu nom_menu="Présentation de l'école">
     <article>
       <nom>Classe passerelle</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
@@ -56,6 +50,12 @@
     </article>
     <article>
       <nom>Projet école</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+  </menu>
+  <menu nom_menu="Accueil">
+    <article>
+      <nom>Accueil</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>

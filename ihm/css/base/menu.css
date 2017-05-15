@@ -19,6 +19,7 @@
     width: 100%;
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
     height: 50px;    
+    z-index: 3;
 }
 #menu .outerBox  {
     display:table;
@@ -88,8 +89,6 @@
     left: -50px;
     width: 220px;
     height: 22px;
-    /* On ajoute la propriété de z-index afin d'avoir les menus déroulant passant au dessus */
-    z-index: 3;
 }
 
 #menu img {

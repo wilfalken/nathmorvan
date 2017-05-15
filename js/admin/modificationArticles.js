@@ -153,21 +153,6 @@ jQuery(function($){
 
 
 	
-
-
-	// Fonction utilisée pour déplacer les éléments
-	function copierElement(texte){
-            /* On ne met pas d'identifiant de numéro
-             * puisque, comme on force le rafraichissement,
-             * affichageModificationArticles.php en fournira un
-             * et mettra à jour tous les autres.
-             */
-		return '<div class=element>'+texte+'</div>';
-	}
-
-
-
-
 	function getDefaultText(baliseChoisie){
             var texte = '';
             //var contenu;

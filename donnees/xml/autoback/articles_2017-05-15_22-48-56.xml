@@ -4,10 +4,6 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
-    <article>
-      <nom>Titre Accueil</nom>
       <element balise="Carrousel"></element>
       <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
       <element balise="Sous-titre">titre</element>
@@ -26,6 +22,10 @@
     </article>
   </menu>
   <menu nom_menu="Présentation de l'école">
+    <article>
+      <nom>ert</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
     <article>
       <nom>Classe passerelle</nom>
       <element balise="Paragraphe">Article en cours de rédaction</element>

@@ -4,10 +4,6 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
-    <article>
-      <nom>Titre Accueil</nom>
       <element balise="Carrousel"></element>
       <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
       <element balise="Sous-titre">titre</element>
@@ -23,6 +19,10 @@
       <element balise="Paragraphe">Et olim licet otiosae sint tribus pacataeque centuriae et nulla suffragiorum certamina set Pompiliani redierit securitas temporis, per omnes tamen quotquot sunt partes terrarum, ut domina suscipitur et regina et ubique patrum reverenda cum auctoritate canities populique Romani nomen circumspectum et verecundum.</element>
       <element balise="Paragraphe">Quanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur.</element>
       <element balise="Paragraphe">Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos.</element>
+    </article>
+    <article>
+      <nom>ert</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Présentation de l'école">
