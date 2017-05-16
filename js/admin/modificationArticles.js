@@ -174,7 +174,7 @@ jQuery(function($){
                     //contenu = '<a href="index.php?article_a_afficher=Accueil">'+texte+'</a>';
                     break;
                 case 'Fichier':
-                    texte = '_fichier_defaut.pdf';
+                    texte = '_fichier_defaut_[0000].pdf';
                     //contenu = '<a href="'+texte+'">_fichier_defaut.pdf</a>';
                     break;
                 case 'Carrousel':

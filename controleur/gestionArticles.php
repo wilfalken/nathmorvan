@@ -3,12 +3,12 @@
 // Le include de articles_dao_write.php est fait dans le controleur
 // Enregistrement des modification de la barre de menu
 // Javascript envoie des données qui doivent être passées à la moulinette de l'UTF8
-$nomArticle = utf8_decode($_POST['nomArticle']);
-$nomMenu = utf8_decode($_POST['nomMenu']);
-$actionBouton = utf8_decode($_POST['actionBouton']);
-$idArticle = utf8_decode($_POST['idArticle']);
-$idMenu = utf8_decode($_POST['idMenu']);
-$modification = utf8_decode($_POST['modification']);
+$nomArticle = ($_POST['nomArticle']);
+$nomMenu = ($_POST['nomMenu']);
+$actionBouton = ($_POST['actionBouton']);
+$idArticle = ($_POST['idArticle']);
+$idMenu = ($_POST['idMenu']);
+$modification = ($_POST['modification']);
 unset($_POST['fonction']);
 unset($_POST['nomArticle']);
 unset($_POST['nomMenu']);
@@ -115,19 +115,20 @@ switch ($actionBouton) {
             }
         }
 
-        // Mise à jour du nom de l'article s'il ne reste qu'un article
-        // Modification de la liste des articles
-        $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
-        // Mise à jour du titre de l'article
-        $sauvegardeArticle[0][1] = $nouveauNom;
-        // Suppression de l'article avec l'ancien nom
-        unset($_SESSION['articles'][$ancienNom]);
-        // Ajout de l'article avec le nouveau nom
-        $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
-        unset($ancienNom);
-        unset($nouveauNom);
-        unset($sauvegardeArticle);
-
+        if (count($menuTemp) == 1) {
+            // Mise à jour du nom de l'article s'il ne reste qu'un article
+            // Modification de la liste des articles
+            $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
+            // Mise à jour du titre de l'article
+            $sauvegardeArticle[0][1] = $nouveauNom;
+            // Suppression de l'article avec l'ancien nom
+            unset($_SESSION['articles'][$ancienNom]);
+            // Ajout de l'article avec le nouveau nom
+            $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
+            unset($ancienNom);
+            unset($nouveauNom);
+            unset($sauvegardeArticle);
+        }
 
         break;
 
@@ -174,6 +175,55 @@ switch ($actionBouton) {
          * si le menu n'est pas le premier.
          */ else {
             if ($idMenu > 0) {
+                /* Si le menu suivant est un lien direct,
+                 * l'article déjà présent a le nom du menu.
+                 * Il faut le renommer pour éviter les conflits au cas où
+                 * cet article est déplacé dans un autre menu et donc
+                 * le nouvel article prendrait le nom du menu. On aurait
+                 * donc deux articles avec le même nom.
+                 */
+                if ((count($_SESSION['barre_menu'][$idMenu - 1][1])) == 1) {
+                    // Récupération de l'ancien nom (= nom du menu)
+                    $ancienNom = $_SESSION['barre_menu'][$idMenu][1][0];
+
+                    // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
+                    foreach ($_SESSION['articles'] as $nom => $article) {
+                        $listeNomsMenusArticles [] = ($nom);
+                    }
+                    foreach ($_SESSION['barre_menu'] as $nom) {
+                        $listeNomsMenusArticles [] = ($nom [0]);
+                    }
+                    // Création du nouveau nom
+                    $nouveauNom = '';
+                    $indiceNouveauNom = 0;
+                    do {
+                        $indiceNouveauNom += 1;
+                        $nouveauNom = $ancienNom.' (' . $indiceNouveauNom . ')';
+                    } while (in_array($nouveauNom, $listeNomsMenusArticles));
+
+                    $_SESSION['barre_menu'][$idMenu - 1][1][0] = $nouveauNom;
+
+
+                    // Modification de la liste des articles
+                    $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
+                    // Mise à jour du titre de l'article
+                    $sauvegardeArticle[0][1] = $nouveauNom;
+                    // Suppression de l'article avec l'ancien nom
+                    unset($_SESSION['articles'][$ancienNom]);
+                    // Ajout de l'article avec le nouveau nom
+                    $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
+                    unset($sauvegardeArticle);
+
+                    foreach ($_SESSION['listeLiens'] as $id => $pageAutorisee) {
+                        if ($pageAutorisee == $ancienNom) {
+                            unset($_SESSION['listeLiens'] [$id]);
+                            $_SESSION['listeLiens'] [] = $nouveauNom;
+                        }
+                    }
+                    unset($ancienNom);
+                    unset($nouveauNom);
+                }
+
                 $_SESSION['barre_menu'][$idMenu - 1][1][] = $_SESSION['barre_menu'][$idMenu][1][$idArticle];
                 $nombreArticlesTemp = count($_SESSION['barre_menu'][$idMenu][1]);
                 $menuTemp = array();
@@ -230,6 +280,56 @@ switch ($actionBouton) {
          * si le menu n'est pas le dernier.
          */ else {
             if ($idMenu < (count($_SESSION['barre_menu']) - 1)) {
+                /* Si le menu suivant est un lien direct,
+                 * l'article déjà présent a le nom du menu.
+                 * Il faut le renommer pour éviter les conflits au cas où
+                 * cet article est déplacé dans un autre menu et donc
+                 * le nouvel article prendrait le nom du menu. On aurait
+                 * donc deux articles avec le même nom.
+                 */
+                if ((count($_SESSION['barre_menu'][$idMenu + 1][1]) ) == 1) {
+                    // Récupération de l'ancien nom (= nom du menu)
+                    $ancienNom = $_SESSION['barre_menu'][$idMenu][1][0];
+
+                    // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
+                    foreach ($_SESSION['articles'] as $nom => $article) {
+                        $listeNomsMenusArticles [] = ($nom);
+                    }
+                    foreach ($_SESSION['barre_menu'] as $nom) {
+                        $listeNomsMenusArticles [] = ($nom [0]);
+                    }
+                    // Création du nouveau nom
+                    $nouveauNom = '';
+                    $indiceNouveauNom = 0;
+                    do {
+                        $indiceNouveauNom += 1;
+                        $nouveauNom = $ancienNom.' (' . $indiceNouveauNom . ')';
+                    } while (in_array($nouveauNom, $listeNomsMenusArticles));
+
+                    $_SESSION['barre_menu'][$idMenu + 1][1][0] = $nouveauNom;
+
+
+                    // Modification de la liste des articles
+                    $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
+                    // Mise à jour du titre de l'article
+                    $sauvegardeArticle[0][1] = $nouveauNom;
+                    // Suppression de l'article avec l'ancien nom
+                    unset($_SESSION['articles'][$ancienNom]);
+                    // Ajout de l'article avec le nouveau nom
+                    $_SESSION['articles'][$nouveauNom] = $sauvegardeArticle;
+                    unset($sauvegardeArticle);
+
+                    foreach ($_SESSION['listeLiens'] as $id => $pageAutorisee) {
+                        if ($pageAutorisee == $ancienNom) {
+                            unset($_SESSION['listeLiens'] [$id]);
+                            $_SESSION['listeLiens'] [] = $nouveauNom;
+                        }
+                    }
+                    unset($ancienNom);
+                    unset($nouveauNom);
+                }
+
+
                 $menuTemp = array();
                 $menuTemp[] = $_SESSION['barre_menu'][$idMenu][1][$idArticle];
                 unset($_SESSION['barre_menu'][$idMenu][1][$idArticle]);
@@ -312,8 +412,8 @@ switch ($actionBouton) {
 
 
         // Ajout d'un premier élément au nouvel article
-        $_SESSION['articles'][$modification][] = array('Titre article', utf8_decode($modification));
-        $_SESSION['articles'][$modification][] = array('Paragraphe', utf8_decode('Article en cours de rédaction'));
+        $_SESSION['articles'][$modification][] = array('Titre article', ($modification));
+        $_SESSION['articles'][$modification][] = array('Paragraphe', ('Article en cours de rédaction'));
 
         // Ajout de l'article à la liste des liens
         $_SESSION['listeLiens'][] = $modification;
@@ -326,16 +426,33 @@ switch ($actionBouton) {
         // Décalage des articles présents ...
         $nombreArticlesDansMenu = count($_SESSION['barre_menu'][$idMenu][1]);
         /* Si on est dans le cas d'un lien direct,
-         * l'article déjà présent à le nom du menu.
+         * l'article déjà présent a le nom du menu.
          * Il faut le renommer pour éviter les conflits au cas où
          * cet article est déplacé dans un autre menu et donc
          * le nouvel article prendrait le nom du menu. On aurait
          * donc deux articles avec le même nom.
          */
         if ($nombreArticlesDansMenu == 1) {
+            // Récupération de l'ancien nom (= nom du menu)
             $ancienNom = $_SESSION['barre_menu'][$idMenu][1][0];
-            $_SESSION['barre_menu'][$idMenu][1][0] = 'Titre ' . $_SESSION['barre_menu'][$idMenu][1][0];
-            $nouveauNom = $_SESSION['barre_menu'][$idMenu][1][0];
+
+            // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
+            foreach ($_SESSION['articles'] as $nom => $article) {
+                $listeNomsMenusArticles [] = ($nom);
+            }
+            foreach ($_SESSION['barre_menu'] as $nom) {
+                $listeNomsMenusArticles [] = ($nom [0]);
+            }
+            // Création du nouveau nom
+            $nouveauNom = '';
+            $indiceNouveauNom = 0;
+            do {
+                $indiceNouveauNom += 1;
+                $nouveauNom = $ancienNom.' (' . $indiceNouveauNom . ')';
+            } while (in_array($nouveauNom, $listeNomsMenusArticles));
+
+            $_SESSION['barre_menu'][$idMenu][1][0] = $nouveauNom;
+
 
             // Modification de la liste des articles
             $sauvegardeArticle = $_SESSION['articles'][$ancienNom];
@@ -363,8 +480,8 @@ switch ($actionBouton) {
         $_SESSION['barre_menu'][$idMenu][1][$idArticle + 1] = $modification;
 
         // Ajout d'un premier élément au nouvel article
-        $_SESSION['articles'][$modification][] = array('Titre article', utf8_decode($modification));
-        $_SESSION['articles'][$modification][] = array('Paragraphe', utf8_decode('Article en cours de rédaction'));
+        $_SESSION['articles'][$modification][] = array('Titre article', ($modification));
+        $_SESSION['articles'][$modification][] = array('Paragraphe', ('Article en cours de rédaction'));
 
         // Ajout de l'article à la liste des liens
         $_SESSION['listeLiens'][] = $modification;
@@ -384,8 +501,8 @@ switch ($actionBouton) {
 
         // Ajout d'un premier article au nouveau menu
         // Ajout d'un premier élément au nouvel article du nouveau menu
-        $_SESSION['articles'][$modification][] = array('Titre article', utf8_decode($modification));
-        $_SESSION['articles'][$modification][] = array('Paragraphe', utf8_decode('Article en cours de rédaction'));
+        $_SESSION['articles'][$modification][] = array('Titre article', ($modification));
+        $_SESSION['articles'][$modification][] = array('Paragraphe', ('Article en cours de rédaction'));
 
         // Ajout de l'article à la liste des liens
         $_SESSION['listeLiens'][] = $modification;
@@ -404,8 +521,8 @@ switch ($actionBouton) {
         $_SESSION['barre_menu'][$idMenu] = array($modification, array($modification));
 
         // Ajout d'un premier élément au nouvel article du nouveau menu
-        $_SESSION['articles'][$modification][] = array('Titre article', utf8_decode($modification));
-        $_SESSION['articles'][$modification][] = array('Paragraphe', utf8_decode('Article en cours de rédaction'));
+        $_SESSION['articles'][$modification][] = array('Titre article', ($modification));
+        $_SESSION['articles'][$modification][] = array('Paragraphe', ('Article en cours de rédaction'));
 
         // Ajout de l'article à la liste des liens
         $_SESSION['listeLiens'][] = $modification;

@@ -34,7 +34,7 @@ Function afficher_modifier_article($article) {
                 $in = $balisesArticles [$element [0]] [0];
                 $out = $balisesArticles [$element [0]] [1];
                 // Affichage de chaque élément
-                $bloc = $in . utf8_encode($element [1]) . $out;
+                $bloc = $in . ($element [1]) . $out;
             }
             /* Si ce n'est pas un Titre article (h1),
              * on met le bloc dans un span et on ajoute
@@ -95,7 +95,7 @@ Function afficher_modifier_article($article) {
                         $nbcols = "50";
                         $nblignes = "1";
                     }
-                    $bloc .= '<textarea rows="' . $nblignes . '" cols="' . $nbcols . '" ' . $style . '>' . utf8_encode($element [1]) . '</textarea><br>';
+                    $bloc .= '<textarea rows="' . $nblignes . '" cols="' . $nbcols . '" ' . $style . '>' . ($element [1]) . '</textarea><br>';
                 }
 
                 $bloc .= '</span>';

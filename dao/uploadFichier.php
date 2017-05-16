@@ -57,11 +57,11 @@ function uploadFichier() {
             
             // Renommage du fichier avec un ID
             include '../dao/uploadRenommerFichier.php';
-           $nouveauNom = renommerFichier($_FILES["uploadFichier"]["name"], $target_dir);
+           $nouveauNom = renommerFichier(utf8_decode($_FILES["uploadFichier"]["name"]), $target_dir);
             rename($target_file, $target_dir . $nouveauNom);
             
             // Mise à jour de la liste des articles
-            $_SESSION['articles'][$nomArticle][$idElement][1] = $nouveauNom;
+            $_SESSION['articles'][$nomArticle][$idElement][1] = utf8_encode($nouveauNom);
             // Et sauvegarde dans le XML (fonction définie dans articles_dao_write.php
             saveXml($_SESSION['articles'], $_SESSION['barre_menu']);
         } else {

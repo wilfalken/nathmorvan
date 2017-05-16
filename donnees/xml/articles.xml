@@ -4,10 +4,6 @@
   <menu nom_menu="Accueil">
     <article>
       <nom>Accueil</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
-    </article>
-    <article>
-      <nom>Titre Accueil</nom>
       <element balise="Carrousel"></element>
       <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
       <element balise="Sous-titre">titre</element>
@@ -28,27 +24,28 @@
   <menu nom_menu="Présentation de l'école">
     <article>
       <nom>Classe passerelle</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Classe passerelle</element>
+      <element balise="Image">éé_[nism].jpg</element>
     </article>
     <article>
       <nom>Petite section</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Petite section</element>
     </article>
     <article>
       <nom>Moyenne section</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Moyenne section</element>
     </article>
     <article>
       <nom>Grande section</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Grande section</element>
     </article>
     <article>
       <nom>Cantine</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Cantine</element>
     </article>
     <article>
       <nom>TAP</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">TAP</element>
     </article>
     <article>
       <nom>Garderie</nom>
@@ -56,42 +53,44 @@
     </article>
     <article>
       <nom>Projet école</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Projet école</element>
     </article>
   </menu>
   <menu nom_menu="Horaires et emplois du temps">
     <article>
       <nom>Horaires et emplois du temps</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Horaires et emplois du temps</element>
     </article>
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
       <nom>Inscriptions</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
+      <element balise="Paragraphe">Inscriptions</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">
     <article>
       <nom>2015</nom>
-      <element balise="Fichier">conseil.pdf</element>
+      <element balise="Paragraphe">2015</element>
     </article>
     <article>
       <nom>2016</nom>
-      <element balise="Fichier">conseil.pdf</element>
+      <element balise="Paragraphe">2016</element>
     </article>
     <article>
       <nom>2017</nom>
-      <element balise="Fichier">conseil.pdf</element>
+      <element balise="Paragraphe">2017</element>
     </article>
     <article>
       <nom>Archives</nom>
-      <element balise="Fichier">conseil.pdf</element>
+      <element balise="Paragraphe">Archives</element>
+      <element balise="Fichier">Conseil_[wlcj].pdf</element>
     </article>
   </menu>
   <menu nom_menu="Contact">
     <article>
       <nom>Contact</nom>
+      <element balise="Paragraphe">Contact</element>
       <element balise="Lien">http://www.google.com</element>
     </article>
   </menu>

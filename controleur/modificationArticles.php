@@ -5,11 +5,11 @@
 // Enregistrement des modification d'un élément d'un article
 
     // Javascript envoie des données qui doivent être passées à la moulinette de l'UTF8
-    $nomArticleModifie = utf8_decode($_POST['nomArticleModifie']);
-    $idElementModifie = utf8_decode($_POST['idElementModifie']);
-    $actionElement = utf8_decode($_POST['actionElement']);
-    $elementModifie = utf8_decode($_POST['elementModifie']);
-    $baliseModifiee = utf8_decode($_POST['baliseModifiee']);
+    $nomArticleModifie = ($_POST['nomArticleModifie']);
+    $idElementModifie = ($_POST['idElementModifie']);
+    $actionElement = ($_POST['actionElement']);
+    $elementModifie = ($_POST['elementModifie']);
+    $baliseModifiee = ($_POST['baliseModifiee']);
     unset($_POST['fonction']);
     unset($_POST['nomArticleModifie']);
     unset($_POST['idElementModifie']);

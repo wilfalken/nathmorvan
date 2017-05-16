@@ -10,16 +10,16 @@ foreach ($barre_menu as $menu){
 	// S'il s'agit d'un lien direct, on l'ajoute
 	if (count($menu[1])==1){
             $lien = $menu[0];
-            $barre_menu_affichee .= '<li><a class="lienDirect" href="index.php?article_a_afficher='.utf8_encode ($lien).'"><div class="outerBox"><div class="innerBox">'.utf8_encode ($lien).'</div></div></a></li>';            
+            $barre_menu_affichee .= '<li><a class="lienDirect" href="index.php?article_a_afficher='. ($lien).'"><div class="outerBox"><div class="innerBox">'. ($lien).'</div></div></a></li>';            
         }
         
 	// Sinon, il s'agit d'une liste de lien
 	else {
 		// On créé donc un menu ...
-		$barre_menu_affichee .= '<li><div class="outerBox"><div class="innerBox">'.utf8_encode ($menu[0]).'</div></div><ul class="lignes">';
+		$barre_menu_affichee .= '<li><div class="outerBox"><div class="innerBox">'. ($menu[0]).'</div></div><ul class="lignes">';
 		// ... auquel on ajoute ses liens ...
 		foreach ($menu[1] as $id => $lien){
-			$barre_menu_affichee .= '<li><a href="index.php?article_a_afficher='.utf8_encode ($lien).'">'.utf8_encode ($lien).'</a></li>';
+			$barre_menu_affichee .= '<li><a href="index.php?article_a_afficher='. ($lien).'">'. ($lien).'</a></li>';
 		}
 		// ... puis on ajoute la balise de fermeture du menu
 		$barre_menu_affichee .= '</ul></li>';

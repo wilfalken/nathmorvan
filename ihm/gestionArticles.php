@@ -1,16 +1,17 @@
 <?php
 
-
 echo '<h1>Gestion générale des articles</h1>';
 
 
 
 
 // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
-$listeNomsMenusArticles = array_merge(array_keys($_SESSION['articles']));
+foreach ($_SESSION['articles'] as $nom => $article) {
+    $listeNomsMenusArticles [] = ($nom);
+}
 
-foreach ($_SESSION['barre_menu'] as $nom){
-    $listeNomsMenusArticles [] = $nom [0];
+foreach ($_SESSION['barre_menu'] as $nom) {
+    $listeNomsMenusArticles [] = ($nom [0]);
 }
 
 $nomsMenusArticles = '';
@@ -28,7 +29,7 @@ foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
     if (count($menu[1]) == 1) {
         $article = $menu[0];
         $nombreArticles = 1;
-        $liste .= '<li><span class="lienDirect" data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=0 data-nomArticle="' . utf8_encode($article) . '" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '><b>' . utf8_encode($article) . '</b></span>' .
+        $liste .= '<li><span class="lienDirect" data-idMenu=' . $idMenu . ' data-nomMenu="' . ($nomMenu) . '" data-idArticle=0 data-nomArticle="' . ($article) . '" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '><b>' . ($article) . '</b></span>' .
                 '<ul class=listeModification>' .
                 '<li>' . boutonModificationNomMenu($nomsMenusArticles) . '</li>' .
                 '<li>' . boutonSuppressionMenuLienDirect() . '</li>' .
@@ -43,7 +44,7 @@ foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
     else {
         // On créé donc un menu ...
         $nombreArticles = count($menu[1]);
-        $liste .= '<li><span class="menu" data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-nomArticle="" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '><b>' . utf8_encode($nomMenu) . '</b></span>' .
+        $liste .= '<li><span class="menu" data-idMenu=' . $idMenu . ' data-nomMenu="' . ($nomMenu) . '" data-nomArticle="" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '><b>' . ($nomMenu) . '</b></span>' .
                 '<ul class=listeModification>' .
                 '<li>' . boutonModificationNomMenu($nomsMenusArticles) . '</li>' .
                 '<li>' . boutonSuppressionMenu() . '</li>' .
@@ -54,7 +55,7 @@ foreach ($_SESSION['barre_menu'] as $idMenu => $menu) {
                 '</ul></li>';
         // ... auquel on ajoute ses liens ...
         foreach ($menu[1] as $idArticle => $article) {
-            $liste .= '<li><span class="article" data-idMenu=' . $idMenu . ' data-nomMenu="' . utf8_encode($nomMenu) . '" data-idArticle=' . $idArticle . ' data-nomArticle="' . utf8_encode($article) . '" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '>' . utf8_encode($article) . '</span>' .
+            $liste .= '<li><span class="article" data-idMenu=' . $idMenu . ' data-nomMenu="' . ($nomMenu) . '" data-idArticle=' . $idArticle . ' data-nomArticle="' . ($article) . '" data-nombreMenusMaximum=' . $nombreMenusMaximum . '  data-nombreArticlesMaximum=' . $nombreArticlesMaximum . ' data-nombreMenus=' . $nombreMenus . '  data-nombreArticles=' . $nombreArticles . '>' . ($article) . '</span>' .
                     '<ul class=listeModification>' .
                     '<li>' . boutonModificationNomArticle($nomsMenusArticles) . '</li>' .
                     '<li>' . boutonSuppressionArticle() . '</li>' .
@@ -71,23 +72,23 @@ $liste .= '</ul><br><br><br><br>';
 echo $liste;
 
 function boutonAjouterMenuAuDessous($nomsMenusArticles) {
-    return '<a class=bouton_gestion_article name=ajouterMenuAuDessous data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un menu au-dessous</a>';
+    return '<a class=bouton_gestion_article name=ajouterMenuAuDessous data-nomsMenusArticles="' . ($nomsMenusArticles) . '" href="">Ajouter un menu au-dessous</a>';
 }
 
 function boutonAjouterMenuAuDessus($nomsMenusArticles) {
-    return '<a class=bouton_gestion_article name=ajouterMenuAuDessus data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un menu au-dessus</a>';
+    return '<a class=bouton_gestion_article name=ajouterMenuAuDessus data-nomsMenusArticles="' . ($nomsMenusArticles) . '" href="">Ajouter un menu au-dessus</a>';
 }
 
 function boutonAjouterArticleAuDessous($nomsMenusArticles) {
-    return '<a class=bouton_gestion_article name=ajouterArticleAuDessous data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un article au-dessous</a>';
+    return '<a class=bouton_gestion_article name=ajouterArticleAuDessous data-nomsMenusArticles="' . ($nomsMenusArticles) . '" href="">Ajouter un article au-dessous</a>';
 }
 
 function boutonAjouterArticleDansMenu($nomsMenusArticles) {
-    return '<a class=bouton_gestion_article name=ajouterArticleAuDessous data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un article</a>';
+    return '<a class=bouton_gestion_article name=ajouterArticleAuDessous data-nomsMenusArticles="' . ($nomsMenusArticles) . '" href="">Ajouter un article</a>';
 }
 
 function boutonAjouterArticleAuDessus($nomsMenusArticles) {
-    return '<a class=bouton_gestion_article name=ajouterArticleAuDessus data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Ajouter un article au-dessus</a>';
+    return '<a class=bouton_gestion_article name=ajouterArticleAuDessus data-nomsMenusArticles="' . ($nomsMenusArticles) . '" href="">Ajouter un article au-dessus</a>';
 }
 
 function boutonDeplacerMenuVersBas() {
@@ -120,11 +121,11 @@ function boutonSuppressionArticle() {
 }
 
 function boutonModificationNomArticle($nomsMenusArticles) {
-    return '<a class=bouton_gestion_article name=modificationNomArticle data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Modifier le nom de l\'article</a>';
+    return '<a class=bouton_gestion_article name=modificationNomArticle data-nomsMenusArticles="' . ($nomsMenusArticles) . '" href="">Modifier le nom de l\'article</a>';
 }
 
 function boutonModificationNomMenu($nomsMenusArticles) {
-    return '<a class=bouton_gestion_article name=modificationNomMenu data-nomsMenusArticles="' . utf8_encode($nomsMenusArticles) . '" href="">Modifier le nom du menu</a>';
+    return '<a class=bouton_gestion_article name=modificationNomMenu data-nomsMenusArticles="' . ($nomsMenusArticles) . '" href="">Modifier le nom du menu</a>';
 }
 
 ?>

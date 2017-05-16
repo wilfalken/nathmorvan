@@ -30,7 +30,7 @@ Function afficher_article($article) {
             $in = $balisesArticles [$element [0]] [0];
             $out = $balisesArticles [$element [0]] [1];
             // Affichage de chaque élément
-            $bloc = $in.utf8_encode ($element[1]).$out;
+            $bloc = $in. ($element[1]).$out;
         }
         echo $bloc;
     }

@@ -25,7 +25,7 @@ Function saveXml($articles, $barre_menu) {
         $barre_menu_node->appendChild($menu_node);
         // S'il s'agit d'un lien direct ...
         // ... et on lui ajoute son nom sous forme d'attribut.
-        $menu_node->setAttribute('nom_menu', utf8_encode($menu[0]));
+        $menu_node->setAttribute('nom_menu', ($menu[0]));
         // Puis on parcourt le menu afin de récupérer les liens vers les articles
         foreach ($menu[1] as $article) {
             // Création d'un noeud 'article' ...
@@ -34,7 +34,7 @@ Function saveXml($articles, $barre_menu) {
             $menu_node->appendChild($article_node);
             $nomArticle_node = $root->createElement('nom');
             $article_node->appendChild($nomArticle_node);
-            $contenu = $root->createTextNode(utf8_encode($article));
+            $contenu = $root->createTextNode(($article));
             $nomArticle_node->appendChild($contenu);
             $articleCourant = $articles [$article];
             /* Si l'article vient d'être créé, il ne comporte aucun élément
@@ -46,7 +46,7 @@ Function saveXml($articles, $barre_menu) {
                 $element_node = $root->createElement('element');
                 $article_node->appendChild($element_node);
                 // Ajout de l'attribut de balise
-                $element_node->setAttribute('balise', utf8_encode('Paragraphe'));
+                $element_node->setAttribute('balise', ('Paragraphe'));
                 // Ajout du texte
                 $contenu = $root->createTextNode('Article en cours de rédaction');
                 $element_node->appendChild($contenu);
@@ -65,9 +65,9 @@ Function saveXml($articles, $barre_menu) {
                             $element_node = $root->createElement('element');
                             $article_node->appendChild($element_node);
                             // Ajout de l'attribut de balise
-                            $element_node->setAttribute('balise', utf8_encode($element [0]));
+                            $element_node->setAttribute('balise', ($element [0]));
                             // Ajout du texte
-                            $contenu = $root->createTextNode(utf8_encode($element [1]));
+                            $contenu = $root->createTextNode(($element [1]));
                             $element_node->appendChild($contenu);
                         }
                     }

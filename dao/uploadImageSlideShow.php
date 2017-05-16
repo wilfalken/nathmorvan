@@ -49,7 +49,7 @@ function uploadImageSlideShow() {
 
             // Renommage du fichier avec un ID
             include '../dao/uploadRenommerFichier.php';
-            $nouveauNom = renommerFichier($_FILES["uploadImageSlideShow"]["name"], $target_dir);
+            $nouveauNom = renommerFichier(utf8_decode($_FILES["uploadImageSlideShow"]["name"]), $target_dir);
             rename($target_file, $target_dir . $nouveauNom);
             // Copie du fichier dans le répertoire des vignettes
             copy($target_dir . $nouveauNom, $target_dir . "vignettes/" . $nouveauNom);

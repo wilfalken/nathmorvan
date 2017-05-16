@@ -46,6 +46,8 @@ if (empty($_SESSION['articles'])&& empty($_SESSION['barre_menu'])&& empty($_SESS
 }
 // On déclare aussi une session admin afin de gérer l'affichage de la barre de menu
 $_SESSION['dolto']='admin';
+
+
 ?>
 </head>
 

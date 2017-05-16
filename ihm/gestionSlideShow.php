@@ -34,9 +34,9 @@ $repertoire = "../donnees/images/carrousel";
         while ( false !== ($file = readdir ( $dossier )) ) {
             $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
             if ($fileExtension != "" && (strpos($file,"."))) {
-                $affichageListeCarrousel .= '<a href="'.$repertoire.'/'.$file.'" target="_blank"><img src="'.$repertoire.'/vignettes/'.$file.'"></a><br>';
-                $affichageListeCarrousel .= '<span class=texte>'.$file.'<br>(cliquez pour agrandir l\'image)</span>';
-                $affichageListeCarrousel .= '<a class=bouton_repertoire name=supprimer_image_carrousel data-nomFichier="'.$file.'" data-nomRepertoire="'.$repertoire.'" href="">Supprimer cette image du carrousel</a><br><br>';
+                $affichageListeCarrousel .= '<a href="'.$repertoire.'/'.utf8_encode($file).'" target="_blank"><img src="'.$repertoire.'/vignettes/'.utf8_encode($file).'"></a><br>';
+                $affichageListeCarrousel .= '<span class=texte>'.utf8_encode($file).'<br>(cliquez pour agrandir l\'image)</span>';
+                $affichageListeCarrousel .= '<a class=bouton_repertoire name=supprimer_image_carrousel data-nomFichier="'.utf8_encode($file).'" data-nomRepertoire="'.$repertoire.'" href="">Supprimer cette image du carrousel</a><br><br>';
                 $affichageListeCarrousel .='<br><br><br>';
             }   
         }
