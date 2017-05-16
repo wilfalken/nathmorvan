@@ -8,10 +8,11 @@ jQuery(function ($) {
         var nomMenu = $(this).parent().parent().prev().attr('data-nomMenu');
         var idMenu = $(this).parent().parent().prev().attr('data-idMenu');
         var idArticle = $(this).parent().parent().prev().attr('data-idArticle');
-        var nombreMenusMaximum = $(this).parent().parent().prev().attr('data-nombreMenusMaximum');
-        var nombreArticlesMaximum = $(this).parent().parent().prev().attr('data-nombreArticlesMaximum');
-        var nombreMenus = $(this).parent().parent().prev().attr('data-nombreMenus');
-        var nombreArticles = $(this).parent().parent().prev().attr('data-nombreArticles');
+        // Ne pas oublier de parser sinon on compare des string
+        var nombreMenusMaximum = parseInt($(this).parent().parent().prev().attr('data-nombreMenusMaximum'));
+        var nombreArticlesMaximum = parseInt($(this).parent().parent().prev().attr('data-nombreArticlesMaximum'));
+        var nombreMenus = parseInt($(this).parent().parent().prev().attr('data-nombreMenus'));
+        var nombreArticles = parseInt($(this).parent().parent().prev().attr('data-nombreArticles'));
         var action = this.name;
         /* Vérification que 'data-nomsMenusArticles' existe bien
          * (il n'est utilisé que pour les modifications de noms et les ajouts)
@@ -111,7 +112,7 @@ jQuery(function ($) {
 
             case 'ajouterMenuAuDessus':
                 if (nombreMenus >= nombreMenusMaximum) {
-                    alert("Le nombre de menus est limité à " + nombreArticlesMaximum + ".");
+                    alert("Le nombre de menus est limité à " + nombreMenusMaximum + ".");
                 } else {
                     var nouveauMenu = prompt("Entrez un nouveau nom de menu");
                     if (nomsMenusArticles.indexOf(nouveauMenu) != -1) {
@@ -124,7 +125,7 @@ jQuery(function ($) {
 
             case 'ajouterMenuAuDessous':
                 if (nombreMenus >= nombreMenusMaximum) {
-                    alert("Le nombre de menus est limité à " + nombreArticlesMaximum + ".");
+                    alert("Le nombre de menus est limité à " + nombreMenusMaximum + ".");
                 } else {
                     var nouveauMenu = prompt("Entrez un nouveau nom de menu");
                     if (nomsMenusArticles.indexOf(nouveauMenu) != -1) {

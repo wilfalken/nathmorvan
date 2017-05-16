@@ -25,6 +25,7 @@
     <article>
       <nom>Classe passerelle</nom>
       <element balise="Paragraphe">Classe passerelle</element>
+      <element balise="Image">éé_[nism].jpg</element>
     </article>
     <article>
       <nom>Petite section</nom>
@@ -63,7 +64,11 @@
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
-      <nom>Inscriptions</nom>
+      <nom>temp</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
+    </article>
+    <article>
+      <nom>Inscriptions (1)</nom>
       <element balise="Paragraphe">Inscriptions</element>
     </article>
   </menu>

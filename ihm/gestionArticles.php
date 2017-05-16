@@ -6,6 +6,7 @@ echo '<h1>Gestion générale des articles</h1>';
 
 
 // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
+$listeNomsMenusArticles = array();
 foreach ($_SESSION['articles'] as $nom => $article) {
     $listeNomsMenusArticles [] = ($nom);
 }

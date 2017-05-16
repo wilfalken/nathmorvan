@@ -57,14 +57,18 @@
   </menu>
   <menu nom_menu="Horaires et emplois du temps">
     <article>
-      <nom>Horaires et emplois du temps</nom>
+      <nom>Horaires et emplois du temps (1)</nom>
       <element balise="Paragraphe">Horaires</element>
+    </article>
+    <article>
+      <nom>Inscriptions (1)</nom>
+      <element balise="Paragraphe">Inscriptions</element>
     </article>
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
       <nom>Inscriptions</nom>
-      <element balise="Paragraphe">Inscriptions</element>
+      <element balise="Paragraphe">temp</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">

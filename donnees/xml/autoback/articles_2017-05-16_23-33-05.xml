@@ -25,6 +25,7 @@
     <article>
       <nom>Classe passerelle</nom>
       <element balise="Paragraphe">Classe passerelle</element>
+      <element balise="Image">éé_[nism].jpg</element>
     </article>
     <article>
       <nom>Petite section</nom>
@@ -48,7 +49,7 @@
     </article>
     <article>
       <nom>Garderie</nom>
-      <element balise="Paragraphe">Garderie</element>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
     <article>
       <nom>Projet école</nom>
@@ -58,13 +59,13 @@
   <menu nom_menu="Horaires et emplois du temps">
     <article>
       <nom>Horaires et emplois du temps</nom>
-      <element balise="Paragraphe">Horaires</element>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
       <nom>Inscriptions</nom>
-      <element balise="Paragraphe">Inscriptions</element>
+      <element balise="Paragraphe">Horaires et emplois du temps</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">

@@ -63,8 +63,12 @@
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
-      <nom>Inscriptions</nom>
-      <element balise="Paragraphe">Inscriptions</element>
+      <nom>temp</nom>
+      <element balise="Paragraphe">temp</element>
+    </article>
+    <article>
+      <nom>Inscriptions (1)</nom>
+      <element balise="Paragraphe">Inscription</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">

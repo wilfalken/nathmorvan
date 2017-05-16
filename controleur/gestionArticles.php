@@ -95,6 +95,11 @@ switch ($actionBouton) {
                 $menuTemp [] = $element;
             }
         }
+
+        // Suppression de l'article dans la liste des articles
+        unset($_SESSION['articles'][$nomArticle]);
+
+
         // S'il ne reste qu'un article, celui va prendre le nom du menu
         if (count($menuTemp) == 1) {
             $ancienNom = $menuTemp [0];
@@ -102,6 +107,8 @@ switch ($actionBouton) {
             $menuTemp [0] = $_SESSION['barre_menu'][$idMenu][0];
         }
         $_SESSION['barre_menu'][$idMenu][1] = $menuTemp;
+
+
 
         // Suppression de l'article de la liste des liens
         foreach ($_SESSION['listeLiens'] as $id => $value) {
@@ -184,7 +191,7 @@ switch ($actionBouton) {
                  */
                 if ((count($_SESSION['barre_menu'][$idMenu - 1][1])) == 1) {
                     // Récupération de l'ancien nom (= nom du menu)
-                    $ancienNom = $_SESSION['barre_menu'][$idMenu][1][0];
+                    $ancienNom = $_SESSION['barre_menu'][$idMenu - 1][1][0];
 
                     // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
                     foreach ($_SESSION['articles'] as $nom => $article) {
@@ -198,7 +205,7 @@ switch ($actionBouton) {
                     $indiceNouveauNom = 0;
                     do {
                         $indiceNouveauNom += 1;
-                        $nouveauNom = $ancienNom.' (' . $indiceNouveauNom . ')';
+                        $nouveauNom = $ancienNom . ' (' . $indiceNouveauNom . ')';
                     } while (in_array($nouveauNom, $listeNomsMenusArticles));
 
                     $_SESSION['barre_menu'][$idMenu - 1][1][0] = $nouveauNom;
@@ -289,7 +296,7 @@ switch ($actionBouton) {
                  */
                 if ((count($_SESSION['barre_menu'][$idMenu + 1][1]) ) == 1) {
                     // Récupération de l'ancien nom (= nom du menu)
-                    $ancienNom = $_SESSION['barre_menu'][$idMenu][1][0];
+                    $ancienNom = $_SESSION['barre_menu'][$idMenu + 1][1][0];
 
                     // Création de la liste des noms de menus et articles déjà utilisés dans $_SESSION
                     foreach ($_SESSION['articles'] as $nom => $article) {
@@ -303,7 +310,7 @@ switch ($actionBouton) {
                     $indiceNouveauNom = 0;
                     do {
                         $indiceNouveauNom += 1;
-                        $nouveauNom = $ancienNom.' (' . $indiceNouveauNom . ')';
+                        $nouveauNom = $ancienNom . ' (' . $indiceNouveauNom . ')';
                     } while (in_array($nouveauNom, $listeNomsMenusArticles));
 
                     $_SESSION['barre_menu'][$idMenu + 1][1][0] = $nouveauNom;
@@ -448,7 +455,7 @@ switch ($actionBouton) {
             $indiceNouveauNom = 0;
             do {
                 $indiceNouveauNom += 1;
-                $nouveauNom = $ancienNom.' (' . $indiceNouveauNom . ')';
+                $nouveauNom = $ancienNom . ' (' . $indiceNouveauNom . ')';
             } while (in_array($nouveauNom, $listeNomsMenusArticles));
 
             $_SESSION['barre_menu'][$idMenu][1][0] = $nouveauNom;
