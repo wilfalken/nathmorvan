@@ -9,6 +9,9 @@
 }
 
 
+#contenu p {
+    display: block;
+}
 
 #contenu img {
 
@@ -18,31 +21,32 @@
     * Par défaut, on met 0,
     */
     margin: 0px auto;
-
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 @media screen and (min-width: 750px) and (max-width: 1000px) {
     #contenu img {
-    /* Bridage de la taille maximale des images */
-    max-height: 480px;
-    max-width: 480px;
+        /* Bridage de la taille maximale des images */
+        max-height: 480px;
+        max-width: 480px;
     }
 }
 
 @media screen and (min-width: 500px) and (max-width: 750px) {
     #contenu img {
-    /* Bridage de la taille maximale des images */
-    max-height: 320px;
-    max-width: 320px;
+        /* Bridage de la taille maximale des images */
+        max-height: 320px;
+        max-width: 320px;
     }
 }
 
 
 @media screen and  (max-width: 500px) {
     #contenu img {
-    /* Bridage de la taille maximale des images */
-    max-height: 200px;
-    max-width: 200px;
+        /* Bridage de la taille maximale des images */
+        max-height: 200px;
+        max-width: 200px;
     }
 }
 

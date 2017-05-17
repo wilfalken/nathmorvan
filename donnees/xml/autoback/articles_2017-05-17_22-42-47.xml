@@ -3,12 +3,12 @@
 <barre_menu>
   <menu nom_menu="Accueil">
     <article>
-      <nom>Accueil (1)</nom>
+      <nom>Accueil</nom>
       <element balise="Carrousel"></element>
       <element balise="Paragraphe">hujdsfshjoiezfhiopfuoreupoier</element>
-      <element balise="Paragraphe">iopuoireujrortio</element>
       <element balise="Sous-titre">titre</element>
-      <element balise="Image">ferme juin 2006 PS2 012_[54xk].jpg</element>
+      <element balise="Paragraphe">iopuoireujrortio</element>
+      <element balise="Image">ferme juin 2006 PS2 011_[r3wk].jpg</element>
       <element balise="Sous-titre">Carrousel</element>
       <element balise="Paragraphe">Eodem tempore etiam Hymetii praeclarae indolis viri negotium est actitatum, cuius hunc novimus esse textum. cum Africam pro consule regeret Carthaginiensibus victus inopia iam lassatis, ex horreis Romano populo destinatis frumentum dedit, pauloque postea cum provenisset segetum copia, integre sine ulla restituit mora.</element>
       <element balise="Paragraphe">Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiae oppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.</element>
@@ -19,10 +19,6 @@
       <element balise="Paragraphe">Et olim licet otiosae sint tribus pacataeque centuriae et nulla suffragiorum certamina set Pompiliani redierit securitas temporis, per omnes tamen quotquot sunt partes terrarum, ut domina suscipitur et regina et ubique patrum reverenda cum auctoritate canities populique Romani nomen circumspectum et verecundum.</element>
       <element balise="Paragraphe">Quanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur.</element>
       <element balise="Paragraphe">Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos.</element>
-    </article>
-    <article>
-      <nom>Article</nom>
-      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Présentation de l'école">
