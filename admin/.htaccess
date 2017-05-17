@@ -1,5 +1,5 @@
 AuthType Basic
-AuthName "Password Required"
+AuthName "Merci d'entrer votre nom d'utilisateur et votre mot de passe"
 AuthUserFile c:/xampp/htdocs/PPE_Nathalie_Morvan/admin/.htpasswd
 Require valid-user
 
