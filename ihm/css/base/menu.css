@@ -59,7 +59,7 @@
 /* outerBox et innerBox permettent l'alignement vertical */
 #menu .outerBox  {
     display: table;
-    width: 100px;
+    width: 120px;
     height: 50px;
 }
 
@@ -103,7 +103,7 @@
 
 /* obligation de dupliquer les dimensions sinon l'affichage des lignes est inclu dans le titre */
 #menu .titres li, #menu .lienDirect {
-    width: 100px;
+    width: 120px;
     height: 50px;
 }
 
@@ -203,10 +203,13 @@
         border-left: solid 1px #596275;
         border-right: solid 1px #596275;
         background-color: rgba(255, 255, 255, 0.8);
-        box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
+        /*box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);*/
         clear: both;
-        margin-top: 0px;
-        margin-bottom: 0px;
+        margin: 0px;
+    }
+
+    #menu .titres {
+        box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
     }
 
     /* Première ligne des menus déroulants */
@@ -220,7 +223,7 @@
     }
 
     #menu .lignes li {
-        left: 60px;
+        left: 80px;
         bottom:50px;
         background-color: white;
     }
