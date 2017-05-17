@@ -2,7 +2,7 @@
     position: fixed;
     left: 20px;
     top: 0px;
-    z-index: 5;
+
     /*-ms-transform: rotate(270deg);*/ /* IE 9 */
     /*-webkit-transform: rotate(270deg);*/ /* Chrome, Safari, Opera */
     /*transform: rotate(270deg);*/
@@ -10,6 +10,14 @@
 
 
 #menu {
+    position: fixed;
+    left: 0px;
+    top: 26px;
+    width: 100%;
+    z-index: 2;
+}
+
+#fondMenu{
     background-color: rgba(255, 255, 255, 0.8);
     border-top: 1px solid #7e869a;
     border-bottom: 1px solid #7e869a;
@@ -17,19 +25,49 @@
     left: 0px;
     top: 25px;
     width: 100%;
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
-    height: 50px;    
-    z-index: 3;
+    /*box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);*/
+    height: 50px;
 }
+
+/* logo de menu déroulant */
+#logoMenu {
+    display:none;
+}
+
+#imageMenu img {
+    position: fixed;
+    top: 25px;
+    left: 0px;
+}
+
+#ombreMenu img {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+}
+
+#degradeMenu img {
+    position: fixed;
+    top: 25px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+}
+
+/* outerBox et innerBox permettent l'alignement vertical */
 #menu .outerBox  {
-    display:table;
+    display: table;
     width: 100px;
     height: 50px;
 }
 
-#menu ul img{
-    position: fixed;
-    top: 25px;
+#menu .innerBox {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 #menu .titres {
@@ -38,10 +76,7 @@
     top: -16px;
 }
 
-#menu .innerBox {
-    display: table-cell;
-    vertical-align: middle;
-}
+
 
 /* Lignes qui permettent d'afficher les lignes en cas de survol */
 #menu .lignes {
@@ -87,16 +122,12 @@
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
     background-color: white;
     left: -50px;
-    width: 220px;
+    width: 170px;
     height: 22px;
+    z-index: 5;
 }
 
-#menu img {
-    position: fixed;
-    left: 0px;
-    top: 10px;
-    z-index: -1;
-}
+
 
 /* Première ligne des menus déroulants */
 #menu .lignes  li:first-child {
@@ -132,7 +163,67 @@
 
 
 @media screen and (max-width: 800px) {
-    #menu {
+    #menu .titres {
         display:none;
     }
+
+    /* Le menu n'étant pas dans la même div,
+    il faut utiliser un sélecteur d'adjacence */
+    #logoMenu:hover ~ #menu .titres {
+        display: block;
+    }
+
+    /* Il faut ajouter cette ligne
+    sinon, quand on quitte le logo,
+    le menu disparait. Il faut donc qu'un hover local
+    prenne le relai */
+    #menu .titres:hover {
+        display:block;
+    }
+
+    #logoMenu{
+        display:block;
+        position: fixed;
+        left: 25px;
+        top: 25px;
+    }
+
+
+
+
+    #menu {
+        position: fixed;
+        left: -8px;
+        top: 76px;
+    }
+
+
+    #menu .titres li {
+        border: none;
+        border-left: solid 1px #596275;
+        border-right: solid 1px #596275;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
+        clear: both;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    /* Première ligne des menus déroulants */
+    #menu .titres  li:first-child {
+        border-top: solid 1px #596275;
+    }
+
+    /* Dernière ligne des menus déroulants */
+    #menu .titres li:last-child {
+        border-bottom: solid 1px #596275;
+    }
+
+    #menu .lignes li {
+        left: 60px;
+        bottom:50px;
+        background-color: white;
+    }
+
+
 }
