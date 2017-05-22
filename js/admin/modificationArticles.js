@@ -35,6 +35,9 @@ jQuery(function($){
                             if (baliseFromPHP === 'Carrousel'){
                                 alert ("Pour modifier le carrousel d'images,\nmerci de consulter la page \"Gestion carrousel\".");
                             }
+                            else if (baliseFromPHP === 'GoogleMap'){
+                                alert ("Vous ne pouvez pas modifier la fenêtre Google Map.");
+                            }
                             else {
                                 $(this).parent().parent().addClass('modification');
                                 
@@ -178,6 +181,9 @@ jQuery(function($){
                     //contenu = '<a href="'+texte+'">_fichier_defaut.pdf</a>';
                     break;
                 case 'Carrousel':
+                    texte = '';
+                    break;
+                case 'GoogleMap':
                     texte = '';
                     break;
             }

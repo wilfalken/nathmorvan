@@ -25,7 +25,7 @@ Function afficher_modifier_article($article) {
                 $bloc = $in . $element[1] . $mid . $texteVisible . $out;
             }
             // Gestion du carrousel qui est un ensemble de balise
-            else if ($element [0] == 'Carrousel') {
+            else if ($element [0] == 'Carrousel' || $element [0] == 'GoogleMap') {
                 $bloc = $balisesArticles [$element [0]];
             }
             // ... pour tous les autres, deux balises suffisent

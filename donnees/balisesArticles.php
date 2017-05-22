@@ -37,10 +37,12 @@ $balisesArticles = array(
     . '<option>Lien</option>'
     . '<option>Fichier</option>'
     . '<option>Carrousel</option>'
+    . '<option>Google Map</option>'
     . '</select><br><br>'
     . '<a class=bouton name=bouton_valider_insertion href="">Valider le type</a>'
     . '<a class=bouton name=bouton_supprimer href="">Annuler</a></span>',
-    'Carrousel' => getCarrousel()
+    'Carrousel' => getCarrousel(),
+    'GoogleMap'=> getGoogleMap()
 );
 
 // Les images du carrousel proviennent du répertoire ../donnees/images/carrousel/
@@ -58,6 +60,20 @@ function getCarrousel() {
     }
     $carrousel .= '</ul></div><br><br>';
     return $carrousel;
+}
+
+
+function getGoogleMap(){
+    return '
+        <div class="googleMap">
+    <iframe
+  width="500"
+  height="500"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBjdWPUzSbZcHjfbW4bITpb9AxGAwFYbxM 
+    &q=Eiffel+Tower,Paris+France">
+</iframe></div>';
+     
 }
 
 ?>
