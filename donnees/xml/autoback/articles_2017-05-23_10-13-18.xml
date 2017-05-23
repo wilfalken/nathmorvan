@@ -64,8 +64,12 @@
   </menu>
   <menu nom_menu="Inscriptions">
     <article>
-      <nom>Inscriptions</nom>
+      <nom>Inscriptions (1)</nom>
       <element balise="Paragraphe">Inscription</element>
+    </article>
+    <article>
+      <nom>jivrrhjoi</nom>
+      <element balise="Paragraphe">Article en cours de rédaction</element>
     </article>
   </menu>
   <menu nom_menu="Conseils d'école">

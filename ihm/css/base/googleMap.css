@@ -1,3 +1,36 @@
 .googleMap {
     margin: auto;
+    height: 500px;
+    width: 500px;
+}
+
+.googleMap iframe
+{
+    height: 500px;
+    width: 500px;
+    border: none;
+}
+
+@media screen and (min-width: 500px) and (max-width: 750px) {
+    .googleMap {
+        height: 300px;
+        width: 300px;
+    }
+    .googleMap iframe
+    {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .googleMap {
+        height: 150px;
+        width: 150px;
+    }
+    .googleMap iframe
+    {
+        height: 150px;
+        width: 150px;
+    }
 }

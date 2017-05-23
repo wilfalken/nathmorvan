@@ -1,6 +1,5 @@
 <?php
 
-
 // Définition des types de balises
 $balisesArticles = array(
     'Titre article' => array(
@@ -42,7 +41,7 @@ $balisesArticles = array(
     . '<a class=bouton name=bouton_valider_insertion href="">Valider le type</a>'
     . '<a class=bouton name=bouton_supprimer href="">Annuler</a></span>',
     'Carrousel' => getCarrousel(),
-    'GoogleMap'=> getGoogleMap()
+    'GoogleMap' => getGoogleMap()
 );
 
 // Les images du carrousel proviennent du répertoire ../donnees/images/carrousel/
@@ -51,8 +50,8 @@ function getCarrousel() {
     $carrouselDirectory = "../donnees/images/carrousel";
     if ($dossier = opendir($carrouselDirectory)) {
         while (false !== ($file = readdir($dossier))) {
-            $fileExtension = explode(".", $file)[count (explode(".", $file))-1];
-            if ($fileExtension != "" && (strpos($file,"."))) {
+            $fileExtension = explode(".", $file)[count(explode(".", $file)) - 1];
+            if ($fileExtension != "" && (strpos($file, "."))) {
                 $carrousel .= '<li><a target="_blank" href="../donnees/images/carrousel/' . $file . '"><img src="../donnees/images/carrousel/vignettes/' . $file . '"></a></li>';
             }
         }
@@ -62,18 +61,14 @@ function getCarrousel() {
     return $carrousel;
 }
 
-
-function getGoogleMap(){
+function getGoogleMap() {
     return '
         <div class="googleMap">
     <iframe
-  width="500"
-  height="500"
-  frameborder="0" style="border:0"
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBjdWPUzSbZcHjfbW4bITpb9AxGAwFYbxM 
-    &q=Eiffel+Tower,Paris+France">
-</iframe></div>';
-     
+    &q=5+Rue+des+%C3%89coles,+56860+S%C3%A9n%C3%A9">
+</iframe>
+</div>';
 }
 
 ?>
