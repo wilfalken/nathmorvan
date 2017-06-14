@@ -5,7 +5,7 @@
 <!--  Renvoi vers la page index visiteur -->
 <meta http-equiv="Refresh" content="0;url=visiteur/index.php">
 <!--  Gestion de l'icône -->
-<?php include 'ihm/icon/icon.php';?>
+<?php //include 'ihm/icon/icon.php';?>
 </head>
 <body>
 </body>
